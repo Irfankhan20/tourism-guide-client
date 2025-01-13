@@ -8,26 +8,26 @@ const Overview = () => {
     controls.start({ scale: 1.2 });
   }, [controls]);
   return (
-    <div className=" md:my-20 w-full mt-32 mb-32">
+    <div className="px-5 md:px-0 w-full  mb-32">
       <div className="container mx-auto lg:flex lg:flex-row items-center">
-        <div className="md:w-1/2">
+        <div className="lg:w-1/2 border-2 w-full">
           <div className="">
             <motion.img
               animate={{ y: [100, 50, 100] }}
               transition={{ duration: 10, repeat: Infinity }}
               src="https://i.ibb.co.com/TvPh7jx/bandarban1.jpg"
-              className="max-w-sm rounded-t-[40px] rounded-br-[40px] border-l-4 border-b-4 border-[#07332F] shadow-2xl"
+              className="md:max-w-sm max-w-64 rounded-t-[40px] rounded-br-[40px] border-l-4 border-b-4 border-[#07332F] shadow-2xl"
             />
             <motion.img
               animate={{ x: [100, 150, 100] }}
               transition={{ duration: 10, repeat: Infinity }}
               src="https://i.ibb.co.com/ssFXrn4/cox1.jpg"
-              className="max-w-sm rounded-t-[40px] rounded-br-[40px] border-l-4 border-b-4 border-[#07332F] shadow-2xl"
+              className="md:max-w-sm  max-w-52   rounded-t-[40px] rounded-br-[40px] border-l-4 border-b-4 border-[#07332F] shadow-2xl"
             />
           </div>
         </div>
-        <div className="md:w-1/2 ">
-          <div className="my-8 lg:my-0">
+        <div className="lg:w-1/2 w-full">
+          <div className="my-8 text-center lg:my-0">
             <h2 className=" text-2xl font-bold md:text-[40px] md:mb-6 mb-4">
               Overview
             </h2>

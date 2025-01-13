@@ -100,7 +100,6 @@ const Navbar = () => {
 
   return (
     <div
-      //   className="navbar fixed backdrop-blur-xl bg-white/30 shadow-sm px-4 mx-auto z-50 "
       className={`navbar px-4 mx-auto fixed z-50 top-0 w-full flex justify-center transition-all ${
         scrolled && "backdrop-blur-md"
       }`}
@@ -158,7 +157,7 @@ const Navbar = () => {
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 text-white"
+              className={`h-5 w-5 ${scrolled ? "text-black" : "text-white"}`}
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -170,10 +169,13 @@ const Navbar = () => {
                 d="M4 6h16M4 12h8m-8 6h16"
               />
             </svg>
+            {/* [#db9d82] */}
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content right-0 mt-3 z-[1] p-2 shadow bg-[#3b3b3aea] text-white rounded-box w-52"
+            className={`menu menu-sm dropdown-content right-0 mt-3 z-[1] p-2 shadow ${
+              scrolled ? "bg-[#db9d82]" : "bg-[#3b3b3aea]"
+            } text-white rounded-box w-52`}
           >
             {navlinks}
             <li className=" justify-center font-bold">
