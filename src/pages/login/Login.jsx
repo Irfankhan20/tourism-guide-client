@@ -47,7 +47,7 @@ const Login = () => {
       </div>
 
       {/* Right Section */}
-      <div className="w-full lg:w-1/3 mx-auto backdrop-blur-md shadow-lg rounded-xl p-4 sm:p-6 bg-white/70">
+      <div className="w-full mb-10 md:mb-20 lg:mb-0 lg:w-1/3 mx-auto backdrop-blur-md shadow-lg rounded-xl p-4 sm:p-6 bg-white/70">
         <h2 className="text-xl sm:text-2xl font-bold text-center text-gray-800">
           Welcome to Elite Explore!
         </h2>
@@ -63,7 +63,7 @@ const Login = () => {
               id="email"
               name="email"
               placeholder="Enter your email"
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F5A481]"
               required
             />
           </div>
@@ -78,7 +78,7 @@ const Login = () => {
               id="password"
               name="password"
               placeholder="Enter your password"
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F5A481]"
               required
             />
           </div>
@@ -89,15 +89,16 @@ const Login = () => {
               <input type="checkbox" className="form-checkbox h-4 w-4" />
               <span className="ml-2">Remember Me</span>
             </label>
-            <a href="#" className="hover:underline">
+            <a href="#" className="hover:underline text-[#F5A481]">
               Forgot Password?
             </a>
           </div>
 
           {/* Submit Button */}
+
           <button
             type="submit"
-            className="w-full bg-primary text-white py-2 px-4 rounded-lg hover:bg-secondary transition duration-300"
+            className="w-full bg-[#F5A481] text-white py-2 px-4 rounded-lg  transition duration-300"
           >
             Sign In
           </button>
@@ -123,7 +124,7 @@ const Login = () => {
           Don’t have an account?{" "}
           <Link
             to="/signup"
-            className="text-primary font-medium hover:underline"
+            className="text-[#F5A481] font-medium hover:underline"
           >
             Sign up
           </Link>
