@@ -1,0 +1,164 @@
+[
+  {
+    "photo": [
+      "https://i.ibb.co/tHVSD69/Sundarbans-Mangrove-Forest.jpg",
+      "https://i.ibb.co.com/9tT9X8Q/shundorban2.jpg",
+      "https://i.ibb.co.com/Vvn4QD1/shundorban3.jpg",
+      "https://i.ibb.co.com/tLQd12n/shundorban4.jpg",
+      "https://i.ibb.co.com/pfKSDbL/shundorban5.jpg"
+    ],
+    "type": "Nature",
+    "title": "Sundarbans Mangrove Forest",
+    "price": 5000,
+    "description": "The Sundarbans is the largest mangrove forest in the world, spanning over 10,000 square kilometers across southwestern Bangladesh and India. Known for its diverse wildlife, the forest is home to the iconic Royal Bengal Tiger, crocodiles, and various species of birds. Visitors can enjoy boat tours through its winding waterways, observe wildlife in their natural habitat, and explore the unique ecosystem that makes the Sundarbans one of the most important natural reserves in the world."
+  },
+  {
+    "photo": [
+      "https://i.ibb.co/9yQpksZ/Cox-s-Bazar-Beach.jpg",
+      "https://i.ibb.co.com/ssFXrn4/cox1.jpg",
+      "https://i.ibb.co.com/MCtjfRC/cox2.jpg",
+      "https://i.ibb.co.com/QvVg9px/cox3.jpg",
+      "https://i.ibb.co.com/pdgPcSH/cox4.jpg"
+    ],
+    "type": "Beach",
+    "title": "Cox’s Bazar Beach",
+    "price": 6000,
+    "description": "Cox's Bazar is famous for having the longest unbroken sea beach in the world, stretching over 120 kilometers along the Bay of Bengal. The beach is a major tourist destination, offering opportunities for sunbathing, swimming, and water sports. The town of Cox's Bazar is a lively coastal area with plenty of resorts, seafood restaurants, and cultural attractions. It's a perfect place for both relaxation and adventure, with many nearby islands and natural reserves to explore."
+  },
+  {
+    "photo": [
+      "https://i.ibb.co/mtz3hGF/Saint-Martin-s-Island.webp",
+      "https://i.ibb.co.com/r5ZkCvR/sentmartin1.jpg",
+      "https://i.ibb.co.com/5BbnNnn/sentmartin2.webp",
+      "https://i.ibb.co.com/Bc97p8T/sentmartin3.jpg",
+      "https://i.ibb.co.com/8sjNQTd/sentmartin4.webp"
+    ],
+    "type": "Island",
+    "title": "Saint Martin’s Island",
+    "price": 7500,
+    "description": "Saint Martin's Island is a tropical paradise located in the Bay of Bengal, known for its crystal-clear waters, coral reefs, and pristine sandy beaches. The island is the only coral island in Bangladesh and is an ideal destination for snorkeling, diving, and marine life exploration. It is a peaceful getaway from the hustle and bustle of city life, offering visitors a chance to immerse themselves in nature and local culture, with opportunities to see traditional fishing techniques and enjoy freshly caught seafood."
+  },
+  {
+    "photo": [
+      "https://i.ibb.co/jzJW4MH/Rangamati-Hill-District.webp",
+      "https://i.ibb.co.com/6N593Qq/rangamati.jpg",
+      "https://i.ibb.co.com/ygPSCJL/rangamati2.jpg",
+      "https://i.ibb.co.com/nRHy3kC/rangamati3.jpg",
+      "https://i.ibb.co.com/BnGYZTQ/rangamati4.jpg"
+    ],
+    "type": "Cultural",
+    "title": "Rangamati Hill District",
+    "price": 5500,
+    "description": "Rangamati is a picturesque hill district in the Chittagong Hill Tracts of Bangladesh. Surrounded by lush green hills, crystal-clear lakes, and picturesque valleys, it offers a peaceful escape into nature. The district is known for its rich tribal culture, beautiful lakes such as Kaptai Lake, and the famous Rajbari Palace. Visitors can explore local villages, enjoy boat rides on the lakes, and learn about the unique heritage of the indigenous people of the region."
+  },
+  {
+    "photo": [
+      "https://i.ibb.co/r0Ky06B/Sylhet-Tea-Gardens.jpg",
+      "https://i.ibb.co.com/Xsg49Hp/sylet1.jpg",
+      "https://i.ibb.co.com/cCKFs25/sylet2.jpg",
+      "https://i.ibb.co.com/1s8s8Cn/sylet3.jpg",
+      "https://i.ibb.co.com/8216zNk/sylet4.jpg"
+    ],
+
+    "type": "Nature",
+    "title": "Sylhet Tea Gardens",
+    "price": 5200,
+    "description": "Sylhet, located in the northeastern part of Bangladesh, is renowned for its scenic beauty and expansive tea gardens. With rolling hills, lush greenery, and misty weather, Sylhet offers a serene retreat for nature lovers. Visitors can take guided tours of the tea estates, learn about tea production, and enjoy the picturesque landscapes. The region is also known for its cultural diversity, with a blend of Bengali and indigenous traditions."
+  },
+  {
+    "photo": [
+      "https://i.ibb.co/X8hVZxb/Paharpur-Buddhist-Vihara.jpg",
+      "https://i.ibb.co.com/wJmFfhP/vihar1.jpg",
+      "https://i.ibb.co.com/2gz5vBD/vihar2.jpg",
+      "https://i.ibb.co.com/RzZtyX4/vihar3.jpg",
+      "https://i.ibb.co.com/N9T7gXb/vihar4.jpg"
+    ],
+
+    "type": "Historical",
+    "title": "Paharpur Buddhist Vihara",
+    "price": 8000,
+    "description": "Paharpur is an ancient archaeological site located in the northwest of Bangladesh. The ruins of the Buddhist Vihara, dating back to the 8th century, are a UNESCO World Heritage site. This ancient monastery is one of the largest and most significant in South Asia, with intricate terracotta sculptures, statues, and inscriptions. Visitors can explore the ruins, learn about the region's Buddhist heritage, and enjoy the peaceful atmosphere of this historic site."
+  },
+  {
+    "photo": [
+      "https://i.ibb.co/1Gc4DJ6/Sonargaon-The-Ancient-Capital.jpg",
+      "https://i.ibb.co.com/gz0B270/sonargaon1.jpg",
+      "https://i.ibb.co.com/zhxycTt/sonargaon2.jpg",
+      "https://i.ibb.co.com/645qk3L/sonargaon3.jpg",
+      "https://i.ibb.co.com/28RP6PL/sonargaon4.jpg"
+    ],
+
+    "type": "Cultural",
+    "title": "Sonargaon – The Ancient Capital",
+    "price": 6000,
+    "description": "Sonargaon, located near Dhaka, was the capital of Bengal during the medieval period. The historical city is home to numerous ancient structures, including palaces, mosques, and colonial-era buildings. The Sonargaon Folk Art and Craft Museum is a must-visit to understand the cultural heritage of the region. This destination offers a glimpse into the rich history of Bangladesh, with a focus on Bengali culture, art, and architecture."
+  },
+  {
+    "photo": [
+      "https://i.ibb.co/2t0Qy0q/Bagerhat-The-Historic-City-of-Mosque.jpg",
+      "https://i.ibb.co.com/J50y9yk/bagerhat1.jpg",
+      "https://i.ibb.co.com/wrxTpwx/bagerhat2.jpg",
+      "https://i.ibb.co.com/xhTYS58/bagerhat3.jpg",
+      "https://i.ibb.co.com/GkBrLCj/bagerhat4.jpg"
+    ],
+
+    "type": "Historical",
+    "title": "Bagerhat – The Historic City of Mosques",
+    "price": 9500,
+    "description": "Bagerhat is a UNESCO World Heritage site located in southwestern Bangladesh, known for its historic mosques and Islamic architecture. The 60 Dome Mosque, one of the largest mosques in Bangladesh, is the most famous landmark in Bagerhat. Visitors can explore the city's ancient structures, including tombs, ponds, and bridges, while learning about the rich history of the Bengal Sultanate."
+  },
+  {
+    "photo": [
+      "https://i.ibb.co/ygZky5h/Jaflong-Waterfall.jpg",
+      "https://i.ibb.co.com/rccQx0f/jaflong1.jpg",
+      "https://i.ibb.co.com/NnY81jd/jaflong2.jpg",
+      "https://i.ibb.co.com/8DVgb8N/jaflong3.jpg",
+      "https://i.ibb.co.com/wp3V3rQ/jaflong4.jpg"
+    ],
+    "type": "Nature",
+    "title": "Jaflong Waterfall",
+    "price": 6700,
+    "description": "Jaflong, located in the Sylhet division of Bangladesh, is famous for its breathtaking waterfalls, rolling hills, and scenic tea gardens. The Jaflong Waterfall is one of the most popular attractions in the region, surrounded by lush forests and offering a serene atmosphere for visitors. The region is also known for its indigenous Khasi community, and tourists can learn about their unique way of life and traditional practices."
+  },
+  {
+    "photo": [
+      "https://i.ibb.co/yPHgPRf/Bandarban-The-Land-of-Hills.jpg",
+      "https://i.ibb.co.com/TvPh7jx/bandarban1.jpg",
+      "https://i.ibb.co.com/rFyjRRb/bandarban2.jpg",
+      "https://i.ibb.co.com/R4pmrJV/bandarban3.jpg",
+      "https://i.ibb.co.com/WFpQSz2/bandarban4.jpg"
+    ],
+
+    "type": "Cultural",
+    "title": "Bandarban – The Land of Hills",
+    "price": 7200,
+    "description": "Bandarban, a hill district in the Chittagong Hill Tracts, is known for its scenic landscapes, tribal culture, and rich biodiversity. The district is home to several indigenous groups and offers a wide variety of adventure activities, including trekking, river cruises, and visiting waterfalls. The Nafakhum and Remakri waterfalls are popular among tourists, as is the hilltop village of Ruma, which offers spectacular views of the surrounding mountains."
+  },
+  {
+    "photo": [
+      "https://i.ibb.co/RHqmz8J/Nafakhum-Waterfall.jpg",
+      "https://i.ibb.co.com/PjWCxKK/nafakhum1.jpg",
+      "https://i.ibb.co.com/tbD0CRj/nafakhum2.jpg",
+      "https://i.ibb.co.com/wgVC51j/nafakhum3.jpg",
+      "https://i.ibb.co.com/gRzc2Hm/nafakhum4.webp"
+    ],
+    "type": "Adventure",
+    "title": "Nafakhum Waterfall",
+    "price": 8500,
+    "description": "Nafakhum is the largest waterfall in Bangladesh, located in the Bandarban district. The waterfall, with its stunning height and impressive volume of water, is surrounded by pristine forests and hills. Visitors can trek to the waterfall, enjoy the stunning views along the way, and bathe in the natural pools beneath it. Nafakhum is a must-visit destination for adventure seekers and nature lovers."
+  },
+  {
+    "photo": [
+      "https://i.ibb.co/Dg05Cxn/Khagrachari-Tribal-Culture.jpg",
+      "https://i.ibb.co.com/6DG0LYc/tribal1.webp",
+      "https://i.ibb.co.com/kqc1X26/tribal2.jpg",
+      "https://i.ibb.co.com/Ydq8xpQ/tribal3.jpg",
+      "https://i.ibb.co.com/XJzgchL/tribal4.jpg",
+      ""
+    ],
+    "type": "Cultural",
+    "title": "Khagrachari Tribal Culture",
+    "price": 6000,
+    "description": "Khagrachari, located in the Chittagong Hill Tracts, offers visitors the chance to explore the indigenous tribal cultures of Bangladesh. The district is home to several ethnic groups, including the Chakma, Marma, and Tripura. Visitors can interact with local communities, experience their traditional ways of life, and explore the lush hills, rivers, and forests that define the region. This destination is ideal for those interested in cultural heritage and rural tourism."
+  }
+]

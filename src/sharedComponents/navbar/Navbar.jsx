@@ -1,14 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import logo from "../../assets/nav-logo.png";
 import { Link, NavLink, useLocation } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Navbar = () => {
-  const user = false;
+  const { user, logOut } = useContext(AuthContext);
   const { pathname } = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const handleMouseEnterPhoto = () => {
-    setIsModalOpen(true);
+  const handleOpenModal = () => {
+    setIsModalOpen(!isModalOpen);
   };
 
   useEffect(() => {
@@ -21,13 +22,6 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  const handleMouseLeaveContainer = (e) => {
-    // If the mouse leaves both the photo and the modal container, close the modal
-    if (!e.currentTarget.contains(e.relatedTarget)) {
-      setIsModalOpen(false);
-    }
-  };
 
   const navlinks = (
     <>
@@ -95,6 +89,22 @@ const Navbar = () => {
           Trips
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to={"/gallery"}
+          className={({ isActive }) =>
+            isActive
+              ? `font-black px-4 py-2 rounded no-underline ${
+                  scrolled ? "text-black" : pathname === "/" && "text-white"
+                }`
+              : `px-4 py-2 rounded hover:text-primary no-underline ${
+                  scrolled ? "text-black" : pathname === "/" && "text-white"
+                }`
+          }
+        >
+          Gallery
+        </NavLink>
+      </li>
     </>
   );
 
@@ -109,8 +119,17 @@ const Navbar = () => {
         <Link to={"/"} className=" flex gap-2 items-center">
           <img className="w-auto h-7" src={logo} alt="" />
 
-          <p className="font-bold text-white">
-            <span className="text-[#F5A481]">Unique</span> Travel
+          <p
+            className={`font-bold ${
+              scrolled ? "text-[#F5A481]" : "text-white"
+            }`}
+          >
+            <span
+              className={`${scrolled ? "text-[#F5A481]" : "text-[#F5A481]"}`}
+            >
+              Unique
+            </span>{" "}
+            Travel
           </p>
         </Link>
       </div>
@@ -122,10 +141,12 @@ const Navbar = () => {
           {user ? (
             <div
               className="flex relative items-center"
-              onMouseLeave={handleMouseLeaveContainer}
+
+              // onMouseLeave={handleMouseLeaveContainer}
             >
               <div
-                onMouseEnter={handleMouseEnterPhoto}
+                onClick={handleOpenModal}
+                // onMouseEnter={handleMouseEnterPhoto}
                 className="flex items-center md:gap-5"
               >
                 <img
@@ -136,7 +157,7 @@ const Navbar = () => {
               </div>
 
               <button
-                // onClick={logOut}
+                onClick={logOut}
                 className="btn hidden border-none lg:flex text-text bg-button  font-bold"
               >
                 SignOut
@@ -182,7 +203,7 @@ const Navbar = () => {
               {" "}
               {user ? (
                 <button
-                  //   onClick={logOut}
+                  onClick={logOut}
                   className=" btn py-3 bg-button text-text"
                 >
                   SignOut
@@ -203,8 +224,8 @@ const Navbar = () => {
       {/* Modal (conditionally rendered when hovering over the profile photo) */}
       {isModalOpen && (
         <div
-          onMouseEnter={handleMouseEnterPhoto}
-          onMouseLeave={handleMouseLeaveContainer}
+          // onMouseEnter={handleMouseEnterPhoto}
+          // onMouseLeave={handleMouseLeaveContainer}
           className="absolute right-[110px] rounded-lg border top-[55px] flex items-center justify-center bg-black bg-opacity-50"
         >
           <div className="bg-white flex flex-col gap-3 p-6 rounded-lg shadow-lg max-w-xs w-full">

@@ -43,9 +43,9 @@ const Overview = () => {
             </p>
             <button
               className="px-8 text-lg font-bold animate__animated animate__fadeInLeft mt-3 md:mt-5 bg-[#F5A481] py-3 relative shadow-lg before:absolute 
-before:top-0 before:left-0 before:w-0 before:h-0 before:border-l-[4px] before:border-t-[4px] before:border-transparent 
+before:top-0 before:left-0 before:w-0 before:h-0 before:border-l-[2px] before:border-t-[2px] before:border-transparent 
 hover:before:w-full hover:before:h-full hover:before:border-[#07332F] hover:before:transition-all hover:before:duration-500 
-after:border-r-[4px] after:border-b-[4px] after:border-transparent hover:after:border-[#07332F] 
+after:border-r-[2px] after:border-b-[2px] after:border-transparent hover:after:border-[#07332F] 
 after:absolute after:bottom-0 after:right-0 after:w-0 
 after:h-0 hover:after:w-full hover:after:h-full hover:after:transition-all hover:after:duration-500"
             >
