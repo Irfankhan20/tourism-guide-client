@@ -126,7 +126,7 @@ const SignUp = () => {
           </div>
 
           {/* Right side */}
-          <div className="lg:w-[70%] mx-auto backdrop-blur-2xl shadow-lg rounded-xl mt-20 p-6 sm:p-8 text-secondary">
+          <div className="lg:w-[70%] bg-white mx-auto backdrop-blur-2xl shadow-lg rounded-xl mt-20 p-6 sm:p-8 text-[#F5A481]">
             <p className="text-center font-bold text-3xl mb-12">
               Join With Elite Travels!
             </p>

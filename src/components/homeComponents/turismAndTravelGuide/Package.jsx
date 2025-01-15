@@ -25,7 +25,7 @@ const Package = ({ tour }) => {
             <div className="flex items-center gap-[15px] justify-center">
               <div className="relative w-max opacity-0 group-hover:opacity-100 transition-all duration-300">
                 <Link
-                  to={`/details/${_id}`}
+                  to={`/packageDetails/${_id}`}
                   className="flex rounded-full bg-white p-2 hover:bg-primary hover:text-white transition-all duration-200 cursor-pointer"
                 >
                   <IoEyeOutline className="text-2xl" />
@@ -46,7 +46,7 @@ const Package = ({ tour }) => {
 
         {/* product details */}
         <div className="p-4 pt-4 flex-col">
-          <div className="flex-grow h-40">
+          <div className="flex-grow h-[180px]">
             <h3 className="text-lg font-semibold mb-2">{title}</h3>
             <p className="text-gray-600">
               {description.slice(0, 150)}
