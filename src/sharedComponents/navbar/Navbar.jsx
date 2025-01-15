@@ -33,7 +33,7 @@ const Navbar = () => {
               ? `font-black px-4 py-2 rounded no-underline ${
                   scrolled ? "text-black" : pathname === "/" && "text-white"
                 }`
-              : `px-4 py-2 rounded hover:text-primary no-underline ${
+              : `px-4 py-2 rounded hover:text-[#F5A481] no-underline ${
                   scrolled ? "text-black" : pathname === "/" && "text-white"
                 }`
           }
@@ -49,7 +49,7 @@ const Navbar = () => {
               ? `font-black px-4 py-2 rounded no-underline ${
                   scrolled ? "text-black" : pathname === "/" && "text-white"
                 }`
-              : `px-4 py-2 rounded hover:text-primary no-underline ${
+              : `px-4 py-2 rounded hover:text-[#F5A481] no-underline ${
                   scrolled ? "text-black" : pathname === "/" && "text-white"
                 }`
           }
@@ -65,7 +65,7 @@ const Navbar = () => {
               ? `font-black px-4 py-2 rounded no-underline ${
                   scrolled ? "text-black" : pathname === "/" && "text-white"
                 }`
-              : `px-4 py-2 rounded hover:text-primary no-underline ${
+              : `px-4 py-2 rounded hover:text-[#F5A481] no-underline ${
                   scrolled ? "text-black" : pathname === "/" && "text-white"
                 }`
           }
@@ -81,7 +81,7 @@ const Navbar = () => {
               ? `font-black px-4 py-2 rounded no-underline ${
                   scrolled ? "text-black" : pathname === "/" && "text-white"
                 }`
-              : `px-4 py-2 rounded hover:text-primary no-underline ${
+              : `px-4 py-2 rounded hover:text-[#F5A481] no-underline ${
                   scrolled ? "text-black" : pathname === "/" && "text-white"
                 }`
           }
@@ -97,7 +97,7 @@ const Navbar = () => {
               ? `font-black px-4 py-2 rounded no-underline ${
                   scrolled ? "text-black" : pathname === "/" && "text-white"
                 }`
-              : `px-4 py-2 rounded hover:text-primary no-underline ${
+              : `px-4 py-2 rounded hover:text-[#F5A481] no-underline ${
                   scrolled ? "text-black" : pathname === "/" && "text-white"
                 }`
           }
