@@ -71,7 +71,7 @@ const SignUp = () => {
                 name: name,
                 email: email,
                 photoURL: uploadedPhoto,
-                userType: "user",
+                userType: "tourist",
               };
               axiosPublic.post("/user", userInfo).then((res) => {
                 if (res.data.insertedId) {

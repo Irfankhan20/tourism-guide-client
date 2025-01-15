@@ -1,169 +1,77 @@
-import { useState } from "react";
+import { FacebookShareButton } from "react-share";
+import { useNavigate } from "react-router-dom";
+
+import { useContext } from "react";
+
+import { FaShareAlt } from "react-icons/fa";
+import { AuthContext } from "../../../provider/AuthProvider";
 import useTouristStories from "../../../hooks/useTouristStories";
+import StorySlider from "./StorySlider";
 
 const TouristStory = () => {
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [stories] = useTouristStories();
-  const [selectedImages, setSelectedImages] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  console.log(stories);
 
-  const openModal = (images) => {
-    setSelectedImages(images);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setSelectedImages([]);
-  };
-
-  const renderImages = (images) => {
-    const displayImages = images.slice(0, 6);
-    const extraCount = images.length - 6;
-
-    return (
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gap: "5px",
-        }}
-      >
-        {displayImages.map((image, index) => (
-          <div
-            key={index}
-            style={{
-              position: "relative",
-              overflow: "hidden",
-              borderRadius: "5px",
-            }}
-          >
-            <img
-              src={image}
-              alt={`Story Image ${index + 1}`}
-              style={{ width: "100%", height: "100px", objectFit: "cover" }}
-            />
-            {index === 5 && extraCount > 0 && (
-              <div
-                onClick={() => openModal(images)}
-                style={{
-                  position: "absolute",
-                  top: "0",
-                  left: "0",
-                  right: "0",
-                  bottom: "0",
-                  backgroundColor: "rgba(0, 0, 0, 0.6)",
-                  color: "#fff",
-                  fontSize: "18px",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  cursor: "pointer",
-                }}
-              >
-                +{extraCount}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-    );
+  const handleShare = () => {
+    if (!user) {
+      navigate("/login");
+    } else {
+      alert("You need to set up a shareable link to enable sharing!");
+    }
   };
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-      <h1 style={{ textAlign: "center", color: "#333" }}>
-        Tourist Stories: {stories.length}
-      </h1>
-      <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-        {stories.map((story, index) => (
-          <div
-            key={index}
-            style={{
-              border: "1px solid #ddd",
-              borderRadius: "10px",
-              padding: "15px",
-              boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
-              backgroundColor: "#fff",
-            }}
-          >
-            <h2 style={{ fontSize: "18px", color: "#555" }}>{story.title}</h2>
-            <p style={{ fontSize: "14px", color: "#777", lineHeight: "1.5" }}>
-              {story.description}
-            </p>
-            <p style={{ fontSize: "14px", color: "#333", fontWeight: "bold" }}>
-              Tour Guide: {story.tourGuide}
-            </p>
-            {renderImages(story.images)}
-          </div>
-        ))}
+    <div className="w-10/12 mx-auto my-28">
+      {/* Title and Subtitle */}
+      <div className="text-center">
+        <h2 className="text-5xl font-bold text-center mb-4">
+          Explore Tourist Stories
+        </h2>
+        <p className="text-xl text-center text-gray-600 mb-12">
+          Discover amazing experiences shared by travelers from around the
+          world.
+        </p>
       </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {stories.map((story) => {
+          const images = story.photo || [];
 
-      {/* Modal for showing all images */}
-      {isModalOpen && (
-        <div
-          style={{
-            position: "fixed",
-            top: "0",
-            left: "0",
-            width: "100vw",
-            height: "100vh",
-            backgroundColor: "rgba(0,0,0,0.8)",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: "1000",
-          }}
-          onClick={closeModal}
-        >
-          <div
-            style={{
-              backgroundColor: "#fff",
-              borderRadius: "10px",
-              padding: "20px",
-              maxWidth: "90%",
-              maxHeight: "80%",
-              overflowY: "auto",
-            }}
-          >
-            <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
-              All Images
-            </h2>
+          return (
             <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))",
-                gap: "10px",
-              }}
+              key={story._id}
+              className="relative bg-white shadow-lg overflow-hidden"
             >
-              {selectedImages.map((image, index) => (
-                <img
-                  key={index}
-                  src={image}
-                  alt={`Modal Image ${index + 1}`}
-                  style={{ width: "100%", borderRadius: "5px" }}
-                />
-              ))}
+              {/* Story Slider Component */}
+              <StorySlider images={images} />
+
+              {/* Share Icon */}
+              <div className="absolute top-4 right-4 flex justify-center items-center p-2 text-white hover:text-black bg-primary hover:bg-white duration-300 rounded-full">
+                {user ? (
+                  <FacebookShareButton
+                    url={`https://EliteExplore.com/stories/${story._id}`}
+                    quote={story.title}
+                    hashtag="#TouristStory"
+                  >
+                    <FaShareAlt />
+                  </FacebookShareButton>
+                ) : (
+                  <button onClick={handleShare}>
+                    <FaShareAlt className="text-white" />
+                  </button>
+                )}
+              </div>
+
+              {/* Persistent Overlay */}
+              <div className="absolute inset-0 top-56 bg-black/20 px-2 text-white">
+                <h3 className="text-lg font-semibold ">{story.title}</h3>
+                <p className="leading-tight">{story.excerpt}</p>
+              </div>
             </div>
-            <button
-              onClick={closeModal}
-              style={{
-                marginTop: "20px",
-                display: "block",
-                marginLeft: "auto",
-                marginRight: "auto",
-                padding: "10px 20px",
-                backgroundColor: "#333",
-                color: "#fff",
-                border: "none",
-                borderRadius: "5px",
-                cursor: "pointer",
-              }}
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
+          );
+        })}
+      </div>
     </div>
   );
 };

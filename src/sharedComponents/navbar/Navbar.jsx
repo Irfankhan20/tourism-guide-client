@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import logo from "../../assets/nav-logo.png";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
@@ -8,8 +8,12 @@ const Navbar = () => {
   const { pathname } = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const modalRef = useRef(null);
+  const profileRef = useRef(null);
+
   const handleOpenModal = () => {
-    setIsModalOpen(!isModalOpen);
+    setIsModalOpen((prev) => !prev);
   };
 
   useEffect(() => {
@@ -23,6 +27,25 @@ const Navbar = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // Close the modal if clicked outside of it or the profile photo
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target) &&
+        profileRef.current &&
+        !profileRef.current.contains(event.target)
+      ) {
+        setIsModalOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const navlinks = (
     <>
       <li>
@@ -33,7 +56,7 @@ const Navbar = () => {
               ? `font-black px-4 py-2 rounded no-underline ${
                   scrolled ? "text-black" : pathname === "/" && "text-white"
                 }`
-              : `px-4 py-2 rounded hover:text-[#F5A481] no-underline ${
+              : ` px-4 py-2 rounded hover:text-[#F5A481] no-underline ${
                   scrolled ? "text-black" : pathname === "/" && "text-white"
                 }`
           }
@@ -121,7 +144,7 @@ const Navbar = () => {
 
           <p
             className={`font-bold ${
-              scrolled ? "text-[#F5A481]" : "text-white"
+              scrolled ? "text-[#F5A481]" : pathname === "/" && "text-white"
             }`}
           >
             <span
@@ -145,8 +168,8 @@ const Navbar = () => {
               // onMouseLeave={handleMouseLeaveContainer}
             >
               <div
+                ref={profileRef}
                 onClick={handleOpenModal}
-                // onMouseEnter={handleMouseEnterPhoto}
                 className="flex items-center md:gap-5"
               >
                 <img
@@ -178,7 +201,9 @@ const Navbar = () => {
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className={`h-5 w-5 ${scrolled ? "text-black" : "text-white"}`}
+              className={`h-5 w-5 ${
+                scrolled ? "text-black" : pathname === "/" && "text-white"
+              }`}
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -199,6 +224,26 @@ const Navbar = () => {
             } text-white rounded-box w-52`}
           >
             {navlinks}
+            <li>
+              <NavLink
+                to={"/dashboard"}
+                className={({ isActive }) =>
+                  isActive
+                    ? `font-black px-4 py-2 rounded no-underline ${
+                        scrolled
+                          ? "text-black"
+                          : pathname === "/" && "text-white"
+                      }`
+                    : `px-4 py-2 rounded hover:text-[#F5A481] no-underline ${
+                        scrolled
+                          ? "text-black"
+                          : pathname === "/" && "text-white"
+                      }`
+                }
+              >
+                Dashboard
+              </NavLink>
+            </li>
             <li className=" justify-center font-bold">
               {" "}
               {user ? (
@@ -224,8 +269,7 @@ const Navbar = () => {
       {/* Modal (conditionally rendered when hovering over the profile photo) */}
       {isModalOpen && (
         <div
-          // onMouseEnter={handleMouseEnterPhoto}
-          // onMouseLeave={handleMouseLeaveContainer}
+          ref={modalRef}
           className="absolute right-[110px] rounded-lg border top-[55px] flex items-center justify-center bg-black bg-opacity-50"
         >
           <div className="bg-white flex flex-col gap-3 p-6 rounded-lg shadow-lg max-w-xs w-full">

@@ -1,20 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./useAxiosPublic";
 
-const usePackageData = () => {
+const useAllPackages = () => {
   const axiosPublic = useAxiosPublic();
   const {
-    data: packages = [],
+    data: allPackages = [],
     isPending: loading,
     refetch,
   } = useQuery({
-    queryKey: ["packages"],
+    queryKey: ["allPackages"],
     queryFn: async () => {
-      const res = await axiosPublic.get("/threePackages");
+      const res = await axiosPublic.get("/packages");
       return res.data;
     },
   });
-  return [packages, loading, refetch];
+  return [allPackages, loading, refetch];
 };
 
-export default usePackageData;
+export default useAllPackages;

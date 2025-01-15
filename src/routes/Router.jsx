@@ -8,6 +8,7 @@ import Community from "../pages/community/Community";
 import AboutUs from "../pages/aboutUs/AboutUs";
 import Trips from "../pages/trips/Trips";
 import Gallery from "../pages/gallery/Gallery";
+import Dashboard from "../pages/dashboard/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
         element: <PackageDetails></PackageDetails>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/package/${params.id}`),
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard></Dashboard>,
       },
     ],
   },
