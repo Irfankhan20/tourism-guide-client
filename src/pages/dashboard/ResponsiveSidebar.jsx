@@ -7,11 +7,15 @@ import { GoHome, GoProjectSymlink, GoSidebarCollapse } from "react-icons/go";
 import { CiCalendar } from "react-icons/ci";
 // import { BsThreeDots } from "react-icons/bs";
 import { AuthContext } from "../../provider/AuthProvider";
+import useAdmin from "../../hooks/useAdmin";
+import useTourGuide from "../../hooks/useTourGuide";
 
 const ResponsiveSidebar = () => {
   const { user } = useContext(AuthContext);
   const [isCollapse, setIsCollapse] = useState(true);
   const [isDropdownOpen, setIsDropdownOpen] = useState(true);
+  const [isAdmin] = useAdmin();
+  const [isTourGuide] = useTourGuide();
 
   return (
     <aside
@@ -90,193 +94,496 @@ const ResponsiveSidebar = () => {
         } transition-all duration-300 ease-in-out`}
       >
         <div className="mt-3 flex flex-col gap-[5px]">
-          {/* home  */}
-          <div
-            className={`${
-              isCollapse ? "justify-between" : "justify-center"
-            } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
-          >
-            <div className="flex items-center gap-[8px]">
-              <GoHome className="text-[1.3rem] text-gray-500" />
-              <p
+          {isAdmin && (
+            <>
+              {/* home  */}
+              <div
                 className={`${
-                  isCollapse ? "inline" : "hidden"
-                } text-[1rem] font-[400] text-gray-500`}
+                  isCollapse ? "justify-between" : "justify-center"
+                } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
               >
-                Home
-              </p>
-            </div>
+                <div className="flex items-center gap-[8px]">
+                  <GoHome className="text-[1.3rem] text-gray-500" />
+                  <p
+                    className={`${
+                      isCollapse ? "inline" : "hidden"
+                    } text-[1rem] font-[400] text-gray-500`}
+                  >
+                    Home
+                  </p>
+                </div>
 
-            {/* tooltip */}
-            <div
-              className={`${
-                isCollapse ? "hidden" : "inline"
-              } absolute top-0 right-[-80px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
-            >
-              <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
-                Home
-              </p>
-            </div>
-          </div>
-          {/* Calendar */}
-          <div
-            className={`${
-              isCollapse ? "justify-between" : "justify-center"
-            } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
-          >
-            <div className="flex items-center gap-[8px]">
-              <CiCalendar className="text-[1.3rem] text-gray-500" />
-              <p
-                className={`${
-                  isCollapse ? "inline" : "hidden"
-                } text-[1rem] font-[400] text-gray-500`}
-              >
-                Calendar
-              </p>
-            </div>
-
-            {/* tooltip */}
-            <div
-              className={`${
-                isCollapse ? "hidden" : "inline"
-              } absolute top-0 right-[-99px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
-            >
-              <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
-                Calendar
-              </p>
-            </div>
-          </div>
-          {/* Projects */}
-          <div
-            className={`${isCollapse && "justify-center"} ${
-              isDropdownOpen && "bg-gray-50"
-            }  flex w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group flex-col`}
-            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-          >
-            <div
-              className={`${
-                isCollapse ? " justify-between" : "justify-center"
-              } flex items-center gap-[8px  w-full`}
-            >
-              <div className="flex items-center gap-[8px]">
-                <GoProjectSymlink className="text-[1.3rem] text-gray-500" />
-                <p
+                {/* tooltip */}
+                <div
                   className={`${
-                    isCollapse ? "inline" : "hidden"
-                  } text-[1rem] font-[400] text-gray-500`}
+                    isCollapse ? "hidden" : "inline"
+                  } absolute top-0 right-[-80px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
                 >
-                  Projects
-                </p>
+                  <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
+                    Home
+                  </p>
+                </div>
               </div>
-
-              <IoIosArrowDown
+              {/* Calendar */}
+              <div
                 className={`${
-                  isDropdownOpen ? "rotate-[180deg]" : "rotate-0"
+                  isCollapse ? "justify-between" : "justify-center"
+                } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
+              >
+                <div className="flex items-center gap-[8px]">
+                  <CiCalendar className="text-[1.3rem] text-gray-500" />
+                  <p
+                    className={`${
+                      isCollapse ? "inline" : "hidden"
+                    } text-[1rem] font-[400] text-gray-500`}
+                  >
+                    Calendar
+                  </p>
+                </div>
+
+                {/* tooltip */}
+                <div
+                  className={`${
+                    isCollapse ? "hidden" : "inline"
+                  } absolute top-0 right-[-99px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                >
+                  <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
+                    Calendar
+                  </p>
+                </div>
+              </div>
+              {/* Projects */}
+              <div
+                className={`${isCollapse && "justify-center"} ${
+                  isDropdownOpen && "bg-gray-50"
+                }  flex w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group flex-col`}
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              >
+                <div
+                  className={`${
+                    isCollapse ? " justify-between" : "justify-center"
+                  } flex items-center gap-[8px  w-full`}
+                >
+                  <div className="flex items-center gap-[8px]">
+                    <GoProjectSymlink className="text-[1.3rem] text-gray-500" />
+                    <p
+                      className={`${
+                        isCollapse ? "inline" : "hidden"
+                      } text-[1rem] font-[400] text-gray-500`}
+                    >
+                      Projects
+                    </p>
+                  </div>
+
+                  <IoIosArrowDown
+                    className={`${
+                      isDropdownOpen ? "rotate-[180deg]" : "rotate-0"
+                    } ${
+                      isCollapse ? "inline" : "hidden"
+                    } transition-all duration-300 text-[1rem] text-gray-500`}
+                  />
+                </div>
+
+                {!isCollapse && (
+                  <>
+                    {/* hover projects dropdown */}
+                    <ul className="translate-y-[20px] opacity-0 z-[-1] group-hover:translate-y-0 group-hover:opacity-100 group-hover:z-30 absolute top-0 left-[70px] bg-white boxShadow transition-all duration-300 p-[8px] rounded-md flex flex-col gap-[3px] text-[1rem] text-gray-500">
+                      <li className="hover:bg-gray-50 px-[20px] py-[5px] rounded-md">
+                        Google
+                      </li>
+                      <li className="hover:bg-gray-50 px-[20px] py-[5px] rounded-md">
+                        Facebook
+                      </li>
+                      <li className="hover:bg-gray-50 px-[20px] py-[5px] rounded-md">
+                        Twitter
+                      </li>
+                      <li className="hover:bg-gray-50 px-[20px] py-[5px] rounded-md">
+                        Linkedin
+                      </li>
+                    </ul>
+                  </>
+                )}
+              </div>
+              {/* active projects dropdown */}
+              <ul
+                className={`${
+                  isDropdownOpen
+                    ? "h-auto my-3 opacity-100 z-[1]"
+                    : "opacity-0 z-[-1] h-0"
                 } ${
                   isCollapse ? "inline" : "hidden"
-                } transition-all duration-300 text-[1rem] text-gray-500`}
-              />
-            </div>
-
-            {!isCollapse && (
-              <>
-                {/* hover projects dropdown */}
-                <ul className="translate-y-[20px] opacity-0 z-[-1] group-hover:translate-y-0 group-hover:opacity-100 group-hover:z-30 absolute top-0 left-[70px] bg-white boxShadow transition-all duration-300 p-[8px] rounded-md flex flex-col gap-[3px] text-[1rem] text-gray-500">
-                  <li className="hover:bg-gray-50 px-[20px] py-[5px] rounded-md">
-                    Google
-                  </li>
-                  <li className="hover:bg-gray-50 px-[20px] py-[5px] rounded-md">
-                    Facebook
-                  </li>
-                  <li className="hover:bg-gray-50 px-[20px] py-[5px] rounded-md">
-                    Twitter
-                  </li>
-                  <li className="hover:bg-gray-50 px-[20px] py-[5px] rounded-md">
-                    Linkedin
-                  </li>
-                </ul>
-              </>
-            )}
-          </div>
-          {/* active projects dropdown */}
-          <ul
-            className={`${
-              isDropdownOpen
-                ? "h-auto my-3 opacity-100 z-[1]"
-                : "opacity-0 z-[-1] h-0"
-            } ${
-              isCollapse ? "inline" : "hidden"
-            } transition-all duration-300 list-disc marker:text-blue-400 ml-[35px] flex flex-col gap-[3px] text-[1rem] text-gray-500`}
-          >
-            <li className="hover:bg-gray-50 px-[10px] py-[5px] rounded-md">
-              Google
-            </li>
-            <li className="hover:bg-gray-50 px-[10px] py-[5px] rounded-md">
-              Facebook
-            </li>
-            <li className="hover:bg-gray-50 px-[10px] py-[5px] rounded-md">
-              Twitter
-            </li>
-            <li className="hover:bg-gray-50 px-[10px] py-[5px] rounded-md">
-              Linkedin
-            </li>
-          </ul>
-          {/* Progress */}
-          <div
-            className={`${
-              isCollapse ? "justify-between" : "justify-center"
-            } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
-          >
-            <div className="flex items-center gap-[8px]">
-              <FiBarChart className="text-[1.3rem] text-gray-500" />
-              <p
-                className={`${
-                  isCollapse ? "inline" : "hidden"
-                } text-[1rem] font-[400] text-gray-500`}
+                } transition-all duration-300 list-disc marker:text-blue-400 ml-[35px] flex flex-col gap-[3px] text-[1rem] text-gray-500`}
               >
-                Progress
-              </p>
-            </div>
-
-            {/* tooltip */}
-            <div
-              className={`${
-                isCollapse ? "hidden" : "inline"
-              } absolute top-0 right-[-100px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
-            >
-              <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
-                Progress
-              </p>
-            </div>
-          </div>
-          {/* Goals */}
-          <div
-            className={`${
-              isCollapse ? "justify-between" : "justify-center"
-            } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
-          >
-            <div className="flex items-center gap-[8px]">
-              <FiPieChart className="text-[1.3rem] text-gray-500" />
-              <p
+                <li className="hover:bg-gray-50 px-[10px] py-[5px] rounded-md">
+                  Google
+                </li>
+                <li className="hover:bg-gray-50 px-[10px] py-[5px] rounded-md">
+                  Facebook
+                </li>
+                <li className="hover:bg-gray-50 px-[10px] py-[5px] rounded-md">
+                  Twitter
+                </li>
+                <li className="hover:bg-gray-50 px-[10px] py-[5px] rounded-md">
+                  Linkedin
+                </li>
+              </ul>
+              {/* Progress */}
+              <div
                 className={`${
-                  isCollapse ? "inline" : "hidden"
-                } text-[1rem] font-[400] text-gray-500`}
+                  isCollapse ? "justify-between" : "justify-center"
+                } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
               >
-                Goals
-              </p>
-            </div>
+                <div className="flex items-center gap-[8px]">
+                  <FiBarChart className="text-[1.3rem] text-gray-500" />
+                  <p
+                    className={`${
+                      isCollapse ? "inline" : "hidden"
+                    } text-[1rem] font-[400] text-gray-500`}
+                  >
+                    Progress
+                  </p>
+                </div>
 
-            {/* tooltip */}
-            <div
-              className={`${
-                isCollapse ? "hidden" : "inline"
-              } absolute top-0 right-[-76px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
-            >
-              <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
-                Goals
-              </p>
-            </div>
-          </div>
+                {/* tooltip */}
+                <div
+                  className={`${
+                    isCollapse ? "hidden" : "inline"
+                  } absolute top-0 right-[-100px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                >
+                  <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
+                    Progress
+                  </p>
+                </div>
+              </div>
+              {/* Goals */}
+              <div
+                className={`${
+                  isCollapse ? "justify-between" : "justify-center"
+                } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
+              >
+                <div className="flex items-center gap-[8px]">
+                  <FiPieChart className="text-[1.3rem] text-gray-500" />
+                  <p
+                    className={`${
+                      isCollapse ? "inline" : "hidden"
+                    } text-[1rem] font-[400] text-gray-500`}
+                  >
+                    Goals
+                  </p>
+                </div>
+
+                {/* tooltip */}
+                <div
+                  className={`${
+                    isCollapse ? "hidden" : "inline"
+                  } absolute top-0 right-[-76px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                >
+                  <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
+                    Goals
+                  </p>
+                </div>
+              </div>
+            </>
+          )}
+          {isTourGuide && (
+            <>
+              {/* home  */}
+              <div
+                className={`${
+                  isCollapse ? "justify-between" : "justify-center"
+                } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
+              >
+                <div className="flex items-center gap-[8px]">
+                  <GoHome className="text-[1.3rem] text-gray-500" />
+                  <p
+                    className={`${
+                      isCollapse ? "inline" : "hidden"
+                    } text-[1rem] font-[400] text-gray-500`}
+                  >
+                    Home
+                  </p>
+                </div>
+
+                {/* tooltip */}
+                <div
+                  className={`${
+                    isCollapse ? "hidden" : "inline"
+                  } absolute top-0 right-[-80px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                >
+                  <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
+                    Home
+                  </p>
+                </div>
+              </div>
+
+              {/* Projects */}
+              <div
+                className={`${isCollapse && "justify-center"} ${
+                  isDropdownOpen && "bg-gray-50"
+                }  flex w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group flex-col`}
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              >
+                <div
+                  className={`${
+                    isCollapse ? " justify-between" : "justify-center"
+                  } flex items-center gap-[8px  w-full`}
+                >
+                  <div className="flex items-center gap-[8px]">
+                    <GoProjectSymlink className="text-[1.3rem] text-gray-500" />
+                    <p
+                      className={`${
+                        isCollapse ? "inline" : "hidden"
+                      } text-[1rem] font-[400] text-gray-500`}
+                    >
+                      Projects
+                    </p>
+                  </div>
+
+                  <IoIosArrowDown
+                    className={`${
+                      isDropdownOpen ? "rotate-[180deg]" : "rotate-0"
+                    } ${
+                      isCollapse ? "inline" : "hidden"
+                    } transition-all duration-300 text-[1rem] text-gray-500`}
+                  />
+                </div>
+
+                {!isCollapse && (
+                  <>
+                    {/* hover projects dropdown */}
+                    <ul className="translate-y-[20px] opacity-0 z-[-1] group-hover:translate-y-0 group-hover:opacity-100 group-hover:z-30 absolute top-0 left-[70px] bg-white boxShadow transition-all duration-300 p-[8px] rounded-md flex flex-col gap-[3px] text-[1rem] text-gray-500">
+                      <li className="hover:bg-gray-50 px-[20px] py-[5px] rounded-md">
+                        Google
+                      </li>
+                      <li className="hover:bg-gray-50 px-[20px] py-[5px] rounded-md">
+                        Facebook
+                      </li>
+                      <li className="hover:bg-gray-50 px-[20px] py-[5px] rounded-md">
+                        Twitter
+                      </li>
+                      <li className="hover:bg-gray-50 px-[20px] py-[5px] rounded-md">
+                        Linkedin
+                      </li>
+                    </ul>
+                  </>
+                )}
+              </div>
+              {/* active projects dropdown */}
+              <ul
+                className={`${
+                  isDropdownOpen
+                    ? "h-auto my-3 opacity-100 z-[1]"
+                    : "opacity-0 z-[-1] h-0"
+                } ${
+                  isCollapse ? "inline" : "hidden"
+                } transition-all duration-300 list-disc marker:text-blue-400 ml-[35px] flex flex-col gap-[3px] text-[1rem] text-gray-500`}
+              >
+                <li className="hover:bg-gray-50 px-[10px] py-[5px] rounded-md">
+                  Google
+                </li>
+                <li className="hover:bg-gray-50 px-[10px] py-[5px] rounded-md">
+                  Facebook
+                </li>
+                <li className="hover:bg-gray-50 px-[10px] py-[5px] rounded-md">
+                  Twitter
+                </li>
+                <li className="hover:bg-gray-50 px-[10px] py-[5px] rounded-md">
+                  Linkedin
+                </li>
+              </ul>
+            </>
+          )}
+          {!isAdmin && !isTourGuide && (
+            <>
+              {/* home  */}
+              <div
+                className={`${
+                  isCollapse ? "justify-between" : "justify-center"
+                } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
+              >
+                <div className="flex items-center gap-[8px]">
+                  <GoHome className="text-[1.3rem] text-gray-500" />
+                  <p
+                    className={`${
+                      isCollapse ? "inline" : "hidden"
+                    } text-[1rem] font-[400] text-gray-500`}
+                  >
+                    Home
+                  </p>
+                </div>
+
+                {/* tooltip */}
+                <div
+                  className={`${
+                    isCollapse ? "hidden" : "inline"
+                  } absolute top-0 right-[-80px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                >
+                  <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
+                    Home
+                  </p>
+                </div>
+              </div>
+              {/* Calendar */}
+              <div
+                className={`${
+                  isCollapse ? "justify-between" : "justify-center"
+                } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
+              >
+                <div className="flex items-center gap-[8px]">
+                  <CiCalendar className="text-[1.3rem] text-gray-500" />
+                  <p
+                    className={`${
+                      isCollapse ? "inline" : "hidden"
+                    } text-[1rem] font-[400] text-gray-500`}
+                  >
+                    Calendar
+                  </p>
+                </div>
+
+                {/* tooltip */}
+                <div
+                  className={`${
+                    isCollapse ? "hidden" : "inline"
+                  } absolute top-0 right-[-99px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                >
+                  <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
+                    Calendar
+                  </p>
+                </div>
+              </div>
+              {/* Projects */}
+              <div
+                className={`${isCollapse && "justify-center"} ${
+                  isDropdownOpen && "bg-gray-50"
+                }  flex w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group flex-col`}
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              >
+                <div
+                  className={`${
+                    isCollapse ? " justify-between" : "justify-center"
+                  } flex items-center gap-[8px  w-full`}
+                >
+                  <div className="flex items-center gap-[8px]">
+                    <GoProjectSymlink className="text-[1.3rem] text-gray-500" />
+                    <p
+                      className={`${
+                        isCollapse ? "inline" : "hidden"
+                      } text-[1rem] font-[400] text-gray-500`}
+                    >
+                      Projects
+                    </p>
+                  </div>
+
+                  <IoIosArrowDown
+                    className={`${
+                      isDropdownOpen ? "rotate-[180deg]" : "rotate-0"
+                    } ${
+                      isCollapse ? "inline" : "hidden"
+                    } transition-all duration-300 text-[1rem] text-gray-500`}
+                  />
+                </div>
+
+                {!isCollapse && (
+                  <>
+                    {/* hover projects dropdown */}
+                    <ul className="translate-y-[20px] opacity-0 z-[-1] group-hover:translate-y-0 group-hover:opacity-100 group-hover:z-30 absolute top-0 left-[70px] bg-white boxShadow transition-all duration-300 p-[8px] rounded-md flex flex-col gap-[3px] text-[1rem] text-gray-500">
+                      <li className="hover:bg-gray-50 px-[20px] py-[5px] rounded-md">
+                        Google
+                      </li>
+                      <li className="hover:bg-gray-50 px-[20px] py-[5px] rounded-md">
+                        Facebook
+                      </li>
+                      <li className="hover:bg-gray-50 px-[20px] py-[5px] rounded-md">
+                        Twitter
+                      </li>
+                      <li className="hover:bg-gray-50 px-[20px] py-[5px] rounded-md">
+                        Linkedin
+                      </li>
+                    </ul>
+                  </>
+                )}
+              </div>
+              {/* active projects dropdown */}
+              <ul
+                className={`${
+                  isDropdownOpen
+                    ? "h-auto my-3 opacity-100 z-[1]"
+                    : "opacity-0 z-[-1] h-0"
+                } ${
+                  isCollapse ? "inline" : "hidden"
+                } transition-all duration-300 list-disc marker:text-blue-400 ml-[35px] flex flex-col gap-[3px] text-[1rem] text-gray-500`}
+              >
+                <li className="hover:bg-gray-50 px-[10px] py-[5px] rounded-md">
+                  Google
+                </li>
+                <li className="hover:bg-gray-50 px-[10px] py-[5px] rounded-md">
+                  Facebook
+                </li>
+                <li className="hover:bg-gray-50 px-[10px] py-[5px] rounded-md">
+                  Twitter
+                </li>
+                <li className="hover:bg-gray-50 px-[10px] py-[5px] rounded-md">
+                  Linkedin
+                </li>
+              </ul>
+              {/* Progress */}
+              <div
+                className={`${
+                  isCollapse ? "justify-between" : "justify-center"
+                } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
+              >
+                <div className="flex items-center gap-[8px]">
+                  <FiBarChart className="text-[1.3rem] text-gray-500" />
+                  <p
+                    className={`${
+                      isCollapse ? "inline" : "hidden"
+                    } text-[1rem] font-[400] text-gray-500`}
+                  >
+                    Progress
+                  </p>
+                </div>
+
+                {/* tooltip */}
+                <div
+                  className={`${
+                    isCollapse ? "hidden" : "inline"
+                  } absolute top-0 right-[-100px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                >
+                  <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
+                    Progress
+                  </p>
+                </div>
+              </div>
+              {/* Goals */}
+              <div
+                className={`${
+                  isCollapse ? "justify-between" : "justify-center"
+                } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
+              >
+                <div className="flex items-center gap-[8px]">
+                  <FiPieChart className="text-[1.3rem] text-gray-500" />
+                  <p
+                    className={`${
+                      isCollapse ? "inline" : "hidden"
+                    } text-[1rem] font-[400] text-gray-500`}
+                  >
+                    Goals
+                  </p>
+                </div>
+
+                {/* tooltip */}
+                <div
+                  className={`${
+                    isCollapse ? "hidden" : "inline"
+                  } absolute top-0 right-[-76px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                >
+                  <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
+                    Goals
+                  </p>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </div>
 
