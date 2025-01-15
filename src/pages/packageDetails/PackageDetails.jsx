@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import DetailsImgSlider from "./DetailsImgSlider";
 // import "react-responsive-carousel/lib/styles/carousel.min.css";
 // import DetailsImgSlider from "../components/DetailsImgSlider";
 
@@ -15,7 +16,9 @@ const PackageDetails = () => {
     <div className="w-11/12 mx-auto px-8 pt-36 pb-20">
       <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-10">
         {/* Left side - Image */}
-        <div>{/* <DetailsImgSlider images={destination?.photo} /> */}</div>
+        <div>
+          <DetailsImgSlider images={destination?.photo} />
+        </div>
 
         {/* Right side - Details */}
         <div className="flex flex-col gap-6 lg:gap-8">
