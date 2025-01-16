@@ -16,6 +16,13 @@ const AddStories = () => {
   const [images, setImages] = useState([]);
   const [imageLinks, setImageLinks] = useState([]);
 
+  const reset = () => {
+    setTitle("");
+    setExcerpt("");
+    setImages("");
+    setImageLinks("");
+  };
+
   // Handle selecting image
   const handleImageChange = (e) => {
     const files = e.target.files;
@@ -56,6 +63,7 @@ const AddStories = () => {
     console.log(storyData);
     const storyPost = await axiosPublic.post("/addStory", storyData);
     if (storyPost.data.insertedId) {
+      reset();
       toast.success(`${storyData.title} is added to the stories.`);
     }
   };
