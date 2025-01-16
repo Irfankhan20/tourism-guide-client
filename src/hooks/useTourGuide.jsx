@@ -13,7 +13,7 @@ const useTourGuide = () => {
     queryFn: async () => {
       const res = await axiosSecure.get(`/user/tourGuide/${user?.email}`);
       //   console.log(res.data);
-      return res.data?.admin;
+      return res.data?.tourGuide;
     },
   });
 

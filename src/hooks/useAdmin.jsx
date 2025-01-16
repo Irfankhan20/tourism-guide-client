@@ -12,12 +12,22 @@ const useAdmin = () => {
     enabled: !loading,
     queryFn: async () => {
       const res = await axiosSecure.get(`/user/admin/${user?.email}`);
-      //   console.log(res.data);
+      console.log(res.data);
       return res.data?.admin;
     },
   });
 
-  return [isAdmin, isAdminLoading];
+  const { data: isTourGuide = [], isPending: isTourGuideLoading } = useQuery({
+    queryKey: ["isTourGuide", user?.email],
+    enabled: !loading,
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/user/tourGuide/${user?.email}`);
+      //   console.log(res.data);
+      return res.data?.tourGuide;
+    },
+  });
+
+  return [isAdmin, isTourGuide, isAdminLoading, isTourGuideLoading];
 };
 
 export default useAdmin;

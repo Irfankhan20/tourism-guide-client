@@ -1,9 +1,13 @@
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import ResponsiveSidebar from "./ResponsiveSidebar";
-
+import useAdmin from "../../hooks/useAdmin";
+import { Outlet } from "react-router-dom";
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
+
+  const [isAdmin, isTourGuide] = useAdmin();
+  console.log(isAdmin, isTourGuide);
 
   console.log(user);
   return (
@@ -11,7 +15,9 @@ const Dashboard = () => {
       <div>
         <ResponsiveSidebar></ResponsiveSidebar>
       </div>
-      <div className="mt-8">ami</div>
+      <div className="mt-8">
+        <Outlet></Outlet>
+      </div>
     </div>
   );
 };

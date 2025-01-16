@@ -1,21 +1,22 @@
 import { useContext, useState } from "react";
-import { IoIosArrowDown, IoIosSearch } from "react-icons/io";
+// import { IoIosSearch } from "react-icons/io";
 import { IoNotificationsOutline, IoSettingsOutline } from "react-icons/io5";
 import { FiBarChart, FiPieChart } from "react-icons/fi";
-// import { RiAccountCircleLine } from "react-icons/ri";
-import { GoHome, GoProjectSymlink, GoSidebarCollapse } from "react-icons/go";
+import { RiAccountCircleLine } from "react-icons/ri";
+import { GoHome, GoSidebarCollapse } from "react-icons/go";
 import { CiCalendar } from "react-icons/ci";
-// import { BsThreeDots } from "react-icons/bs";
+import { BsThreeDots } from "react-icons/bs";
 import { AuthContext } from "../../provider/AuthProvider";
 import useAdmin from "../../hooks/useAdmin";
-import useTourGuide from "../../hooks/useTourGuide";
+import siteLogo from "../../assets/nav-logo.png";
+import { Link } from "react-router-dom";
 
 const ResponsiveSidebar = () => {
   const { user } = useContext(AuthContext);
   const [isCollapse, setIsCollapse] = useState(true);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(true);
-  const [isAdmin] = useAdmin();
-  const [isTourGuide] = useTourGuide();
+
+  const [isAdmin, isTourGuide] = useAdmin();
+  console.log(isAdmin, isTourGuide);
 
   return (
     <aside
@@ -30,11 +31,16 @@ const ResponsiveSidebar = () => {
         {/* logo */}
         {isCollapse ? (
           <div className="flex items-center justify-between">
-            <img
-              src="https://i.ibb.co/ZHYQ04D/footer-logo.png"
-              alt="logo"
-              className="w-[130px] cursor-pointer"
-            />
+            <div className="flex items-center">
+              <img
+                src={siteLogo}
+                alt="logo"
+                className="w-[50px] h-[38px] cursor-pointer"
+              />
+              <h1 className="text-[#F5A481] font-bold">
+                Unique <span className="text-black">Travel</span>
+              </h1>
+            </div>
             <div className="relative group">
               <GoSidebarCollapse
                 className="text-[1.5rem] text-gray-600 cursor-pointer"
@@ -53,39 +59,67 @@ const ResponsiveSidebar = () => {
           </div>
         ) : (
           <img
-            src="https://i.ibb.co/0BZfPq6/darklogo.png"
+            src={siteLogo}
             alt="logo"
             className="w-[50px] mx-auto cursor-pointer"
             onClick={() => setIsCollapse(!isCollapse)}
           />
         )}
-
-        {/* search bar */}
-        {isCollapse ? (
-          <div className="relative mt-5">
-            <input
-              className="px-4 py-2 border border-border rounded-md w-full pl-[40px] outline-none focus:border-primary"
-              placeholder="Search..."
-            />
-            <IoIosSearch className="absolute top-[9px] left-2 text-[1.5rem] text-[#adadad]" />
-          </div>
-        ) : (
-          <div className="w-full relative group">
-            <IoIosSearch className="text-[2rem] mx-auto text-gray-500 mt-2 p-[5px] rounded-md hover:bg-gray-100 cursor-pointer w-full" />
-
-            {/* tooltip */}
-            <div
-              className={`${
-                isCollapse ? "hidden" : "inline"
-              } absolute top-0 right-[-85px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
-            >
-              <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
-                Search
-              </p>
-            </div>
-          </div>
-        )}
       </div>
+
+      {/* profile section  ============================================== */}
+      <div
+        className={`${
+          isCollapse ? "justify-between" : "justify-center"
+        } bg-gray-100 py-3 px-[20px] flex items-center mt-6`}
+      >
+        <div className="flex items-center gap-[10px]">
+          <img
+            src={user?.photoURL}
+            alt="avatar"
+            className="w-[30px] h-[30px] cursor-pointer rounded-full object-cover"
+          />
+          <h3
+            className={`${
+              isCollapse ? "inline" : "hidden"
+            } text-[0.9rem] text-gray-800 font-[500]`}
+          >
+            {user?.displayName}
+          </h3>
+          <h3
+            className={`${
+              isCollapse ? "inline" : "hidden"
+            } text-[0.9rem] text-gray-800 font-[500]`}
+          >
+            {isAdmin ? (
+              <span className="bg-green-600 text-white font-semibold text-xs px-2 py-1 rounded-full">
+                Admin
+              </span>
+            ) : isTourGuide ? (
+              <span className="bg-blue-600 text-white font-semibold text-xs px-2 py-1 rounded-full">
+                TourGuide
+              </span>
+            ) : (
+              <span className="bg-purple-700 text-white font-semibold text-xs px-2 py-1 rounded-full">
+                Tourist
+              </span>
+            )}
+          </h3>
+        </div>
+
+        <div className={`${isCollapse ? "inline" : "hidden"} relative group`}>
+          <BsThreeDots className="text-[1.2rem] text-gray-500 cursor-pointer" />
+
+          <ul className="translate-y-[20px] opacity-0 z-[-1] group-hover:translate-y-0 group-hover:opacity-100 group-hover:z-30 absolute top-0 left-[30px] bg-white boxShadow transition-all duration-300 p-[8px] rounded-md flex flex-col gap-[3px]">
+            <li className="flex items-center gap-[7px] text-[0.9rem] text-gray-600 hover:bg-gray-50 px-[8px] py-[4px] rounded-md cursor-pointer">
+              <RiAccountCircleLine />
+              Profile
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <hr className="border mt-6 border-purple-300" />
 
       {/* general section  ============================================== */}
       <div
@@ -96,22 +130,25 @@ const ResponsiveSidebar = () => {
         <div className="mt-3 flex flex-col gap-[5px]">
           {isAdmin && (
             <>
-              {/* home  */}
-              <div
+              {/* admin home  */}
+              <li
                 className={`${
                   isCollapse ? "justify-between" : "justify-center"
                 } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
               >
-                <div className="flex items-center gap-[8px]">
+                <Link
+                  to="/dashboard/adminHome"
+                  className="flex items-center gap-[8px]"
+                >
                   <GoHome className="text-[1.3rem] text-gray-500" />
                   <p
                     className={`${
                       isCollapse ? "inline" : "hidden"
                     } text-[1rem] font-[400] text-gray-500`}
                   >
-                    Home
+                    Admin Home
                   </p>
-                </div>
+                </Link>
 
                 {/* tooltip */}
                 <div
@@ -120,26 +157,29 @@ const ResponsiveSidebar = () => {
                   } absolute top-0 right-[-80px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
                 >
                   <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
-                    Home
+                    Admin Home
                   </p>
                 </div>
-              </div>
-              {/* Calendar */}
-              <div
+              </li>
+              {/* add packages */}
+              <li
                 className={`${
                   isCollapse ? "justify-between" : "justify-center"
                 } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
               >
-                <div className="flex items-center gap-[8px]">
+                <Link
+                  to="/dashboard/addPakcage"
+                  className="flex items-center gap-[8px]"
+                >
                   <CiCalendar className="text-[1.3rem] text-gray-500" />
                   <p
                     className={`${
                       isCollapse ? "inline" : "hidden"
                     } text-[1rem] font-[400] text-gray-500`}
                   >
-                    Calendar
+                    Add Package
                   </p>
-                </div>
+                </Link>
 
                 {/* tooltip */}
                 <div
@@ -151,98 +191,27 @@ const ResponsiveSidebar = () => {
                     Calendar
                   </p>
                 </div>
-              </div>
-              {/* Projects */}
-              <div
-                className={`${isCollapse && "justify-center"} ${
-                  isDropdownOpen && "bg-gray-50"
-                }  flex w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group flex-col`}
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              >
-                <div
-                  className={`${
-                    isCollapse ? " justify-between" : "justify-center"
-                  } flex items-center gap-[8px  w-full`}
-                >
-                  <div className="flex items-center gap-[8px]">
-                    <GoProjectSymlink className="text-[1.3rem] text-gray-500" />
-                    <p
-                      className={`${
-                        isCollapse ? "inline" : "hidden"
-                      } text-[1rem] font-[400] text-gray-500`}
-                    >
-                      Projects
-                    </p>
-                  </div>
+              </li>
 
-                  <IoIosArrowDown
-                    className={`${
-                      isDropdownOpen ? "rotate-[180deg]" : "rotate-0"
-                    } ${
-                      isCollapse ? "inline" : "hidden"
-                    } transition-all duration-300 text-[1rem] text-gray-500`}
-                  />
-                </div>
-
-                {!isCollapse && (
-                  <>
-                    {/* hover projects dropdown */}
-                    <ul className="translate-y-[20px] opacity-0 z-[-1] group-hover:translate-y-0 group-hover:opacity-100 group-hover:z-30 absolute top-0 left-[70px] bg-white boxShadow transition-all duration-300 p-[8px] rounded-md flex flex-col gap-[3px] text-[1rem] text-gray-500">
-                      <li className="hover:bg-gray-50 px-[20px] py-[5px] rounded-md">
-                        Google
-                      </li>
-                      <li className="hover:bg-gray-50 px-[20px] py-[5px] rounded-md">
-                        Facebook
-                      </li>
-                      <li className="hover:bg-gray-50 px-[20px] py-[5px] rounded-md">
-                        Twitter
-                      </li>
-                      <li className="hover:bg-gray-50 px-[20px] py-[5px] rounded-md">
-                        Linkedin
-                      </li>
-                    </ul>
-                  </>
-                )}
-              </div>
-              {/* active projects dropdown */}
-              <ul
-                className={`${
-                  isDropdownOpen
-                    ? "h-auto my-3 opacity-100 z-[1]"
-                    : "opacity-0 z-[-1] h-0"
-                } ${
-                  isCollapse ? "inline" : "hidden"
-                } transition-all duration-300 list-disc marker:text-blue-400 ml-[35px] flex flex-col gap-[3px] text-[1rem] text-gray-500`}
-              >
-                <li className="hover:bg-gray-50 px-[10px] py-[5px] rounded-md">
-                  Google
-                </li>
-                <li className="hover:bg-gray-50 px-[10px] py-[5px] rounded-md">
-                  Facebook
-                </li>
-                <li className="hover:bg-gray-50 px-[10px] py-[5px] rounded-md">
-                  Twitter
-                </li>
-                <li className="hover:bg-gray-50 px-[10px] py-[5px] rounded-md">
-                  Linkedin
-                </li>
-              </ul>
-              {/* Progress */}
-              <div
+              {/* manage profile */}
+              <li
                 className={`${
                   isCollapse ? "justify-between" : "justify-center"
                 } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
               >
-                <div className="flex items-center gap-[8px]">
+                <Link
+                  to="/dashboard/adminManageProfile"
+                  className="flex items-center gap-[8px]"
+                >
                   <FiBarChart className="text-[1.3rem] text-gray-500" />
                   <p
                     className={`${
                       isCollapse ? "inline" : "hidden"
                     } text-[1rem] font-[400] text-gray-500`}
                   >
-                    Progress
+                    Manage Profile
                   </p>
-                </div>
+                </Link>
 
                 {/* tooltip */}
                 <div
@@ -254,23 +223,26 @@ const ResponsiveSidebar = () => {
                     Progress
                   </p>
                 </div>
-              </div>
-              {/* Goals */}
-              <div
+              </li>
+              {/* manage candidates */}
+              <li
                 className={`${
                   isCollapse ? "justify-between" : "justify-center"
                 } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
               >
-                <div className="flex items-center gap-[8px]">
+                <Link
+                  to="/dashboard/manageCandidates"
+                  className="flex items-center gap-[8px]"
+                >
                   <FiPieChart className="text-[1.3rem] text-gray-500" />
                   <p
                     className={`${
                       isCollapse ? "inline" : "hidden"
                     } text-[1rem] font-[400] text-gray-500`}
                   >
-                    Goals
+                    Manage Candidates
                   </p>
-                </div>
+                </Link>
 
                 {/* tooltip */}
                 <div
@@ -282,27 +254,61 @@ const ResponsiveSidebar = () => {
                     Goals
                   </p>
                 </div>
-              </div>
+              </li>
+              {/* manage users */}
+              <li
+                className={`${
+                  isCollapse ? "justify-between" : "justify-center"
+                } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
+              >
+                <Link
+                  to="/dashboard/manageUsers"
+                  className="flex items-center gap-[8px]"
+                >
+                  <FiPieChart className="text-[1.3rem] text-gray-500" />
+                  <p
+                    className={`${
+                      isCollapse ? "inline" : "hidden"
+                    } text-[1rem] font-[400] text-gray-500`}
+                  >
+                    Manage Users
+                  </p>
+                </Link>
+
+                {/* tooltip */}
+                <div
+                  className={`${
+                    isCollapse ? "hidden" : "inline"
+                  } absolute top-0 right-[-76px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                >
+                  <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
+                    Goals
+                  </p>
+                </div>
+              </li>
             </>
           )}
           {isTourGuide && (
             <>
-              {/* home  */}
-              <div
+              {/* tourguide home  */}
+              <li
                 className={`${
                   isCollapse ? "justify-between" : "justify-center"
                 } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
               >
-                <div className="flex items-center gap-[8px]">
+                <Link
+                  to="/dashboard/tourGuideHome"
+                  className="flex items-center gap-[8px]"
+                >
                   <GoHome className="text-[1.3rem] text-gray-500" />
                   <p
                     className={`${
                       isCollapse ? "inline" : "hidden"
                     } text-[1rem] font-[400] text-gray-500`}
                   >
-                    Home
+                    TourGuide Home
                   </p>
-                </div>
+                </Link>
 
                 {/* tooltip */}
                 <div
@@ -314,103 +320,155 @@ const ResponsiveSidebar = () => {
                     Home
                   </p>
                 </div>
-              </div>
+              </li>
 
-              {/* Projects */}
-              <div
-                className={`${isCollapse && "justify-center"} ${
-                  isDropdownOpen && "bg-gray-50"
-                }  flex w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group flex-col`}
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              {/* add stories  */}
+              <li
+                className={`${
+                  isCollapse ? "justify-between" : "justify-center"
+                } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
               >
+                <Link
+                  to="/dashboard/addStories"
+                  className="flex items-center gap-[8px]"
+                >
+                  <GoHome className="text-[1.3rem] text-gray-500" />
+                  <p
+                    className={`${
+                      isCollapse ? "inline" : "hidden"
+                    } text-[1rem] font-[400] text-gray-500`}
+                  >
+                    Add Stories
+                  </p>
+                </Link>
+
+                {/* tooltip */}
                 <div
                   className={`${
-                    isCollapse ? " justify-between" : "justify-center"
-                  } flex items-center gap-[8px  w-full`}
+                    isCollapse ? "hidden" : "inline"
+                  } absolute top-0 right-[-80px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
                 >
-                  <div className="flex items-center gap-[8px]">
-                    <GoProjectSymlink className="text-[1.3rem] text-gray-500" />
-                    <p
-                      className={`${
-                        isCollapse ? "inline" : "hidden"
-                      } text-[1rem] font-[400] text-gray-500`}
-                    >
-                      Projects
-                    </p>
-                  </div>
-
-                  <IoIosArrowDown
-                    className={`${
-                      isDropdownOpen ? "rotate-[180deg]" : "rotate-0"
-                    } ${
-                      isCollapse ? "inline" : "hidden"
-                    } transition-all duration-300 text-[1rem] text-gray-500`}
-                  />
+                  <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
+                    Home
+                  </p>
                 </div>
-
-                {!isCollapse && (
-                  <>
-                    {/* hover projects dropdown */}
-                    <ul className="translate-y-[20px] opacity-0 z-[-1] group-hover:translate-y-0 group-hover:opacity-100 group-hover:z-30 absolute top-0 left-[70px] bg-white boxShadow transition-all duration-300 p-[8px] rounded-md flex flex-col gap-[3px] text-[1rem] text-gray-500">
-                      <li className="hover:bg-gray-50 px-[20px] py-[5px] rounded-md">
-                        Google
-                      </li>
-                      <li className="hover:bg-gray-50 px-[20px] py-[5px] rounded-md">
-                        Facebook
-                      </li>
-                      <li className="hover:bg-gray-50 px-[20px] py-[5px] rounded-md">
-                        Twitter
-                      </li>
-                      <li className="hover:bg-gray-50 px-[20px] py-[5px] rounded-md">
-                        Linkedin
-                      </li>
-                    </ul>
-                  </>
-                )}
-              </div>
-              {/* active projects dropdown */}
-              <ul
+              </li>
+              {/* manage profile  */}
+              <li
                 className={`${
-                  isDropdownOpen
-                    ? "h-auto my-3 opacity-100 z-[1]"
-                    : "opacity-0 z-[-1] h-0"
-                } ${
-                  isCollapse ? "inline" : "hidden"
-                } transition-all duration-300 list-disc marker:text-blue-400 ml-[35px] flex flex-col gap-[3px] text-[1rem] text-gray-500`}
+                  isCollapse ? "justify-between" : "justify-center"
+                } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
               >
-                <li className="hover:bg-gray-50 px-[10px] py-[5px] rounded-md">
-                  Google
-                </li>
-                <li className="hover:bg-gray-50 px-[10px] py-[5px] rounded-md">
-                  Facebook
-                </li>
-                <li className="hover:bg-gray-50 px-[10px] py-[5px] rounded-md">
-                  Twitter
-                </li>
-                <li className="hover:bg-gray-50 px-[10px] py-[5px] rounded-md">
-                  Linkedin
-                </li>
-              </ul>
+                <Link
+                  to="/dashboard/guideManageProfile"
+                  className="flex items-center gap-[8px]"
+                >
+                  <GoHome className="text-[1.3rem] text-gray-500" />
+                  <p
+                    className={`${
+                      isCollapse ? "inline" : "hidden"
+                    } text-[1rem] font-[400] text-gray-500`}
+                  >
+                    Manage Profile
+                  </p>
+                </Link>
+
+                {/* tooltip */}
+                <div
+                  className={`${
+                    isCollapse ? "hidden" : "inline"
+                  } absolute top-0 right-[-80px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                >
+                  <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
+                    Home
+                  </p>
+                </div>
+              </li>
+              {/* manage stories  */}
+              <li
+                className={`${
+                  isCollapse ? "justify-between" : "justify-center"
+                } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
+              >
+                <Link
+                  to="/dashboard/manageStories"
+                  className="flex items-center gap-[8px]"
+                >
+                  <GoHome className="text-[1.3rem] text-gray-500" />
+                  <p
+                    className={`${
+                      isCollapse ? "inline" : "hidden"
+                    } text-[1rem] font-[400] text-gray-500`}
+                  >
+                    Manage Stories
+                  </p>
+                </Link>
+
+                {/* tooltip */}
+                <div
+                  className={`${
+                    isCollapse ? "hidden" : "inline"
+                  } absolute top-0 right-[-80px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                >
+                  <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
+                    Home
+                  </p>
+                </div>
+              </li>
+              {/* my assigned tours  */}
+              <li
+                className={`${
+                  isCollapse ? "justify-between" : "justify-center"
+                } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
+              >
+                <Link
+                  to="/dashboard/myAssignedTours"
+                  className="flex items-center gap-[8px]"
+                >
+                  <GoHome className="text-[1.3rem] text-gray-500" />
+                  <p
+                    className={`${
+                      isCollapse ? "inline" : "hidden"
+                    } text-[1rem] font-[400] text-gray-500`}
+                  >
+                    My Assigned Tours
+                  </p>
+                </Link>
+
+                {/* tooltip */}
+                <div
+                  className={`${
+                    isCollapse ? "hidden" : "inline"
+                  } absolute top-0 right-[-80px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                >
+                  <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
+                    Home
+                  </p>
+                </div>
+              </li>
             </>
           )}
           {!isAdmin && !isTourGuide && (
             <>
-              {/* home  */}
-              <div
+              {/* tourist home  */}
+              <li
                 className={`${
                   isCollapse ? "justify-between" : "justify-center"
                 } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
               >
-                <div className="flex items-center gap-[8px]">
+                <Link
+                  to="/dashboard/touristHome"
+                  className="flex items-center gap-[8px]"
+                >
                   <GoHome className="text-[1.3rem] text-gray-500" />
                   <p
                     className={`${
                       isCollapse ? "inline" : "hidden"
                     } text-[1rem] font-[400] text-gray-500`}
                   >
-                    Home
+                    Tourist Home
                   </p>
-                </div>
+                </Link>
 
                 {/* tooltip */}
                 <div
@@ -422,166 +480,164 @@ const ResponsiveSidebar = () => {
                     Home
                   </p>
                 </div>
-              </div>
-              {/* Calendar */}
-              <div
+              </li>
+
+              {/* join as tourguide  */}
+              <li
                 className={`${
                   isCollapse ? "justify-between" : "justify-center"
                 } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
               >
-                <div className="flex items-center gap-[8px]">
-                  <CiCalendar className="text-[1.3rem] text-gray-500" />
+                <Link
+                  to="/dashboard/joinAsTourGuide"
+                  className="flex items-center gap-[8px]"
+                >
+                  <GoHome className="text-[1.3rem] text-gray-500" />
                   <p
                     className={`${
                       isCollapse ? "inline" : "hidden"
                     } text-[1rem] font-[400] text-gray-500`}
                   >
-                    Calendar
+                    Join As TourGuide
                   </p>
-                </div>
+                </Link>
 
                 {/* tooltip */}
                 <div
                   className={`${
                     isCollapse ? "hidden" : "inline"
-                  } absolute top-0 right-[-99px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                  } absolute top-0 right-[-80px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
                 >
                   <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
-                    Calendar
+                    Home
                   </p>
                 </div>
-              </div>
-              {/* Projects */}
-              <div
-                className={`${isCollapse && "justify-center"} ${
-                  isDropdownOpen && "bg-gray-50"
-                }  flex w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group flex-col`}
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              >
-                <div
-                  className={`${
-                    isCollapse ? " justify-between" : "justify-center"
-                  } flex items-center gap-[8px  w-full`}
-                >
-                  <div className="flex items-center gap-[8px]">
-                    <GoProjectSymlink className="text-[1.3rem] text-gray-500" />
-                    <p
-                      className={`${
-                        isCollapse ? "inline" : "hidden"
-                      } text-[1rem] font-[400] text-gray-500`}
-                    >
-                      Projects
-                    </p>
-                  </div>
-
-                  <IoIosArrowDown
-                    className={`${
-                      isDropdownOpen ? "rotate-[180deg]" : "rotate-0"
-                    } ${
-                      isCollapse ? "inline" : "hidden"
-                    } transition-all duration-300 text-[1rem] text-gray-500`}
-                  />
-                </div>
-
-                {!isCollapse && (
-                  <>
-                    {/* hover projects dropdown */}
-                    <ul className="translate-y-[20px] opacity-0 z-[-1] group-hover:translate-y-0 group-hover:opacity-100 group-hover:z-30 absolute top-0 left-[70px] bg-white boxShadow transition-all duration-300 p-[8px] rounded-md flex flex-col gap-[3px] text-[1rem] text-gray-500">
-                      <li className="hover:bg-gray-50 px-[20px] py-[5px] rounded-md">
-                        Google
-                      </li>
-                      <li className="hover:bg-gray-50 px-[20px] py-[5px] rounded-md">
-                        Facebook
-                      </li>
-                      <li className="hover:bg-gray-50 px-[20px] py-[5px] rounded-md">
-                        Twitter
-                      </li>
-                      <li className="hover:bg-gray-50 px-[20px] py-[5px] rounded-md">
-                        Linkedin
-                      </li>
-                    </ul>
-                  </>
-                )}
-              </div>
-              {/* active projects dropdown */}
-              <ul
-                className={`${
-                  isDropdownOpen
-                    ? "h-auto my-3 opacity-100 z-[1]"
-                    : "opacity-0 z-[-1] h-0"
-                } ${
-                  isCollapse ? "inline" : "hidden"
-                } transition-all duration-300 list-disc marker:text-blue-400 ml-[35px] flex flex-col gap-[3px] text-[1rem] text-gray-500`}
-              >
-                <li className="hover:bg-gray-50 px-[10px] py-[5px] rounded-md">
-                  Google
-                </li>
-                <li className="hover:bg-gray-50 px-[10px] py-[5px] rounded-md">
-                  Facebook
-                </li>
-                <li className="hover:bg-gray-50 px-[10px] py-[5px] rounded-md">
-                  Twitter
-                </li>
-                <li className="hover:bg-gray-50 px-[10px] py-[5px] rounded-md">
-                  Linkedin
-                </li>
-              </ul>
-              {/* Progress */}
-              <div
+              </li>
+              {/* my bookings  */}
+              <li
                 className={`${
                   isCollapse ? "justify-between" : "justify-center"
                 } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
               >
-                <div className="flex items-center gap-[8px]">
-                  <FiBarChart className="text-[1.3rem] text-gray-500" />
+                <Link
+                  to="/dashboard/myBookings"
+                  className="flex items-center gap-[8px]"
+                >
+                  <GoHome className="text-[1.3rem] text-gray-500" />
                   <p
                     className={`${
                       isCollapse ? "inline" : "hidden"
                     } text-[1rem] font-[400] text-gray-500`}
                   >
-                    Progress
+                    My Bookings
                   </p>
-                </div>
+                </Link>
 
                 {/* tooltip */}
                 <div
                   className={`${
                     isCollapse ? "hidden" : "inline"
-                  } absolute top-0 right-[-100px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                  } absolute top-0 right-[-80px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
                 >
                   <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
-                    Progress
+                    Home
                   </p>
                 </div>
-              </div>
-              {/* Goals */}
-              <div
+              </li>
+              {/* add stories  */}
+              <li
                 className={`${
                   isCollapse ? "justify-between" : "justify-center"
                 } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
               >
-                <div className="flex items-center gap-[8px]">
-                  <FiPieChart className="text-[1.3rem] text-gray-500" />
+                <Link
+                  to="/dashboard/touristAddStories"
+                  className="flex items-center gap-[8px]"
+                >
+                  <GoHome className="text-[1.3rem] text-gray-500" />
                   <p
                     className={`${
                       isCollapse ? "inline" : "hidden"
                     } text-[1rem] font-[400] text-gray-500`}
                   >
-                    Goals
+                    Add Stories
                   </p>
-                </div>
+                </Link>
 
                 {/* tooltip */}
                 <div
                   className={`${
                     isCollapse ? "hidden" : "inline"
-                  } absolute top-0 right-[-76px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                  } absolute top-0 right-[-80px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
                 >
                   <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
-                    Goals
+                    Home
                   </p>
                 </div>
-              </div>
+              </li>
+              {/* manage stories  */}
+              <li
+                className={`${
+                  isCollapse ? "justify-between" : "justify-center"
+                } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
+              >
+                <Link
+                  to="/dashboard/touristManageStories"
+                  className="flex items-center gap-[8px]"
+                >
+                  <GoHome className="text-[1.3rem] text-gray-500" />
+                  <p
+                    className={`${
+                      isCollapse ? "inline" : "hidden"
+                    } text-[1rem] font-[400] text-gray-500`}
+                  >
+                    Manage Stories
+                  </p>
+                </Link>
+
+                {/* tooltip */}
+                <div
+                  className={`${
+                    isCollapse ? "hidden" : "inline"
+                  } absolute top-0 right-[-80px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                >
+                  <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
+                    Home
+                  </p>
+                </div>
+              </li>
+
+              {/* manage profile  */}
+              <li
+                className={`${
+                  isCollapse ? "justify-between" : "justify-center"
+                } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
+              >
+                <Link
+                  to="/dashboard/touristManageProfile"
+                  className="flex items-center gap-[8px]"
+                >
+                  <GoHome className="text-[1.3rem] text-gray-500" />
+                  <p
+                    className={`${
+                      isCollapse ? "inline" : "hidden"
+                    } text-[1rem] font-[400] text-gray-500`}
+                  >
+                    Manage Profile
+                  </p>
+                </Link>
+
+                {/* tooltip */}
+                <div
+                  className={`${
+                    isCollapse ? "hidden" : "inline"
+                  } absolute top-0 right-[-80px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                >
+                  <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
+                    Home
+                  </p>
+                </div>
+              </li>
             </>
           )}
         </div>
@@ -651,39 +707,6 @@ const ResponsiveSidebar = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* profile section  ============================================== */}
-      <div
-        className={`${
-          isCollapse ? "justify-between" : "justify-center"
-        } bg-gray-100 py-3 px-[20px] flex items-center mt-10`}
-      >
-        <div className="flex items-center gap-[10px]">
-          <img
-            src={user?.photoURL}
-            alt="avatar"
-            className="w-[30px] h-[30px] cursor-pointer rounded-full object-cover"
-          />
-          <h3
-            className={`${
-              isCollapse ? "inline" : "hidden"
-            } text-[0.9rem] text-gray-800 font-[500]`}
-          >
-            {user?.displayName}
-          </h3>
-        </div>
-
-        {/* <div className={`${isCollapse ? "inline" : "hidden"} relative group`}>
-          <BsThreeDots className="text-[1.2rem] text-gray-500 cursor-pointer" />
-
-          <ul className="translate-y-[20px] opacity-0 z-[-1] group-hover:translate-y-0 group-hover:opacity-100 group-hover:z-30 absolute top-0 left-[30px] bg-white boxShadow transition-all duration-300 p-[8px] rounded-md flex flex-col gap-[3px]">
-            <li className="flex items-center gap-[7px] text-[0.9rem] text-gray-600 hover:bg-gray-50 px-[8px] py-[4px] rounded-md cursor-pointer">
-              <RiAccountCircleLine />
-              Profile
-            </li>
-          </ul>
-        </div> */}
       </div>
     </aside>
   );
