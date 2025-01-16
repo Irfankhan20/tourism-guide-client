@@ -2,9 +2,11 @@ import { useContext, useEffect, useRef, useState } from "react";
 import logo from "../../assets/nav-logo.png";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+import useUserByEmail from "../../hooks/useUserByEmail";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [aUser] = useUserByEmail();
   const { pathname } = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -174,8 +176,8 @@ const Navbar = () => {
               >
                 <img
                   className="rounded-full w-8 h-8 mr-3"
-                  src={user.photoURL}
-                  alt={user.email}
+                  src={aUser?.photoURL}
+                  alt={aUser?.email}
                 />
               </div>
 

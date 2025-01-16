@@ -6,20 +6,21 @@ import {
 } from "react-icons/md";
 import { IoNotificationsOutline, IoSettingsOutline } from "react-icons/io5";
 import { FiBarChart, FiPieChart } from "react-icons/fi";
-import { RiAccountCircleLine } from "react-icons/ri";
+// import { RiAccountCircleLine } from "react-icons/ri";
 import { GoHome, GoSidebarCollapse } from "react-icons/go";
 import { CiCalendar } from "react-icons/ci";
-import { BsThreeDots } from "react-icons/bs";
+// import { BsThreeDots } from "react-icons/bs";
 import { AuthContext } from "../../provider/AuthProvider";
 import useAdmin from "../../hooks/useAdmin";
 import siteLogo from "../../assets/nav-logo.png";
 import { Link } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
+import useUserByEmail from "../../hooks/useUserByEmail";
 
 const ResponsiveSidebar = () => {
   const { user } = useContext(AuthContext);
   const [isCollapse, setIsCollapse] = useState(true);
-
+  const [aUser] = useUserByEmail();
   const [isAdmin, isTourGuide] = useAdmin();
   console.log(isAdmin, isTourGuide);
 
@@ -78,19 +79,21 @@ const ResponsiveSidebar = () => {
           isCollapse ? "justify-between" : "justify-center"
         } bg-gray-100 py-3 px-[20px] flex items-center mt-6`}
       >
-        <div className="flex items-center gap-[10px]">
-          <img
-            src={user?.photoURL}
-            alt="avatar"
-            className="w-[30px] h-[30px] cursor-pointer rounded-full object-cover"
-          />
-          <h3
-            className={`${
-              isCollapse ? "inline" : "hidden"
-            } text-[0.9rem] text-gray-800 font-[500]`}
-          >
-            {user?.displayName}
-          </h3>
+        <div className="flex flex-col items-center gap-[10px]">
+          <div className="flex items-center gap-2">
+            <img
+              src={aUser?.photoURL}
+              alt="avatar"
+              className="w-[30px] h-[30px] cursor-pointer rounded-full object-cover"
+            />
+            <h3
+              className={`${
+                isCollapse ? "inline" : "hidden"
+              } text-[0.9rem] text-gray-800  font-[600]`}
+            >
+              {user?.displayName}
+            </h3>
+          </div>
           <h3
             className={`${
               isCollapse ? "inline" : "hidden"
@@ -112,7 +115,7 @@ const ResponsiveSidebar = () => {
           </h3>
         </div>
 
-        <div className={`${isCollapse ? "inline" : "hidden"} relative group`}>
+        {/* <div className={`${isCollapse ? "inline" : "hidden"} relative group`}>
           <BsThreeDots className="text-[1.2rem] text-gray-500 cursor-pointer" />
 
           <ul className="translate-y-[20px] opacity-0 z-[-1] group-hover:translate-y-0 group-hover:opacity-100 group-hover:z-30 absolute top-0 left-[30px] bg-white boxShadow transition-all duration-300 p-[8px] rounded-md flex flex-col gap-[3px]">
@@ -121,10 +124,10 @@ const ResponsiveSidebar = () => {
               Profile
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
 
-      <hr className="border mt-6 border-purple-300" />
+      <hr className="border mt-6 border-[#F5A481]" />
 
       {/* general section  ============================================== */}
       <div
