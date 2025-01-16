@@ -26,7 +26,7 @@ const ResponsiveSidebar = () => {
 
   return (
     <aside
-      className={`bg-white border-r-2 border-[#F5A481] shadow-2xl boxShadow rounded-md transition-all duration-300 ease`}
+      className={`bg-white border-r-2 border-[#F5A481] shadow-2xl boxShadow rounded-md transition-all duration-300 ease  h-full`}
     >
       {/* website logo  ==============================================*/}
       <div
@@ -132,7 +132,7 @@ const ResponsiveSidebar = () => {
       {/* general section  ============================================== */}
       <div
         className={`mt-6 ${
-          isCollapse ? "px-[20px]" : "px-[10px]"
+          isCollapse ? "px-[10px]" : "px-[10px]"
         } transition-all duration-300 ease-in-out`}
       >
         <div className="mt-3 flex flex-col gap-[5px]">
@@ -439,7 +439,7 @@ const ResponsiveSidebar = () => {
                       isCollapse ? "inline" : "hidden"
                     } text-[1rem] font-[400] text-gray-500`}
                   >
-                    My Assigned Tours
+                    Assigned Tours
                   </p>
                 </Link>
 

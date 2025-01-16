@@ -50,7 +50,7 @@ const AddStories = () => {
       email: user?.email,
       title,
       excerpt,
-      photos: imageUrls,
+      photo: imageUrls,
     };
 
     console.log(storyData);
