@@ -15,7 +15,7 @@ const Dashboard = () => {
       <div>
         <ResponsiveSidebar></ResponsiveSidebar>
       </div>
-      <div className="mt-8">
+      <div className=" w-full">
         <Outlet></Outlet>
       </div>
     </div>

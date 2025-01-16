@@ -1,5 +1,9 @@
 import { useContext, useState } from "react";
-// import { IoIosSearch } from "react-icons/io";
+import {
+  MdManageAccounts,
+  MdOutlineAddAPhoto,
+  MdOutlineTour,
+} from "react-icons/md";
 import { IoNotificationsOutline, IoSettingsOutline } from "react-icons/io5";
 import { FiBarChart, FiPieChart } from "react-icons/fi";
 import { RiAccountCircleLine } from "react-icons/ri";
@@ -10,6 +14,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 import useAdmin from "../../hooks/useAdmin";
 import siteLogo from "../../assets/nav-logo.png";
 import { Link } from "react-router-dom";
+import { CgProfile } from "react-icons/cg";
 
 const ResponsiveSidebar = () => {
   const { user } = useContext(AuthContext);
@@ -317,7 +322,7 @@ const ResponsiveSidebar = () => {
                   } absolute top-0 right-[-80px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
                 >
                   <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
-                    Home
+                    TourGuide Home
                   </p>
                 </div>
               </li>
@@ -332,7 +337,7 @@ const ResponsiveSidebar = () => {
                   to="/dashboard/addStories"
                   className="flex items-center gap-[8px]"
                 >
-                  <GoHome className="text-[1.3rem] text-gray-500" />
+                  <MdOutlineAddAPhoto className="text-[1.3rem] text-gray-500" />
                   <p
                     className={`${
                       isCollapse ? "inline" : "hidden"
@@ -349,7 +354,7 @@ const ResponsiveSidebar = () => {
                   } absolute top-0 right-[-80px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
                 >
                   <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
-                    Home
+                    Add Stories
                   </p>
                 </div>
               </li>
@@ -363,7 +368,7 @@ const ResponsiveSidebar = () => {
                   to="/dashboard/guideManageProfile"
                   className="flex items-center gap-[8px]"
                 >
-                  <GoHome className="text-[1.3rem] text-gray-500" />
+                  <CgProfile className="text-[1.3rem] text-gray-500" />
                   <p
                     className={`${
                       isCollapse ? "inline" : "hidden"
@@ -380,7 +385,7 @@ const ResponsiveSidebar = () => {
                   } absolute top-0 right-[-80px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
                 >
                   <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
-                    Home
+                    Manage Profile
                   </p>
                 </div>
               </li>
@@ -394,7 +399,7 @@ const ResponsiveSidebar = () => {
                   to="/dashboard/manageStories"
                   className="flex items-center gap-[8px]"
                 >
-                  <GoHome className="text-[1.3rem] text-gray-500" />
+                  <MdManageAccounts className="text-[1.3rem] text-gray-500" />
                   <p
                     className={`${
                       isCollapse ? "inline" : "hidden"
@@ -411,7 +416,7 @@ const ResponsiveSidebar = () => {
                   } absolute top-0 right-[-80px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
                 >
                   <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
-                    Home
+                    Manage Stories
                   </p>
                 </div>
               </li>
@@ -425,7 +430,7 @@ const ResponsiveSidebar = () => {
                   to="/dashboard/myAssignedTours"
                   className="flex items-center gap-[8px]"
                 >
-                  <GoHome className="text-[1.3rem] text-gray-500" />
+                  <MdOutlineTour className="text-[1.3rem] text-gray-500" />
                   <p
                     className={`${
                       isCollapse ? "inline" : "hidden"
@@ -442,7 +447,7 @@ const ResponsiveSidebar = () => {
                   } absolute top-0 right-[-80px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
                 >
                   <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
-                    Home
+                    My Assigned Tours
                   </p>
                 </div>
               </li>
