@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FaShareAlt } from "react-icons/fa";
@@ -12,6 +12,23 @@ const Community = () => {
   const { user } = useContext(AuthContext);
   const [allStories] = useAllStories();
   const navigate = useNavigate();
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10; // Show 10 items per page
+
+  // Calculate total pages
+  const totalPages = Math.ceil(allStories.length / itemsPerPage);
+
+  // Get current page data
+  const currentData = allStories.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  // Handle page change
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   const handleShare = () => {
     if (!user) {
@@ -33,7 +50,7 @@ const Community = () => {
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {allStories.map((story) => {
+        {currentData.map((story) => {
           const images = story.photo || [];
 
           return (
@@ -69,6 +86,57 @@ const Community = () => {
             </div>
           );
         })}
+      </div>
+
+      {/* Pagination Controls */}
+      <div className="flex justify-center mt-8">
+        <ul className="flex space-x-2">
+          {/* Previous Button */}
+          <li>
+            <button
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+              className={`px-3 py-1 rounded-md ${
+                currentPage === 1
+                  ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                  : "bg-primary text-white hover:bg-primary-dark"
+              }`}
+            >
+              Prev
+            </button>
+          </li>
+
+          {/* Page Numbers */}
+          {[...Array(totalPages).keys()].map((page) => (
+            <li key={page}>
+              <button
+                onClick={() => handlePageChange(page + 1)}
+                className={`px-3 py-1 rounded-md ${
+                  currentPage === page + 1
+                    ? "bg-primary text-white"
+                    : "bg-gray-200 hover:bg-gray-300"
+                }`}
+              >
+                {page + 1}
+              </button>
+            </li>
+          ))}
+
+          {/* Next Button */}
+          <li>
+            <button
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className={`px-3 py-1 rounded-md ${
+                currentPage === totalPages
+                  ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                  : "bg-primary text-white hover:bg-primary-dark"
+              }`}
+            >
+              Next
+            </button>
+          </li>
+        </ul>
       </div>
     </div>
   );

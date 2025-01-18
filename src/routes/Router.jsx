@@ -25,11 +25,13 @@ import TouristManageProfile from "../pages/dashboard/touristDashboard/TouristMan
 import AdminHome from "../pages/dashboard/adminDashboard/AdminHome";
 import TourGuideHome from "../pages/dashboard/tourGuideDashboard/TourGuideHome";
 import TouristHome from "../pages/dashboard/touristDashboard/TouristHome";
+import Page404 from "../pages/errorPage/Page404";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <Page404></Page404>,
     children: [
       {
         path: "/",

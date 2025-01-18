@@ -12,7 +12,7 @@ const TouristStory = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [stories] = useTouristStories();
-  console.log(stories);
+  // console.log(stories);
 
   const handleShare = () => {
     if (!user) {
