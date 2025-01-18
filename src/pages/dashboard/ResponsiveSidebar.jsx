@@ -99,11 +99,11 @@ const ResponsiveSidebar = () => {
               isCollapse ? "inline" : "hidden"
             } text-[0.9rem] text-gray-800 font-[500]`}
           >
-            {isAdmin ? (
+            {aUser.userType === "admin" ? (
               <span className="bg-green-600 text-white font-semibold text-xs px-2 py-1 rounded-full">
                 Admin
               </span>
-            ) : isTourGuide ? (
+            ) : aUser.userType === "tourGuide" ? (
               <span className="bg-blue-600 text-white font-semibold text-xs px-2 py-1 rounded-full">
                 TourGuide
               </span>
@@ -590,7 +590,7 @@ const ResponsiveSidebar = () => {
                 } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
               >
                 <Link
-                  to="/dashboard/touristManageStories"
+                  to="/dashboard/manageStories"
                   className="flex items-center gap-[8px]"
                 >
                   <GoHome className="text-[1.3rem] text-gray-500" />

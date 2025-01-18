@@ -140,7 +140,7 @@ const router = createBrowserRouter([
             element: <TouristAddStories></TouristAddStories>,
           },
           {
-            path: "/dashboard/touristManageStories",
+            path: "/dashboard/manageStories",
             element: <TouristManageStories></TouristManageStories>,
           },
           {

@@ -1,7 +1,9 @@
+import Profile from "../Profile";
+
 const TouristManageProfile = () => {
   return (
     <div>
-      <h1>Manage profile</h1>
+      <Profile></Profile>
     </div>
   );
 };

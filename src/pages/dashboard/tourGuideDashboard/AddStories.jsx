@@ -7,13 +7,14 @@ import { imageUpload } from "../../../imageUpload/imageUpload";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { toast } from "react-toastify";
 import useUserByEmail from "../../../hooks/useUserByEmail";
+import { useNavigate } from "react-router-dom";
 
 const AddStories = () => {
   const [aUser] = useUserByEmail();
   const [title, setTitle] = useState("");
   const axiosPublic = useAxiosPublic();
   const [excerpt, setExcerpt] = useState("");
-
+  const navigate = useNavigate();
   const [images, setImages] = useState([]);
   const [imageLinks, setImageLinks] = useState([]);
 
@@ -65,6 +66,7 @@ const AddStories = () => {
     const storyPost = await axiosPublic.post("/addStory", storyData);
     if (storyPost.data.insertedId) {
       reset();
+      navigate("/dashboard/manageStories");
       toast.success(`${storyData.title} is added to the stories.`);
     }
   };

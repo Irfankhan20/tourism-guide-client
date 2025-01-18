@@ -32,7 +32,7 @@ const BookingModal = ({ destination, guides, onClose, onBook }) => {
       packageId: destination._id,
       guide: {
         name: selectedGuide.value.name,
-        email: selectedGuide.value.email, // Include guide email in booking details
+        email: selectedGuide.value.email,
       },
       tourDate,
       user: {
