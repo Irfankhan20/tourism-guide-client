@@ -1,14 +1,15 @@
-import { useContext, useState } from "react";
-import { AuthContext } from "../../../provider/AuthProvider";
+import { useState } from "react";
+
 import { FiUpload } from "react-icons/fi";
-import { MdOutlineAddAPhoto } from "react-icons/md";
+// import { MdOutlineAddAPhoto } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { imageUpload } from "../../../imageUpload/imageUpload";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { toast } from "react-toastify";
+import useUserByEmail from "../../../hooks/useUserByEmail";
 
 const AddStories = () => {
-  const { user } = useContext(AuthContext);
+  const [aUser] = useUserByEmail();
   const [title, setTitle] = useState("");
   const axiosPublic = useAxiosPublic();
   const [excerpt, setExcerpt] = useState("");
@@ -53,8 +54,8 @@ const AddStories = () => {
     );
 
     const storyData = {
-      name: user?.displayName,
-      email: user?.email,
+      name: aUser?.name,
+      email: aUser?.email,
       title,
       excerpt,
       photo: imageUrls,
@@ -69,83 +70,41 @@ const AddStories = () => {
   };
 
   return (
-    <section className="w-full border-2 lg:px-10 lg:mx-10">
-      {/* title */}
-      <div className="w-full px-3 pt-5 md:pt-0 lg:pt-0 md:px-0  flex flex-col items-center justify-center">
-        <h1 className="flex gap-2 text-[2rem] font-bold text-primary leading-[36px]">
-          <MdOutlineAddAPhoto /> <span>Add Story</span>
-        </h1>
-        <p className="text-[1rem] text-text">Share Your Exciting Story</p>
-      </div>
-
-      {/* form area */}
-      <form onSubmit={handleSubmit} className="w-full mt-[50px]">
-        <div className="flex flex-col sm:flex-row items-center gap-[20px]">
-          {/* name */}
-          <div className="lg:w-[50%] w-full px-3 md:px-0 lg:px-0">
-            <label htmlFor="name" className="text-[15px] font-[400]">
-              Name <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              defaultValue={user?.displayName}
-              readOnly
-              name="name"
-              id="name"
-              placeholder="Your name"
-              className="border-[#e5eaf2] border rounded-md outline-none px-4 w-full mt-1 py-3 focus:border-[#3B9DF8] transition-colors duration-300"
-            />
-          </div>
-
-          {/* email */}
-          <div className="w-full lg:w-[50%] px-3 md:px-0 lg:px-0">
-            <label htmlFor="title" className="text-[15px] font-[400]">
-              Your Email <span className="text-red-500">*</span>
-            </label>
-            <input
-              defaultValue={user?.email}
-              readOnly
-              type="text"
-              name="email"
-              id="email"
-              placeholder="Your Email"
-              className="border-[#e5eaf2] border rounded-md outline-none px-4 w-full mt-1 py-3 focus:border-[#3B9DF8] transition-colors duration-300"
-            />
-          </div>
-        </div>
-
-        {/* title */}
-        <div className="w-full  px-3 md:px-0 lg:px-0">
-          <label htmlFor="title" className="text-[15px] font-[400]">
-            Story Title <span className="text-red-500">*</span>
-          </label>
+    <div className="max-w-2xl mx-auto my-3 px-10 py-4 border rounded-xl shadow-2xl">
+      <h2 className="text-2xl font-semibold mb-2 text-center uppercase">
+        Add Your Story
+      </h2>
+      <form onSubmit={handleSubmit}>
+        {/* title  */}
+        <div className="mb-2">
+          <label className="block font-semibold mb-1">Title*</label>
           <input
-            onChange={(e) => setTitle(e.target.value)}
-            value={title}
             type="text"
-            name="title"
-            id="title"
-            placeholder="Your Story Title"
-            className="border-[#e5eaf2] border rounded-md outline-none px-4 w-full mt-1 py-3 focus:border-[#3B9DF8] transition-colors duration-300"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="border-gray-300 border rounded-xl outline-none px-4 w-full mt-1 py-3 focus:border-primary transition-colors duration-300"
+            placeholder="Enter story title"
+            required
           />
         </div>
 
-        {/* description */}
-        <div className="w-full px-3 md:px-0 lg:px-0">
-          <label htmlFor="description" className="font-[400] text-[15px]">
-            Description <span className="text-red-500">*</span>
-          </label>
+        {/* description  */}
+        <div className="mb-2">
+          <label className="block font-semibold mb-1">Description*</label>
           <textarea
-            name="excerpt"
             value={excerpt}
-            onChange={(e) => setExcerpt(e.target.value)}
-            id="description"
-            placeholder="Write something about your story (max 90 characters)"
-            maxLength={90}
-            className="border-[#e5eaf2] border rounded-md outline-none mt-1 px-4 w-full py-3 min-h-[200px] focus:border-[#3B9DF8] transition-colors duration-300"
-          />
-          <p className="text-right text-[13px] text-gray-500 mt-1">
-            {excerpt.length}/90 characters
+            onChange={(e) => {
+              if (e.target.value.length <= 100) {
+                setExcerpt(e.target.value);
+              }
+            }}
+            className="border-gray-300 border rounded-xl outline-none px-4 w-full mt-1 py-3 focus:border-primary transition-colors duration-300"
+            rows="4"
+            placeholder="Write your story description here (Max 100 characters)"
+            required
+          ></textarea>
+          <p className="text-sm text-gray-500">
+            {excerpt.length}/100 characters
           </p>
         </div>
 
@@ -188,14 +147,12 @@ const AddStories = () => {
           </div>
         )}
 
-        <button
-          type="submit"
-          className="py-3 px-4 border border-blue-500 rounded-md outline-none mt-[10px]"
-        >
-          Add Story
-        </button>
+        {/* submit button  */}
+        <div className="mt-4">
+          <button className="btn btn-primary">Add Your Story</button>
+        </div>
       </form>
-    </section>
+    </div>
   );
 };
 

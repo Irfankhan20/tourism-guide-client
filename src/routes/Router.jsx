@@ -26,6 +26,7 @@ import AdminHome from "../pages/dashboard/adminDashboard/AdminHome";
 import TourGuideHome from "../pages/dashboard/tourGuideDashboard/TourGuideHome";
 import TouristHome from "../pages/dashboard/touristDashboard/TouristHome";
 import Page404 from "../pages/errorPage/Page404";
+import UpdateStory from "../pages/dashboard/tourGuideDashboard/UpdateStory";
 
 const router = createBrowserRouter([
   {
@@ -113,6 +114,12 @@ const router = createBrowserRouter([
           {
             path: "/dashboard/myAssignedTours",
             element: <MyAssignedTours></MyAssignedTours>,
+          },
+          {
+            path: "/dashboard/updateStory/:id",
+            element: <UpdateStory></UpdateStory>,
+            // loader: ({ params }) =>
+            //   fetch(`http://localhost:5000/story/${params.id}`),
           },
 
           // tourist

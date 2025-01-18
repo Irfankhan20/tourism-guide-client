@@ -1,6 +1,6 @@
 import useStoriesByEmail from "../../../hooks/useStoriesByEmail";
 import { FacebookShareButton } from "react-share";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import profileBg from "../../../assets/profileBg.jpg";
 import { useContext } from "react";
 import { MdDelete } from "react-icons/md";
@@ -109,10 +109,15 @@ const ManageStories = () => {
                   </button>
                 </div>
                 {/* edit icon  */}
-                <div className="absolute top-4 right-[95px] flex justify-center items-center p-2 text-red-600 hover:text-black bg-primary hover:bg-white duration-300 rounded-full cursor-pointer">
-                  <button>
-                    <FiEdit></FiEdit>
-                  </button>
+                <div>
+                  <Link
+                    to={`/dashboard/updateStory/${story?._id}`}
+                    className="absolute top-4 right-[95px] flex justify-center items-center p-2 text-red-600 hover:text-black bg-primary hover:bg-white duration-300 rounded-full cursor-pointer"
+                  >
+                    <button>
+                      <FiEdit></FiEdit>
+                    </button>
+                  </Link>
                 </div>
               </div>
 

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import {
   MdManageAccounts,
   MdOutlineAddAPhoto,
@@ -10,7 +10,7 @@ import { FiBarChart, FiPieChart } from "react-icons/fi";
 import { GoHome, GoSidebarCollapse } from "react-icons/go";
 import { CiCalendar } from "react-icons/ci";
 // import { BsThreeDots } from "react-icons/bs";
-import { AuthContext } from "../../provider/AuthProvider";
+
 import useAdmin from "../../hooks/useAdmin";
 import siteLogo from "../../assets/nav-logo.png";
 import { Link } from "react-router-dom";
@@ -18,7 +18,7 @@ import { CgProfile } from "react-icons/cg";
 import useUserByEmail from "../../hooks/useUserByEmail";
 
 const ResponsiveSidebar = () => {
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
   const [isCollapse, setIsCollapse] = useState(true);
   const [aUser] = useUserByEmail();
   const [isAdmin, isTourGuide] = useAdmin();
@@ -91,7 +91,7 @@ const ResponsiveSidebar = () => {
                 isCollapse ? "inline" : "hidden"
               } text-[0.9rem] text-gray-800  font-[600]`}
             >
-              {user?.displayName}
+              {aUser?.name}
             </h3>
           </div>
           <h3
