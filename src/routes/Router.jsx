@@ -27,6 +27,7 @@ import TourGuideHome from "../pages/dashboard/tourGuideDashboard/TourGuideHome";
 import TouristHome from "../pages/dashboard/touristDashboard/TouristHome";
 import Page404 from "../pages/errorPage/Page404";
 import UpdateStory from "../pages/dashboard/tourGuideDashboard/UpdateStory";
+import Payment from "../pages/dashboard/Payment";
 
 const router = createBrowserRouter([
   {
@@ -72,6 +73,10 @@ const router = createBrowserRouter([
         path: "/dashboard",
         element: <Dashboard></Dashboard>,
         children: [
+          {
+            path: "/dashboard/payment/:id",
+            element: <Payment></Payment>,
+          },
           //admin routes
           {
             path: "/dashboard/adminHome",

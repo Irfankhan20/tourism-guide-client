@@ -22,7 +22,7 @@ const ResponsiveSidebar = () => {
   const [isCollapse, setIsCollapse] = useState(true);
   const [aUser] = useUserByEmail();
   const [isAdmin, isTourGuide] = useAdmin();
-  console.log(isAdmin, isTourGuide);
+  // console.log(isAdmin, isTourGuide);
 
   return (
     <aside
