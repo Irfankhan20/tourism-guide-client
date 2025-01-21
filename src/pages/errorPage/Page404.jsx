@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Page404 = () => {
   return (
     // <div
@@ -34,9 +36,11 @@ const Page404 = () => {
         Go Home , You’re Drunk!
       </h1>
 
-      <button className="py-3 px-8 w-max rounded-full bg-[#92E3A9] hover:bg-[#4ec46f] text-white mt-5">
-        BACK TO HOME
-      </button>
+      <Link to="/">
+        <button className="py-3 px-8 w-max rounded-full bg-[#92E3A9] hover:bg-[#4ec46f] text-white mt-5">
+          BACK TO HOME
+        </button>
+      </Link>
     </div>
   );
 };
