@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import profileBg from "../../assets/profileBg.jpg";
+
 import useUserByEmail from "../../hooks/useUserByEmail";
 import { imageUpload } from "../../imageUpload/imageUpload";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
@@ -38,16 +38,7 @@ const Profile = () => {
   };
 
   return (
-    <div
-      style={{
-        backgroundImage: `url(${profileBg})`,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        height: "100vh",
-      }}
-      className="pt-36"
-    >
+    <div>
       <div className="text-center">
         <h2 className="font-semibold text-xl md:text-4xl mb-2">
           Welcome, <span className="text-primary">{aUser?.name}!</span>

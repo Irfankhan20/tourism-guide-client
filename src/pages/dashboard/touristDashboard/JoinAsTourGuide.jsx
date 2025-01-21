@@ -16,6 +16,7 @@ const JoinAsTourGuide = () => {
     e.preventDefault();
 
     const applicationInfo = {
+      userId: aUser?._id,
       email: aUser?.email,
       name: aUser?.name,
       photo: aUser?.photoURL,

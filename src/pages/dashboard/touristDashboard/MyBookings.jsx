@@ -45,6 +45,7 @@ const MyBookings = () => {
     }
     setSortConfig({ key, direction });
   };
+  console.log(handleSort);
 
   const sortedBookings = useMemo(() => {
     if (!sortConfig.key) return filteredBookings;

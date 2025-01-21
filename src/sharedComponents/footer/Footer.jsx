@@ -3,7 +3,7 @@ import logo from "../../assets/nav-logo.png";
 const Footer = () => {
   return (
     <footer className="bg-[#102d5c] text-white pt-16">
-      <div className="container mx-auto px-6 pb-16">
+      <div className=" mx-auto px-6 pb-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Logo and Description */}
           <div>

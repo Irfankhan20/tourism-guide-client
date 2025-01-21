@@ -6,7 +6,7 @@ import SectionTitle from "../../../sharedComponents/sectionTitle/SectionTitle";
 import useAllUsers from "../../../hooks/useAllUsers";
 
 const ManageUsers = () => {
-  const [allUsers, , refetch] = useAllUsers();
+  const [allUsers] = useAllUsers();
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
@@ -20,6 +20,7 @@ const ManageUsers = () => {
     }
     setSortConfig({ key, direction });
   };
+  console.log(handleSort);
 
   const sortedallUsers = useMemo(() => {
     if (!sortConfig.key) return allUsers;
