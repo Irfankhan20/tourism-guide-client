@@ -138,37 +138,6 @@ const ResponsiveSidebar = () => {
         <div className="mt-3 flex flex-col gap-[5px]">
           {isAdmin && (
             <>
-              {/* admin home  */}
-              <li
-                className={`${
-                  isCollapse ? "justify-between" : "justify-center"
-                } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
-              >
-                <Link
-                  to="/dashboard/adminHome"
-                  className="flex items-center gap-[8px]"
-                >
-                  <GoHome className="text-[1.3rem] text-gray-500" />
-                  <p
-                    className={`${
-                      isCollapse ? "inline" : "hidden"
-                    } text-[1rem] font-[400] text-gray-500`}
-                  >
-                    Admin Home
-                  </p>
-                </Link>
-
-                {/* tooltip */}
-                <div
-                  className={`${
-                    isCollapse ? "hidden" : "inline"
-                  } absolute top-0 right-[-80px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
-                >
-                  <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
-                    Admin Home
-                  </p>
-                </div>
-              </li>
               {/* add packages */}
               <li
                 className={`${
@@ -298,38 +267,6 @@ const ResponsiveSidebar = () => {
           )}
           {isTourGuide && (
             <>
-              {/* tourguide home  */}
-              <li
-                className={`${
-                  isCollapse ? "justify-between" : "justify-center"
-                } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
-              >
-                <Link
-                  to="/dashboard/tourGuideHome"
-                  className="flex items-center gap-[8px]"
-                >
-                  <GoHome className="text-[1.3rem] text-gray-500" />
-                  <p
-                    className={`${
-                      isCollapse ? "inline" : "hidden"
-                    } text-[1rem] font-[400] text-gray-500`}
-                  >
-                    TourGuide Home
-                  </p>
-                </Link>
-
-                {/* tooltip */}
-                <div
-                  className={`${
-                    isCollapse ? "hidden" : "inline"
-                  } absolute top-0 right-[-80px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
-                >
-                  <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
-                    TourGuide Home
-                  </p>
-                </div>
-              </li>
-
               {/* add stories  */}
               <li
                 className={`${
@@ -458,38 +395,6 @@ const ResponsiveSidebar = () => {
           )}
           {!isAdmin && !isTourGuide && (
             <>
-              {/* tourist home  */}
-              <li
-                className={`${
-                  isCollapse ? "justify-between" : "justify-center"
-                } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
-              >
-                <Link
-                  to="/dashboard/touristHome"
-                  className="flex items-center gap-[8px]"
-                >
-                  <GoHome className="text-[1.3rem] text-gray-500" />
-                  <p
-                    className={`${
-                      isCollapse ? "inline" : "hidden"
-                    } text-[1rem] font-[400] text-gray-500`}
-                  >
-                    Tourist Home
-                  </p>
-                </Link>
-
-                {/* tooltip */}
-                <div
-                  className={`${
-                    isCollapse ? "hidden" : "inline"
-                  } absolute top-0 right-[-80px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
-                >
-                  <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
-                    Home
-                  </p>
-                </div>
-              </li>
-
               {/* join as tourguide  */}
               <li
                 className={`${

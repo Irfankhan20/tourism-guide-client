@@ -22,9 +22,7 @@ import MyBookings from "../pages/dashboard/touristDashboard/MyBookings";
 import TouristAddStories from "../pages/dashboard/touristDashboard/TouristAddStories";
 import TouristManageStories from "../pages/dashboard/touristDashboard/TouristManageStories";
 import TouristManageProfile from "../pages/dashboard/touristDashboard/TouristManageProfile";
-import AdminHome from "../pages/dashboard/adminDashboard/AdminHome";
-import TourGuideHome from "../pages/dashboard/tourGuideDashboard/TourGuideHome";
-import TouristHome from "../pages/dashboard/touristDashboard/TouristHome";
+
 import Page404 from "../pages/errorPage/Page404";
 import UpdateStory from "../pages/dashboard/tourGuideDashboard/UpdateStory";
 import Payment from "../pages/dashboard/Payment";
@@ -78,10 +76,7 @@ const router = createBrowserRouter([
             element: <Payment></Payment>,
           },
           //admin routes
-          {
-            path: "/dashboard/adminHome",
-            element: <AdminHome></AdminHome>,
-          },
+
           {
             path: "/dashboard/addPakcage",
             element: <AddPackage></AddPackage>,
@@ -100,10 +95,7 @@ const router = createBrowserRouter([
           },
 
           //tourGuids
-          {
-            path: "/dashboard/tourGuideHome",
-            element: <TourGuideHome></TourGuideHome>,
-          },
+
           {
             path: "/dashboard/addStories",
             element: <AddStories></AddStories>,
@@ -128,10 +120,7 @@ const router = createBrowserRouter([
           },
 
           // tourist
-          {
-            path: "/dashboard/touristHome",
-            element: <TouristHome></TouristHome>,
-          },
+
           {
             path: "/dashboard/joinAsTourGuide",
             element: <JoinAsTourGuide></JoinAsTourGuide>,

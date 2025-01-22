@@ -1,6 +1,8 @@
 import Profile from "../Profile";
 import profileBg from "../../../assets/profileBg.jpg";
+import useAdminStats from "../../../hooks/useAdminStats";
 const ManageProfile = () => {
+  const [adminStats] = useAdminStats();
   return (
     <div
       style={{
@@ -31,8 +33,8 @@ const ManageProfile = () => {
                 ></path>
               </svg>
             </div>
-            <div className="stat-title">Downloads</div>
-            <div className="stat-value">31K</div>
+            <div className="stat-title">Total Payment</div>
+            <div className="stat-value">{adminStats?.totalPayment}</div>
             <div className="stat-desc">Jan 1st - Feb 1st</div>
           </div>
 
@@ -53,8 +55,8 @@ const ManageProfile = () => {
                 ></path>
               </svg>
             </div>
-            <div className="stat-title">New Users</div>
-            <div className="stat-value">4,200</div>
+            <div className="stat-title">Total Tour Guides</div>
+            <div className="stat-value">{adminStats?.totalTourGuides}</div>
             <div className="stat-desc">↗︎ 400 (22%)</div>
           </div>
 
@@ -75,8 +77,8 @@ const ManageProfile = () => {
                 ></path>
               </svg>
             </div>
-            <div className="stat-title">New Registers</div>
-            <div className="stat-value">1,200</div>
+            <div className="stat-title">Total Packages</div>
+            <div className="stat-value">{adminStats?.totalPackages}</div>
             <div className="stat-desc">↘︎ 90 (14%)</div>
           </div>
 
@@ -97,8 +99,8 @@ const ManageProfile = () => {
                 ></path>
               </svg>
             </div>
-            <div className="stat-title">New Registers</div>
-            <div className="stat-value">1,200</div>
+            <div className="stat-title">Total Clients</div>
+            <div className="stat-value">{adminStats?.totalTourists}</div>
             <div className="stat-desc">↘︎ 90 (14%)</div>
           </div>
 
@@ -119,8 +121,8 @@ const ManageProfile = () => {
                 ></path>
               </svg>
             </div>
-            <div className="stat-title">New Registers</div>
-            <div className="stat-value">1,200</div>
+            <div className="stat-title">Total Stories</div>
+            <div className="stat-value">{adminStats?.totalStories}</div>
             <div className="stat-desc">↘︎ 90 (14%)</div>
           </div>
         </div>
