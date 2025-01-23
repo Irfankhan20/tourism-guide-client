@@ -72,7 +72,9 @@ const router = createBrowserRouter([
         path: "/packageDetails/:id",
         element: <PackageDetails></PackageDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/package/${params.id}`),
+          fetch(
+            `https://tourism-website-server-livid.vercel.app/package/${params.id}`
+          ),
       },
       {
         path: "/dashboard",
@@ -143,7 +145,7 @@ const router = createBrowserRouter([
             path: "/dashboard/updateStory/:id",
             element: <UpdateStory></UpdateStory>,
             // loader: ({ params }) =>
-            //   fetch(`http://localhost:5000/story/${params.id}`),
+            //   fetch(`https://tourism-website-server-livid.vercel.app/story/${params.id}`),
           },
 
           // tourist

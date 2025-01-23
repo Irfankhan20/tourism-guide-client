@@ -55,20 +55,20 @@ const Banner = () => {
   };
 
   return (
-    <section className="banner px-8 h-[100vh]  relative bg-[#07332F] text-white">
+    <section className="banner px-8 lg:h-[100vh] md:h-[80vh] h-[70vh] relative bg-[#07332F] text-white">
       {banners.map(
         (banner, bannerIndex) =>
           bannerIndex === index && (
             <div key={banner.id} className="md:flex items-center h-full">
-              <div className="md:w-1/2 px-8 pt-20 md:pt-0">
+              <div className="md:w-1/2 px-8 pt-28 md:pt-0">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold animate__animated animate__fadeInLeft">
                   {banner.name}
                 </h1>
-                <p className="text-xl py-3 md:text-2xl lg:text-4xl font-medium animate__animated animate__fadeInLeft">
+                <p className="text-xl py-4 md:py-3 md:text-2xl lg:text-4xl font-medium animate__animated animate__fadeInLeft">
                   {banner.text}
                 </p>
                 <button
-                  className="px-8 animate__animated animate__fadeInLeft mt-3 md:mt-5 bg-[#F5A481] py-3 relative shadow-lg before:absolute 
+                  className="px-8 animate__animated animate__fadeInLeft mt-3 md:mt-5 bg-[#F5A481] py-4 md:py-3 relative shadow-lg before:absolute 
 before:top-0 before:left-0 before:w-0 before:h-0 before:border-l-[4px] before:border-t-[4px] before:border-transparent 
 hover:before:w-full hover:before:h-full hover:before:border-white hover:before:transition-all hover:before:duration-500 
 after:border-r-[4px] after:border-b-[4px] after:border-transparent hover:after:border-white 
@@ -79,7 +79,7 @@ after:h-0 hover:after:w-full hover:after:h-full hover:after:transition-all hover
                   Explore More
                 </button>
               </div>
-              <div className="md:w-1/2 pt-4 md:pt-0 grid grid-cols-3 gap-4 pr-8 animate__animated animate__fadeInRight">
+              <div className="md:w-1/2 pt-8 md:pt-0 grid grid-cols-3 gap-4 md:pr-8 animate__animated animate__fadeInRight">
                 {banner.images.map((image, imgIndex) => (
                   <img
                     key={imgIndex}
