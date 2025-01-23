@@ -89,14 +89,31 @@ const JoinAsTourGuide = () => {
               <label className="block text-lg font-medium text-gray-700 mb-2">
                 Designation
               </label>
-              <input
-                type="text"
+              <select
                 value={designation}
                 onChange={(e) => setDestination(e.target.value)}
-                className="w-full border-2 border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary transition duration-300"
-                placeholder="Write your speciality"
+                className="border-gray-300 border rounded-lg outline-none px-3 w-full py-2 focus:border-primary transition-colors duration-300 "
                 required
-              />
+              >
+                <option value="">Select Your Speciality</option>
+                <option value="Cultural Tour Guide">Cultural Tour Guide</option>
+                <option value="Nature and Eco-tourism Guide">
+                  Nature and Eco-tourism Guide
+                </option>
+                <option value="Adventure and Trekking Guide">
+                  Adventure and Trekking Guide
+                </option>
+                <option value="Heritage and Historical Sites Guide">
+                  Heritage and Historical Guide
+                </option>
+                <option value="Adventure Sports Guide">
+                  Adventure Sports Guide
+                </option>
+                <option value="Cultural Immersion and Cuisine Guide">
+                  Cultural and Cuisine Guide
+                </option>
+                {/* Add more tour types as needed */}
+              </select>
             </div>
 
             <div className="w-1/2">

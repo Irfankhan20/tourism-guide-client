@@ -84,6 +84,22 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
+          to={"/allGuides"}
+          className={({ isActive }) =>
+            isActive
+              ? `font-black px-4 py-2 rounded no-underline ${
+                  scrolled ? "text-black" : pathname === "/" && "text-white"
+                }`
+              : `px-4 py-2 rounded hover:text-[#F5A481] no-underline ${
+                  scrolled ? "text-black" : pathname === "/" && "text-white"
+                }`
+          }
+        >
+          All Guides
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
           to={"/aboutus"}
           className={({ isActive }) =>
             isActive

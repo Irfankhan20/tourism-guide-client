@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "./useAxiosPublic";
+
+import useAxiosSecure from "./useAxiosSecure";
 
 const useAllApplications = () => {
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const {
     data: allApplications = [],
     isPending: loading,
@@ -10,7 +11,7 @@ const useAllApplications = () => {
   } = useQuery({
     queryKey: ["allApplications"],
     queryFn: async () => {
-      const res = await axiosPublic.get("/applications");
+      const res = await axiosSecure.get("/applications");
       return res.data;
     },
   });

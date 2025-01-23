@@ -24,7 +24,7 @@ const ManageCandidates = () => {
     }
     setSortConfig({ key, direction });
   };
-  console.log(handleSort);
+  // console.log(handleSort);
 
   const sortedallApplications = useMemo(() => {
     if (!sortConfig.key) return allApplications;
@@ -107,7 +107,7 @@ const ManageCandidates = () => {
     const { data } = await axiosSecure.delete(`/application/${booking?._id}`);
     if (data.deletedCount > 0) {
       refetch();
-      toast.success(`${booking.packageName}'s application has been deleted`);
+      toast.success(`${booking?.name}'s application has been deleted`);
     }
   };
 
@@ -119,10 +119,7 @@ const ManageCandidates = () => {
         `/application-update/${application?._id}`
       );
       console.log(data);
-      if (
-        data.applicationUpdateResult.modifiedCount > 0 &&
-        data.userUpdateResult.modifiedCount > 0
-      ) {
+      if (data.userUpdateResult.modifiedCount > 0) {
         toast.success(`${application?.name}'s application has been accepted`);
         handleCancel(application);
       }

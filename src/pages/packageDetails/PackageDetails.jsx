@@ -1,22 +1,19 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import DetailsImgSlider from "./DetailsImgSlider";
 import { useEffect, useState } from "react";
-
 import BookingModal from "./BookingModal";
 import { toast } from "react-toastify";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import TourGuideCard from "../../components/homeComponents/turismAndTravelGuide/TourGuideCard";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const PackageDetails = () => {
   const destination = useLoaderData();
+  const axiosPublic = useAxiosPublic();
   const [isModalOpen, setModalOpen] = useState(false);
   const [isBookingConfirmed, setIsBookingConfirmed] = useState(false);
-
   // fetch tour guides data
   const [guides, setGuides] = useState([]);
-
-  const axiosPublic = useAxiosPublic();
 
   useEffect(() => {
     axiosPublic.get("allGuides").then((res) => setGuides(res.data));
@@ -95,7 +92,7 @@ const PackageDetails = () => {
         </div>
       </div>
 
-      <div className="mt-28">
+      <div className="mt-28 text-center">
         <h3 className="text-4xl text-center font-bold mb-16 relative">
           Meet Our Expert Tour Guides
           <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-80 h-1 bg-primary mt-3"></span>
@@ -105,6 +102,9 @@ const PackageDetails = () => {
             <TourGuideCard key={guide._id} guide={guide} />
           ))}
         </div>
+        <Link to="/allGuides">
+          <button className="btn mt-10 btn-primary">See All Guides</button>
+        </Link>
       </div>
 
       {/* Boking modal */}

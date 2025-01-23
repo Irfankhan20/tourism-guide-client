@@ -20,7 +20,7 @@ const ManageUsers = () => {
     }
     setSortConfig({ key, direction });
   };
-  console.log(handleSort);
+  // console.log(handleSort);
 
   const sortedallUsers = useMemo(() => {
     if (!sortConfig.key) return allUsers;

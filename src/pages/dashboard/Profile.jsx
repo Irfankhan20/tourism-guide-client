@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 const Profile = () => {
   const [aUser, , refetch] = useUserByEmail();
-  console.log(aUser);
+  // console.log(aUser);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editableName, setEditableName] = useState("");
   const [photo, setPhoto] = useState(null);

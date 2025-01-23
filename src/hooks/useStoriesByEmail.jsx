@@ -1,11 +1,12 @@
 import { useContext } from "react";
-import useAxiosPublic from "./useAxiosPublic";
+
 import { AuthContext } from "../provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "./useAxiosSecure";
 
 const useStoriesByEmail = () => {
   const { user, loading } = useContext(AuthContext);
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const {
     data: stories = [],
     isPending: storiesLoading,
@@ -14,7 +15,7 @@ const useStoriesByEmail = () => {
     queryKey: ["stories"],
     enabled: !loading,
     queryFn: async () => {
-      const res = await axiosPublic.get(`/stories/${user?.email}`);
+      const res = await axiosSecure.get(`/stories/${user?.email}`);
       return res.data;
     },
   });

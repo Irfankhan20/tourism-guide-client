@@ -11,7 +11,7 @@ const AddPackage = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [tourType, setTourType] = useState("");
+  const [type, setType] = useState("");
   const [images, setImages] = useState([]);
   const [imageLinks, setImageLinks] = useState([]);
   const [tourPlan, setTourPlan] = useState([
@@ -64,7 +64,7 @@ const AddPackage = () => {
         title,
         description,
         price: parseInt(price),
-        tourType,
+        type,
         photo: uploadedImageUrls,
         tour_plan: tourPlan,
       };
@@ -76,7 +76,7 @@ const AddPackage = () => {
         setTitle("");
         setDescription("");
         setPrice("");
-        setTourType("");
+        setType("");
         setImages([]);
         setImageLinks([]);
         setTourPlan([{ day: "", title: "", activities: "" }]);
@@ -144,8 +144,8 @@ const AddPackage = () => {
             <div className="col-span-2">
               <label className="block font-semibold  mb-1">Tour Type*</label>
               <select
-                value={tourType}
-                onChange={(e) => setTourType(e.target.value)}
+                value={type}
+                onChange={(e) => setType(e.target.value)}
                 className="border-gray-300 border rounded-lg outline-none px-3 w-full py-2 focus:border-primary transition-colors duration-300 "
                 required
               >

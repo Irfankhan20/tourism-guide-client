@@ -26,6 +26,9 @@ import TouristManageProfile from "../pages/dashboard/touristDashboard/TouristMan
 import Page404 from "../pages/errorPage/Page404";
 import UpdateStory from "../pages/dashboard/tourGuideDashboard/UpdateStory";
 import Payment from "../pages/dashboard/Payment";
+import AllTourGuides from "../pages/allTourGuides/AllTourGuides";
+import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/allGuides",
+        element: <AllTourGuides></AllTourGuides>,
       },
       {
         path: "/community",
@@ -69,7 +76,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <Dashboard></Dashboard>,
+        element: (
+          <PrivateRoute>
+            <Dashboard></Dashboard>
+          </PrivateRoute>
+        ),
         children: [
           {
             path: "/dashboard/payment/:id",
@@ -79,19 +90,35 @@ const router = createBrowserRouter([
 
           {
             path: "/dashboard/addPakcage",
-            element: <AddPackage></AddPackage>,
+            element: (
+              <AdminRoute>
+                <AddPackage></AddPackage>
+              </AdminRoute>
+            ),
           },
           {
             path: "/dashboard/manageCandidates",
-            element: <ManageCandidates></ManageCandidates>,
+            element: (
+              <AdminRoute>
+                <ManageCandidates></ManageCandidates>
+              </AdminRoute>
+            ),
           },
           {
             path: "/dashboard/adminManageProfile",
-            element: <ManageProfile></ManageProfile>,
+            element: (
+              <AdminRoute>
+                <ManageProfile></ManageProfile>
+              </AdminRoute>
+            ),
           },
           {
             path: "/dashboard/manageUsers",
-            element: <ManageUsers></ManageUsers>,
+            element: (
+              <AdminRoute>
+                <ManageUsers></ManageUsers>
+              </AdminRoute>
+            ),
           },
 
           //tourGuids

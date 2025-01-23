@@ -35,8 +35,8 @@ const TourismAndTravelGuide = () => {
               Meet Tour Guides
             </Tab>
           </TabList>
-          <TabPanel>
-            <div className="grid md:grid-cols-3 mt-8">
+          <TabPanel className={""}>
+            <div className="grid md:grid-cols-3 mt-8 ">
               {packages.map((tour) => (
                 <Package
                   key={tour._id}
@@ -45,14 +45,23 @@ const TourismAndTravelGuide = () => {
                 />
               ))}
             </div>
+            <Link to="/trips">
+              <button className="btn mt-10 btn-primary">
+                See All Packages
+              </button>
+            </Link>
           </TabPanel>
 
-          <TabPanel>
+          <TabPanel className={"text-center"}>
             <div className="grid md:grid-cols-6 gap-6 mt-8">
               {guides.map((guide) => (
                 <TourGuideCard key={guide._id} guide={guide} />
               ))}
             </div>
+
+            <Link to="/allGuides">
+              <button className="btn mt-10 btn-primary">See All Guides</button>
+            </Link>
           </TabPanel>
         </Tabs>
       </div>
