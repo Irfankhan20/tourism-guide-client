@@ -1,5 +1,8 @@
 import { useAnimation, motion } from "framer-motion";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import Button from "../../../sharedComponents/button/Button";
+import SectionTitleForMain from "../../../sharedComponents/sectionTitleForMain/SectionTitleForMain";
 
 const Overview = () => {
   const controls = useAnimation();
@@ -28,9 +31,10 @@ const Overview = () => {
         </div>
         <div className="lg:w-1/2 w-full">
           <div className="my-8 text-center lg:my-0">
-            <h2 className=" text-2xl font-bold md:text-[40px] md:mb-6 mb-4">
-              Overview
-            </h2>
+            <SectionTitleForMain
+              heading={"Overview"}
+              subHeading={"Explore Us For Travel With Us"}
+            ></SectionTitleForMain>
             <p className="text-gray-700 mb-4 md:">
               Our travel agency website is your ultimate companion for exploring
               the world effortlessly. We provide personalized tourist guides and
@@ -41,17 +45,9 @@ const Overview = () => {
               platform offers trusted services to make your journeys memorable
               and hassle-free.
             </p>
-            <button
-              className="px-8 text-lg font-bold animate__animated animate__fadeInLeft mt-3 md:mt-5 bg-[#F5A481] py-3 relative shadow-lg before:absolute 
-before:top-0 before:left-0 before:w-0 before:h-0 before:border-l-[2px] before:border-t-[2px] before:border-transparent 
-hover:before:w-full hover:before:h-full hover:before:border-[#07332F] hover:before:transition-all hover:before:duration-500 
-after:border-r-[2px] after:border-b-[2px] after:border-transparent hover:after:border-[#07332F] 
-after:absolute after:bottom-0 after:right-0 after:w-0 
-after:h-0 hover:after:w-full hover:after:h-full hover:after:transition-all hover:after:duration-500"
-            >
-              {" "}
-              Explore More
-            </button>
+            <Link to="/aboutus">
+              <Button btnText={"Explore Now"}></Button>
+            </Link>
           </div>
         </div>
       </div>

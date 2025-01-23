@@ -62,7 +62,7 @@ const Community = () => {
               <StorySlider images={images} />
 
               {/* Share Icon */}
-              <div className="absolute top-4 right-4 flex justify-center items-center p-2 text-white hover:text-black bg-primary hover:bg-white duration-300 rounded-full">
+              <div className="absolute top-4 right-4 flex justify-center items-center p-2 text-white border border-[#07332F] bg-[#07332F] duration-300 rounded-full hover:shadow-2xl hover:shadow-[#8ad8d1] ">
                 {user ? (
                   <FacebookShareButton
                     url={`https://EliteExplore.com/stories/${story._id}`}
@@ -99,7 +99,7 @@ const Community = () => {
               className={`px-3 py-1 rounded-md ${
                 currentPage === 1
                   ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                  : "bg-primary text-white hover:bg-primary-dark"
+                  : "bg-[#F5A481] text-[#07332F] border border-[#07332F] hover:bg-primary-dark"
               }`}
             >
               Prev
@@ -113,7 +113,7 @@ const Community = () => {
                 onClick={() => handlePageChange(page + 1)}
                 className={`px-3 py-1 rounded-md ${
                   currentPage === page + 1
-                    ? "bg-primary text-white"
+                    ? "bg-[#F5A481] text-[#07332F] border border-[#07332F] hover:bg-primary-dark"
                     : "bg-gray-200 hover:bg-gray-300"
                 }`}
               >
@@ -130,7 +130,7 @@ const Community = () => {
               className={`px-3 py-1 rounded-md ${
                 currentPage === totalPages
                   ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                  : "bg-primary text-white hover:bg-primary-dark"
+                  : "bg-[#F5A481] text-[#07332F] border border-[#07332F] hover:bg-primary-dark"
               }`}
             >
               Next

@@ -6,6 +6,7 @@ import useAxiosSecure from "./useAxiosSecure";
 
 const useUserByEmail = () => {
   const { user, loading } = useContext(AuthContext);
+  console.log(user);
   const axiosSecure = useAxiosSecure();
   const {
     data: aUser = [],

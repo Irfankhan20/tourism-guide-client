@@ -1,3 +1,4 @@
+import Accordion from "../../components/accordion/Accordion";
 import Banner from "../../components/homeComponents/banner/Banner";
 import Overview from "../../components/homeComponents/overview/Overview";
 import TouristStory from "../../components/homeComponents/touristStory/TouristStory";
@@ -10,6 +11,7 @@ const Home = () => {
       <Overview></Overview>
       <TurismAndTravelGuide></TurismAndTravelGuide>
       <TouristStory></TouristStory>
+      <Accordion></Accordion>
     </div>
   );
 };

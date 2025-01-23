@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./Banner.css";
 import "animate.css";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   const banners = [
@@ -67,17 +68,19 @@ const Banner = () => {
                 <p className="text-xl py-4 md:py-3 md:text-2xl lg:text-4xl font-medium animate__animated animate__fadeInLeft">
                   {banner.text}
                 </p>
-                <button
-                  className="px-8 animate__animated animate__fadeInLeft mt-3 md:mt-5 bg-[#F5A481] py-4 md:py-3 relative shadow-lg before:absolute 
+                <Link>
+                  <button
+                    className="px-8 animate__animated animate__fadeInLeft mt-3 md:mt-5 bg-[#F5A481] py-4 md:py-3 relative shadow-lg before:absolute 
 before:top-0 before:left-0 before:w-0 before:h-0 before:border-l-[4px] before:border-t-[4px] before:border-transparent 
 hover:before:w-full hover:before:h-full hover:before:border-white hover:before:transition-all hover:before:duration-500 
 after:border-r-[4px] after:border-b-[4px] after:border-transparent hover:after:border-white 
 after:absolute after:bottom-0 after:right-0 after:w-0 
 after:h-0 hover:after:w-full hover:after:h-full hover:after:transition-all hover:after:duration-500"
-                >
-                  {" "}
-                  Explore More
-                </button>
+                  >
+                    {" "}
+                    Explore More
+                  </button>
+                </Link>
               </div>
               <div className="md:w-1/2 pt-8 md:pt-0 grid grid-cols-3 gap-4 md:pr-8 animate__animated animate__fadeInRight">
                 {banner.images.map((image, imgIndex) => (

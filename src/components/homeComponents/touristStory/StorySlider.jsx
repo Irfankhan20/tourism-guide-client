@@ -28,13 +28,13 @@ const StorySlider = ({ images }) => {
       {/* Navigation Buttons */}
       <button
         onClick={prevImage}
-        className="absolute top-1/2 left-2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full"
+        className="absolute top-1/2 left-2 transform -translate-y-1/2 text-[#F5A481] bg-[#07332F] bg-opacity-70 p-2 rounded-full"
       >
         &#8249;
       </button>
       <button
         onClick={nextImage}
-        className="absolute top-1/2 right-2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full"
+        className="absolute top-1/2 right-2 transform -translate-y-1/2 text-[#F5A481] bg-[#07332F] bg-opacity-70  p-2 rounded-full"
       >
         &#8250;
       </button>
