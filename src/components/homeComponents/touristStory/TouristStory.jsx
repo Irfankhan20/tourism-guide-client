@@ -25,7 +25,7 @@ const TouristStory = () => {
   };
 
   return (
-    <div className="w-10/12 mx-auto md:mt-28 mt-10">
+    <div className="w-10/12 mx-auto md:mt-28 mt-20">
       {/* Title and Subtitle */}
       <div className="text-center">
         <SectionTitleForMain

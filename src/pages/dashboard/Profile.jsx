@@ -5,6 +5,8 @@ import useUserByEmail from "../../hooks/useUserByEmail";
 import { imageUpload } from "../../imageUpload/imageUpload";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { toast } from "react-toastify";
+import Button from "../../sharedComponents/button/Button";
+import SectionTitleForMain from "../../sharedComponents/sectionTitleForMain/SectionTitleForMain";
 
 const Profile = () => {
   const [aUser, , refetch] = useUserByEmail();
@@ -39,33 +41,41 @@ const Profile = () => {
 
   return (
     <div>
-      <div className="text-center">
-        <h2 className="font-semibold text-xl md:text-4xl mb-2">
-          Welcome, <span className="text-primary">{aUser?.name}!</span>
-        </h2>
-        <p className="text-gray-500 text-xl tracking-wider">
-          Below, you can view and update your profile information.
-        </p>
+      <div className="text-center animate__animated animate__bounceInDown">
+        <SectionTitleForMain
+          heading={`Welcome, ${aUser?.name}!`}
+          subHeading={
+            "Below, you can view and update your profile information."
+          }
+        ></SectionTitleForMain>
       </div>
 
       <div className="flex flex-col-reverse md:flex-row justify-center items-center gap-8 p-16 bg-primaryBg">
         <div className="flex flex-col justify-center">
-          <p className="text-gray-600 text-lg">Email: {aUser?.email}</p>
-          <p className="text-gray-600 text-lg mb-4">
+          <p className="text-gray-600 text-lg animate__animated animate__fadeInLeftBig">
+            Email: {aUser?.email}
+          </p>
+          <p className="text-gray-600 text-lg mb-4 animate__animated animate__fadeInLeftBig">
             Role: {aUser?.userType || "User"}
           </p>
 
-          <Link onClick={() => setIsModalOpen(true)}>
-            <button className="btn">Edit Profile</button>
+          <Link
+            className="animate__animated animate__fadeInUpBig"
+            onClick={() => setIsModalOpen(true)}
+          >
+            <Button btnText={"Edit Profile"}></Button>
           </Link>
 
           {aUser?.userType === "tourist" && (
-            <Link className="mt-4" to="/joinAsGuide">
-              <button className="btn">Apply For Tour Guide</button>
+            <Link
+              className="animate__animated animate__fadeInUpBig"
+              to="/dashboard/joinAsTourGuide"
+            >
+              <Button btnText={"Apply For Tour Guide"}></Button>
             </Link>
           )}
         </div>
-        <div className="md:w-1/2 flex justify-end">
+        <div className="md:w-1/2  animate__animated animate__bounceInRight flex justify-end">
           <figure className="border p-4 rounded-xl">
             <img
               className="w-56 h-56 object-cover rounded-xl"
@@ -105,7 +115,7 @@ const Profile = () => {
                 Close
               </button>
               <button
-                className="px-4 py-2 bg-primary text-white rounded-lg shadow-sm"
+                className="px-4 py-2 bg-[#F5A481] border border-[#07332F] text-[#07332F] hover:bg-[#fa966b] rounded-lg shadow-sm"
                 onClick={handleUpdate}
               >
                 Update

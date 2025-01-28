@@ -17,7 +17,7 @@ const TourismAndTravelGuide = () => {
   };
 
   return (
-    <section className=" md:mt-28 mt-10">
+    <section className=" md:mt-28 mt-20">
       <div className="w-11/12 mx-auto">
         <SectionTitleForMain
           heading={"Tourism and Travel Guide"}
@@ -39,7 +39,7 @@ const TourismAndTravelGuide = () => {
             </Tab>
           </TabList>
           <TabPanel className={"text-center"}>
-            <div className="grid md:grid-cols-3 mt-10 ">
+            <div className="grid md:grid-cols-3 gap-8 md:gap-0 mt-10 ">
               {packages.map((tour) => (
                 <Package
                   key={tour._id}

@@ -5,7 +5,7 @@ const Package = ({ tour }) => {
   const { _id, photo, type, title, price, description } = tour;
 
   return (
-    <div className="w-10/12 mx-auto">
+    <div className="">
       <div className="group border border-gray-300 w-full md:w-[90%] relative rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300">
         {/* badge */}
         <span className="bg-red-500 rounded-md px-3 py-1 z-10 text-[0.9rem] text-white absolute top-3 left-3">

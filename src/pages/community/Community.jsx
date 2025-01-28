@@ -7,6 +7,7 @@ import { FacebookShareButton } from "react-share";
 import useAllStories from "../../hooks/useAllStories";
 import { AuthContext } from "../../provider/AuthProvider";
 import StorySlider from "../../components/homeComponents/touristStory/StorySlider";
+import SectionTitleForMain from "../../sharedComponents/sectionTitleForMain/SectionTitleForMain";
 
 const Community = () => {
   const { user } = useContext(AuthContext);
@@ -38,16 +39,15 @@ const Community = () => {
     }
   };
   return (
-    <div className="w-10/12 mx-auto my-28">
+    <div className="w-10/12 mx-auto mt-28 md:mt-32 md:mb-24 mb-20">
       {/* Title and Subtitle */}
-      <div className="text-center">
-        <h2 className="text-5xl font-bold text-center mb-4">
-          Explore Tourist Stories
-        </h2>
-        <p className="text-xl text-center text-gray-600 mb-12">
-          Discover amazing experiences shared by travelers from around the
-          world.
-        </p>
+      <div>
+        <SectionTitleForMain
+          heading={"Explore Tourist Stories"}
+          subHeading={
+            "Discover amazing experiences shared by travelers from around the world"
+          }
+        ></SectionTitleForMain>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {currentData.map((story) => {

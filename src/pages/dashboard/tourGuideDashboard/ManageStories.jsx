@@ -11,6 +11,7 @@ import { FiEdit } from "react-icons/fi";
 import Swal from "sweetalert2";
 
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import SectionTitleForMain from "../../../sharedComponents/sectionTitleForMain/SectionTitleForMain";
 
 const ManageStories = () => {
   const { user } = useContext(AuthContext);
@@ -59,21 +60,20 @@ const ManageStories = () => {
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        height: "100vh",
+        minHeight: "65vh",
       }}
-      className="w-full mx-auto my-28"
+      className="w-full mx-auto lg:pb-32 lg:pt-10"
     >
       {/* Title and Subtitle */}
-      <div className="text-center">
-        <h2 className="text-5xl font-bold text-center mb-4">
-          Explore Tourist Stories
-        </h2>
-        <p className="text-xl text-center text-gray-600 mb-12">
-          Discover amazing experiences shared by travelers from around the
-          world.
-        </p>
+      <div className="text-center  animate__animated animate__bounceInDown">
+        <SectionTitleForMain
+          heading={"Explore Tourist Stories"}
+          subHeading={
+            "Discover amazing experiences shared by travelers from around the world."
+          }
+        ></SectionTitleForMain>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1  animate__animated animate__bounceInRight md:grid-cols-2 lg:grid-cols-4 gap-8 ">
         {stories?.map((story) => {
           const images = story?.photo || [];
 
@@ -87,7 +87,7 @@ const ManageStories = () => {
 
               <div className="flex">
                 {/* Share Icon */}
-                <div className="absolute top-4 right-4 flex justify-center items-center p-2 text-white hover:text-black bg-primary hover:bg-white duration-300 rounded-full">
+                <div className="absolute top-4 right-4 flex justify-center items-center p-2 text-white hover:text-xl bg-[#07332F]  duration-300 rounded-full">
                   {user ? (
                     <FacebookShareButton
                       url={`https://EliteExplore.com/stories/${story?._id}`}
@@ -103,7 +103,7 @@ const ManageStories = () => {
                   )}
                 </div>
                 {/* delete icon  */}
-                <div className="absolute top-4 right-[55px] flex justify-center items-center p-2 text-red-600 hover:text-black bg-primary hover:bg-white duration-300 rounded-full cursor-pointer">
+                <div className="absolute top-4 right-[55px] flex justify-center items-center p-2 text-white hover:text-xl bg-[#07332F]  duration-300 rounded-full cursor-pointer">
                   <button onClick={() => handleDelete(story?._id)}>
                     <MdDelete></MdDelete>
                   </button>
@@ -112,7 +112,7 @@ const ManageStories = () => {
                 <div>
                   <Link
                     to={`/dashboard/updateStory/${story?._id}`}
-                    className="absolute top-4 right-[95px] flex justify-center items-center p-2 text-red-600 hover:text-black bg-primary hover:bg-white duration-300 rounded-full cursor-pointer"
+                    className="absolute top-4 right-[95px] flex justify-center items-center p-2 text-white hover:text-xl bg-[#07332F]  duration-300 rounded-full cursor-pointer"
                   >
                     <button>
                       <FiEdit></FiEdit>

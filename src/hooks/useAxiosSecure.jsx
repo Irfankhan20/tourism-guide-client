@@ -4,7 +4,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
 const axiosSecure = axios.create({
-  baseURL: "https://tourism-website-server-livid.vercel.app",
+  baseURL: "http://localhost:5000",
 });
 
 const useAxiosSecure = () => {
@@ -14,23 +14,29 @@ const useAxiosSecure = () => {
   // Request interceptor
   axiosSecure.interceptors.request.use(
     (config) => {
-      const token = localStorage.getItem("access-token");
-      if (token) {
-        config.headers.authorization = `Bearer ${token}`;
-      }
+      config.headers.authorization = `Bearer ${localStorage.getItem(
+        "access-token"
+      )}`;
       return config;
     },
-    (error) => Promise.reject(error)
+    (error) => {
+      return Promise.reject(error);
+    }
   );
 
   // Response interceptor
   axiosSecure.interceptors.response.use(
-    (response) => response,
+    (response) => {
+      return response;
+    },
     async (error) => {
-      if (error.response && error.response.status === 403) {
+      const status = error.response?.status;
+
+      if (status === 401 || status === 403) {
         await logOut();
         navigate("/login");
       }
+
       return Promise.reject(error);
     }
   );

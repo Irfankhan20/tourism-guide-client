@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Package from "../../components/homeComponents/turismAndTravelGuide/Package";
 import useAllPackages from "../../hooks/useAllPackages";
+import SectionTitleForMain from "../../sharedComponents/sectionTitleForMain/SectionTitleForMain";
 
 const Trips = () => {
   const [allPackages] = useAllPackages();
@@ -22,10 +23,16 @@ const Trips = () => {
   };
 
   return (
-    <div className="mb-24">
-      <h1 className="text-3xl lg:mt-28 font-bold text-center mb-10">
-        All Packages
-      </h1>
+    <div className="w-10/12 mx-auto mt-28 md:mt-32 md:mb-24 mb-20">
+      {/* Title and Subtitle */}
+      <div>
+        <SectionTitleForMain
+          heading={"Explore Our Tour Packages"}
+          subHeading={
+            "Discover amazing experiences shared by travelers from around the world"
+          }
+        ></SectionTitleForMain>
+      </div>
 
       {/* Packages Grid */}
       <div className="grid md:grid-cols-3 gap-8">
@@ -45,7 +52,7 @@ const Trips = () => {
               className={`px-3 py-1 rounded-md ${
                 currentPage === 1
                   ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                  : "bg-primary text-white hover:bg-primary-dark"
+                  : "bg-[#F5A481] text-[#07332F] border border-[#07332F] hover:bg-primary-dark"
               }`}
             >
               Prev
@@ -59,7 +66,7 @@ const Trips = () => {
                 onClick={() => handlePageChange(page + 1)}
                 className={`px-3 py-1 rounded-md ${
                   currentPage === page + 1
-                    ? "bg-primary text-white"
+                    ? "bg-[#F5A481] text-[#07332F] border border-[#07332F] hover:bg-primary-dark"
                     : "bg-gray-200 hover:bg-gray-300"
                 }`}
               >
@@ -76,7 +83,7 @@ const Trips = () => {
               className={`px-3 py-1 rounded-md ${
                 currentPage === totalPages
                   ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                  : "bg-primary text-white hover:bg-primary-dark"
+                  : "bg-[#F5A481] text-[#07332F] border border-[#07332F] hover:bg-primary-dark"
               }`}
             >
               Next

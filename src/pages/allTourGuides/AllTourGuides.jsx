@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SectionTitleForMain from "../../sharedComponents/sectionTitleForMain/SectionTitleForMain";
 
 const AllTourGuides = () => {
   // fetch tour guides data
@@ -12,8 +13,17 @@ const AllTourGuides = () => {
     axiosPublic.get("allGuides").then((res) => setGuides(res.data));
   }, [axiosPublic]);
   return (
-    <div>
-      <div className="grid md:grid-cols-4 md:gap-16 px-16 mt-28 mb-24">
+    <div className="w-10/12 mx-auto md:mt-32 mt-28 md:mb-24 mb-20">
+      {/* Title and Subtitle */}
+      <div className="">
+        <SectionTitleForMain
+          heading={"Explore All Tour Guides"}
+          subHeading={
+            "Discover amazing experiences by travel with us from around the world"
+          }
+        ></SectionTitleForMain>
+      </div>
+      <div className="grid md:grid-cols-4 gap-7 md:gap-16">
         {guides.map((guide) => (
           <div
             key={guide._id}

@@ -47,7 +47,7 @@ const Accordion = () => {
     setIsAccordingOpen((prevIndex) => (prevIndex === index ? null : index));
 
   return (
-    <div className="w-10/12 mx-auto md:mt-28 md:mb-28 mt-10">
+    <div className="w-10/12 mx-auto md:mt-28 md:mb-28 mt-20 mb-16">
       <SectionTitleForMain
         heading={"Frequently Asked Question"}
         subHeading={"What do you want to know about us?"}

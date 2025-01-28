@@ -8,8 +8,8 @@ const TouristManageProfile = () => {
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        height: "100vh",
       }}
+      className="lg:pb-20 lg:pt-10"
     >
       <Profile></Profile>
     </div>

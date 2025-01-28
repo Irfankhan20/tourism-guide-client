@@ -31,10 +31,12 @@ const Overview = () => {
         </div>
         <div className="lg:w-1/2 w-full">
           <div className="my-8 text-center lg:my-0">
-            <SectionTitleForMain
-              heading={"Overview"}
-              subHeading={"Explore Us For Travel With Us"}
-            ></SectionTitleForMain>
+            <div className="mt-5 md:mt-0">
+              <SectionTitleForMain
+                heading={"Overview"}
+                subHeading={"Explore Us For Travel With Us"}
+              ></SectionTitleForMain>
+            </div>
             <p className="text-gray-700 mb-4 md:">
               Our travel agency website is your ultimate companion for exploring
               the world effortlessly. We provide personalized tourist guides and

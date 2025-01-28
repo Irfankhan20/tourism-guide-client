@@ -10,7 +10,6 @@ const ManageProfile = () => {
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        height: "100vh",
       }}
     >
       <div className="w-full overflow-x-auto max-w-7xl mx-auto pt-16 p-4">
@@ -128,7 +127,7 @@ const ManageProfile = () => {
         </div>
 
         {/* profile  */}
-        <div className="pt-36">
+        <div className="lg:pt-16">
           <Profile></Profile>
         </div>
       </div>

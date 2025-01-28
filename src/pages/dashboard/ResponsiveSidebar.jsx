@@ -1,14 +1,16 @@
 import { useState } from "react";
 import {
   MdManageAccounts,
+  MdManageHistory,
   MdOutlineAddAPhoto,
+  MdOutlineManageAccounts,
   MdOutlineTour,
 } from "react-icons/md";
-import { IoNotificationsOutline, IoSettingsOutline } from "react-icons/io5";
+import { IoNotificationsOutline } from "react-icons/io5";
 import { FiBarChart, FiPieChart } from "react-icons/fi";
 // import { RiAccountCircleLine } from "react-icons/ri";
-import { GoHome, GoSidebarCollapse } from "react-icons/go";
-import { CiCalendar } from "react-icons/ci";
+import { GoHistory, GoSidebarCollapse } from "react-icons/go";
+import { CiBookmarkPlus, CiCalendar } from "react-icons/ci";
 // import { BsThreeDots } from "react-icons/bs";
 
 import useAdmin from "../../hooks/useAdmin";
@@ -405,7 +407,7 @@ const ResponsiveSidebar = () => {
                   to="/dashboard/joinAsTourGuide"
                   className="flex items-center gap-[8px]"
                 >
-                  <GoHome className="text-[1.3rem] text-gray-500" />
+                  <MdOutlineTour className="text-[1.3rem] text-gray-500" />
                   <p
                     className={`${
                       isCollapse ? "inline" : "hidden"
@@ -419,10 +421,10 @@ const ResponsiveSidebar = () => {
                 <div
                   className={`${
                     isCollapse ? "hidden" : "inline"
-                  } absolute top-0 right-[-80px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                  } absolute top-0 right-[-160px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
                 >
                   <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
-                    Home
+                    Join As TourGuide
                   </p>
                 </div>
               </li>
@@ -436,7 +438,7 @@ const ResponsiveSidebar = () => {
                   to="/dashboard/myBookings"
                   className="flex items-center gap-[8px]"
                 >
-                  <GoHome className="text-[1.3rem] text-gray-500" />
+                  <CiBookmarkPlus className="text-[1.3rem] text-gray-500" />
                   <p
                     className={`${
                       isCollapse ? "inline" : "hidden"
@@ -450,10 +452,10 @@ const ResponsiveSidebar = () => {
                 <div
                   className={`${
                     isCollapse ? "hidden" : "inline"
-                  } absolute top-0 right-[-80px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                  } absolute top-0 right-[-125px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
                 >
                   <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
-                    Home
+                    My Bookings
                   </p>
                 </div>
               </li>
@@ -467,7 +469,7 @@ const ResponsiveSidebar = () => {
                   to="/dashboard/touristAddStories"
                   className="flex items-center gap-[8px]"
                 >
-                  <GoHome className="text-[1.3rem] text-gray-500" />
+                  <GoHistory className="text-[1.3rem] text-gray-500" />
                   <p
                     className={`${
                       isCollapse ? "inline" : "hidden"
@@ -481,10 +483,10 @@ const ResponsiveSidebar = () => {
                 <div
                   className={`${
                     isCollapse ? "hidden" : "inline"
-                  } absolute top-0 right-[-80px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                  } absolute top-0 right-[-117px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
                 >
                   <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
-                    Home
+                    Add Stories
                   </p>
                 </div>
               </li>
@@ -498,7 +500,7 @@ const ResponsiveSidebar = () => {
                   to="/dashboard/manageStories"
                   className="flex items-center gap-[8px]"
                 >
-                  <GoHome className="text-[1.3rem] text-gray-500" />
+                  <MdManageHistory className="text-[1.3rem] text-gray-500" />
                   <p
                     className={`${
                       isCollapse ? "inline" : "hidden"
@@ -512,10 +514,10 @@ const ResponsiveSidebar = () => {
                 <div
                   className={`${
                     isCollapse ? "hidden" : "inline"
-                  } absolute top-0 right-[-80px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                  } absolute top-0 right-[-145px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
                 >
                   <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
-                    Home
+                    Manage Stories
                   </p>
                 </div>
               </li>
@@ -530,7 +532,7 @@ const ResponsiveSidebar = () => {
                   to="/dashboard/touristManageProfile"
                   className="flex items-center gap-[8px]"
                 >
-                  <GoHome className="text-[1.3rem] text-gray-500" />
+                  <MdOutlineManageAccounts className="text-[1.3rem] text-gray-500" />
                   <p
                     className={`${
                       isCollapse ? "inline" : "hidden"
@@ -544,10 +546,10 @@ const ResponsiveSidebar = () => {
                 <div
                   className={`${
                     isCollapse ? "hidden" : "inline"
-                  } absolute top-0 right-[-80px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                  } absolute top-0 right-[-140px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
                 >
                   <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
-                    Home
+                    Manage Profile
                   </p>
                 </div>
               </li>
@@ -588,34 +590,6 @@ const ResponsiveSidebar = () => {
             >
               <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
                 Activity
-              </p>
-            </div>
-          </div>
-          {/* Setting */}
-          <div
-            className={`${
-              isCollapse ? "justify-between" : "justify-center"
-            } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
-          >
-            <div className="flex items-center gap-[8px]">
-              <IoSettingsOutline className="text-[1.3rem] text-gray-500" />
-              <p
-                className={`${
-                  isCollapse ? "inline" : "hidden"
-                } text-[1rem] font-[400] text-gray-500`}
-              >
-                Setting
-              </p>
-            </div>
-
-            {/* tooltip */}
-            <div
-              className={`${
-                isCollapse ? "hidden" : "inline"
-              } absolute top-0 right-[-96px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
-            >
-              <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
-                Setting
               </p>
             </div>
           </div>

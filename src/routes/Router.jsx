@@ -7,7 +7,7 @@ import Login from "../pages/login/Login";
 import Community from "../pages/community/Community";
 import AboutUs from "../pages/aboutUs/AboutUs";
 import Trips from "../pages/trips/Trips";
-import Gallery from "../pages/gallery/Gallery";
+
 import Dashboard from "../pages/dashboard/Dashboard";
 import AddPackage from "../pages/dashboard/adminDashboard/AddPackage";
 import ManageCandidates from "../pages/dashboard/adminDashboard/ManageCandidates";
@@ -29,6 +29,8 @@ import Payment from "../pages/dashboard/Payment";
 import AllTourGuides from "../pages/allTourGuides/AllTourGuides";
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
+import PaymentSuccess from "../pages/dashboard/PaymentSuccess";
+import PaymentFailed from "../pages/dashboard/PaymentFailed";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +46,7 @@ const router = createBrowserRouter([
         path: "/allGuides",
         element: <AllTourGuides></AllTourGuides>,
       },
+
       {
         path: "/community",
         element: <Community></Community>,
@@ -56,10 +59,7 @@ const router = createBrowserRouter([
         path: "/trips",
         element: <Trips></Trips>,
       },
-      {
-        path: "/gallery",
-        element: <Gallery></Gallery>,
-      },
+
       {
         path: "/signup",
         element: <SignUp></SignUp>,
@@ -72,9 +72,7 @@ const router = createBrowserRouter([
         path: "/packageDetails/:id",
         element: <PackageDetails></PackageDetails>,
         loader: ({ params }) =>
-          fetch(
-            `https://tourism-website-server-livid.vercel.app/package/${params.id}`
-          ),
+          fetch(`http://localhost:5000/package/${params.id}`),
       },
       {
         path: "/dashboard",
@@ -87,6 +85,14 @@ const router = createBrowserRouter([
           {
             path: "/dashboard/payment/:id",
             element: <Payment></Payment>,
+          },
+          {
+            path: "/dashboard/paymentSuccess",
+            element: <PaymentSuccess></PaymentSuccess>,
+          },
+          {
+            path: "/dashboard/paymentFailed",
+            element: <PaymentFailed></PaymentFailed>,
           },
           //admin routes
 
@@ -144,8 +150,6 @@ const router = createBrowserRouter([
           {
             path: "/dashboard/updateStory/:id",
             element: <UpdateStory></UpdateStory>,
-            // loader: ({ params }) =>
-            //   fetch(`https://tourism-website-server-livid.vercel.app/story/${params.id}`),
           },
 
           // tourist

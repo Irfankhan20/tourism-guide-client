@@ -130,22 +130,6 @@ const Navbar = () => {
           Trips
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          to={"/gallery"}
-          className={({ isActive }) =>
-            isActive
-              ? `font-black px-4 py-2 rounded no-underline ${
-                  scrolled ? "text-black" : pathname === "/" && "text-white"
-                }`
-              : `px-4 py-2 rounded hover:text-[#F5A481] no-underline ${
-                  scrolled ? "text-black" : pathname === "/" && "text-white"
-                }`
-          }
-        >
-          Gallery
-        </NavLink>
-      </li>
     </>
   );
 
@@ -176,7 +160,7 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-end">
-        <ul className=" hidden lg:flex gap-5 items-center menu menu-horizontal px-1">
+        <ul className=" hidden lg:flex gap-5 md:gap-4 items-center menu menu-horizontal px-1">
           {navlinks}
 
           {user ? (

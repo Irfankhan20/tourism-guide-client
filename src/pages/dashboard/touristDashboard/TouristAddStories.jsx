@@ -3,7 +3,9 @@ import AddStories from "../tourGuideDashboard/AddStories";
 const TouristAddStories = () => {
   return (
     <div>
-      <AddStories></AddStories>
+      <div className="">
+        <AddStories></AddStories>
+      </div>
     </div>
   );
 };
