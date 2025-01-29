@@ -31,6 +31,7 @@ import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
 import PaymentSuccess from "../pages/dashboard/PaymentSuccess";
 import PaymentFailed from "../pages/dashboard/PaymentFailed";
+import PaymentHistory from "../pages/dashboard/adminDashboard/PaymentHistory";
 
 const router = createBrowserRouter([
   {
@@ -101,6 +102,14 @@ const router = createBrowserRouter([
             element: (
               <AdminRoute>
                 <AddPackage></AddPackage>
+              </AdminRoute>
+            ),
+          },
+          {
+            path: "/dashboard/paymentHistory",
+            element: (
+              <AdminRoute>
+                <PaymentHistory></PaymentHistory>
               </AdminRoute>
             ),
           },

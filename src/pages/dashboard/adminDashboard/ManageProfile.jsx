@@ -1,6 +1,10 @@
 import Profile from "../Profile";
 import profileBg from "../../../assets/profileBg.jpg";
 import useAdminStats from "../../../hooks/useAdminStats";
+import { RiSecurePaymentLine } from "react-icons/ri";
+import { MdManageHistory, MdOutlineTour } from "react-icons/md";
+import { LuPackageSearch } from "react-icons/lu";
+import { FaUsersGear } from "react-icons/fa6";
 const ManageProfile = () => {
   const [adminStats] = useAdminStats();
   return (
@@ -17,20 +21,8 @@ const ManageProfile = () => {
         <div className="stats shadow">
           {/* total payment  */}
           <div className="stat">
-            <div className="stat-figure text-secondary">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                className="inline-block h-8 w-8 stroke-current"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                ></path>
-              </svg>
+            <div className="stat-figure text-secondary text-3xl">
+              <RiSecurePaymentLine></RiSecurePaymentLine>
             </div>
             <div className="stat-title">Total Payment</div>
             <div className="stat-value">{adminStats?.totalPayment}</div>
@@ -39,20 +31,8 @@ const ManageProfile = () => {
 
           {/* total guide  */}
           <div className="stat">
-            <div className="stat-figure text-secondary">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                className="inline-block h-8 w-8 stroke-current"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
-                ></path>
-              </svg>
+            <div className="stat-figure text-secondary text-3xl">
+              <MdOutlineTour />
             </div>
             <div className="stat-title">Total Tour Guides</div>
             <div className="stat-value">{adminStats?.totalTourGuides}</div>
@@ -61,20 +41,8 @@ const ManageProfile = () => {
 
           {/* total package  */}
           <div className="stat">
-            <div className="stat-figure text-secondary">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                className="inline-block h-8 w-8 stroke-current"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
-                ></path>
-              </svg>
+            <div className="stat-figure text-secondary text-3xl">
+              <LuPackageSearch />
             </div>
             <div className="stat-title">Total Packages</div>
             <div className="stat-value">{adminStats?.totalPackages}</div>
@@ -83,20 +51,8 @@ const ManageProfile = () => {
 
           {/* total clients  */}
           <div className="stat">
-            <div className="stat-figure text-secondary">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                className="inline-block h-8 w-8 stroke-current"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
-                ></path>
-              </svg>
+            <div className="stat-figure text-secondary text-3xl">
+              <FaUsersGear />
             </div>
             <div className="stat-title">Total Clients</div>
             <div className="stat-value">{adminStats?.totalTourists}</div>
@@ -105,20 +61,8 @@ const ManageProfile = () => {
 
           {/* total stories  */}
           <div className="stat">
-            <div className="stat-figure text-secondary">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                className="inline-block h-8 w-8 stroke-current"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
-                ></path>
-              </svg>
+            <div className="stat-figure text-secondary text-3xl">
+              <MdManageHistory />
             </div>
             <div className="stat-title">Total Stories</div>
             <div className="stat-value">{adminStats?.totalStories}</div>

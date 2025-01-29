@@ -1,6 +1,5 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
-import SectionTitle from "../../../sharedComponents/sectionTitle/SectionTitle";
 import useAllApplications from "../../../hooks/useAllApplications";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -14,8 +13,8 @@ const ManageCandidates = () => {
   const axiosSecure = useAxiosSecure();
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
-  const [expandedRow, setExpandedRow] = useState(null); // Store the expanded row id for modal
-  const [isModalOpen, setIsModalOpen] = useState(false); // Modal open state
+  const [expandedRow, setExpandedRow] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const tableRef = useRef(null);
 
   // Sort allApplications
@@ -26,7 +25,6 @@ const ManageCandidates = () => {
     }
     setSortConfig({ key, direction });
   };
-  // console.log(handleSort);
 
   const sortedallApplications = useMemo(() => {
     if (!sortConfig.key) return allApplications;
@@ -141,11 +139,14 @@ const ManageCandidates = () => {
       }}
     >
       <div className="w-full overflow-x-auto max-w-7xl mx-auto p-4">
-        <SectionTitleForMain
-          heading={"Manage Candidates"}
-          subHeading={"Manage candidates effectively for tour guide roles."}
-        ></SectionTitleForMain>
-        <div className="mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="animate__animated animate__bounceInDown">
+          <SectionTitleForMain
+            heading={"Manage Candidates"}
+            subHeading={"Manage candidates effectively for tour guide roles."}
+          ></SectionTitleForMain>
+        </div>
+        {/* data per page  */}
+        <div className="mb-4 flex animate__animated animate__bounceInRight flex-col sm:flex-row sm:items-center justify-between gap-4">
           {/* Page Size Selector */}
           <select
             value={pageSize}
@@ -161,11 +162,11 @@ const ManageCandidates = () => {
         </div>
 
         <div
-          className="overflow-x-auto rounded-md border border-gray-200"
+          className="overflow-x-auto animate__animated animate__bounceInRight bg-white rounded-md border border-gray-200"
           ref={tableRef}
         >
           <table className="w-full text-sm">
-            <thead className="bg-gray-700 ">
+            <thead className="bg-[#07332F] ">
               <tr>
                 <th className="font-semibold text-[17px] p-3 text-left text-[#F5A481]">
                   Users Photo

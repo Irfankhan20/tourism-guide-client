@@ -3,28 +3,27 @@ import {
   MdManageAccounts,
   MdManageHistory,
   MdOutlineAddAPhoto,
+  MdOutlineAddCard,
   MdOutlineManageAccounts,
   MdOutlineTour,
 } from "react-icons/md";
+import { RiSecurePaymentLine } from "react-icons/ri";
+import { VscGitStashApply } from "react-icons/vsc";
 import { IoNotificationsOutline } from "react-icons/io5";
-import { FiBarChart, FiPieChart } from "react-icons/fi";
-// import { RiAccountCircleLine } from "react-icons/ri";
+// import { FiPieChart } from "react-icons/fi";
 import { GoHistory, GoSidebarCollapse } from "react-icons/go";
-import { CiBookmarkPlus, CiCalendar } from "react-icons/ci";
-// import { BsThreeDots } from "react-icons/bs";
-
+import { CiBookmarkPlus } from "react-icons/ci";
 import useAdmin from "../../hooks/useAdmin";
 import siteLogo from "../../assets/nav-logo.png";
 import { Link } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
 import useUserByEmail from "../../hooks/useUserByEmail";
+import { FaUsers } from "react-icons/fa6";
 
 const ResponsiveSidebar = () => {
-  // const { user } = useContext(AuthContext);
   const [isCollapse, setIsCollapse] = useState(true);
   const [aUser] = useUserByEmail();
   const [isAdmin, isTourGuide] = useAdmin();
-  // console.log(isAdmin, isTourGuide);
 
   return (
     <aside
@@ -150,7 +149,7 @@ const ResponsiveSidebar = () => {
                   to="/dashboard/addPakcage"
                   className="flex items-center gap-[8px]"
                 >
-                  <CiCalendar className="text-[1.3rem] text-gray-500" />
+                  <MdOutlineAddCard className="text-[1.3rem] text-gray-500" />
                   <p
                     className={`${
                       isCollapse ? "inline" : "hidden"
@@ -164,10 +163,10 @@ const ResponsiveSidebar = () => {
                 <div
                   className={`${
                     isCollapse ? "hidden" : "inline"
-                  } absolute top-0 right-[-99px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                  } absolute top-0 right-[-126px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
                 >
                   <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
-                    Calendar
+                    Add Package
                   </p>
                 </div>
               </li>
@@ -182,7 +181,7 @@ const ResponsiveSidebar = () => {
                   to="/dashboard/adminManageProfile"
                   className="flex items-center gap-[8px]"
                 >
-                  <FiBarChart className="text-[1.3rem] text-gray-500" />
+                  <CgProfile className="text-[1.3rem] text-gray-500" />
                   <p
                     className={`${
                       isCollapse ? "inline" : "hidden"
@@ -196,10 +195,10 @@ const ResponsiveSidebar = () => {
                 <div
                   className={`${
                     isCollapse ? "hidden" : "inline"
-                  } absolute top-0 right-[-100px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                  } absolute top-0 right-[-136px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
                 >
                   <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
-                    Progress
+                    Manage Profile
                   </p>
                 </div>
               </li>
@@ -213,7 +212,7 @@ const ResponsiveSidebar = () => {
                   to="/dashboard/manageCandidates"
                   className="flex items-center gap-[8px]"
                 >
-                  <FiPieChart className="text-[1.3rem] text-gray-500" />
+                  <VscGitStashApply className="text-[1.3rem] text-gray-500" />
                   <p
                     className={`${
                       isCollapse ? "inline" : "hidden"
@@ -227,10 +226,10 @@ const ResponsiveSidebar = () => {
                 <div
                   className={`${
                     isCollapse ? "hidden" : "inline"
-                  } absolute top-0 right-[-76px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                  } absolute top-0 right-[-168px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
                 >
                   <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
-                    Goals
+                    Manage Candidates
                   </p>
                 </div>
               </li>
@@ -244,7 +243,7 @@ const ResponsiveSidebar = () => {
                   to="/dashboard/manageUsers"
                   className="flex items-center gap-[8px]"
                 >
-                  <FiPieChart className="text-[1.3rem] text-gray-500" />
+                  <FaUsers className="text-[1.3rem] text-gray-500" />
                   <p
                     className={`${
                       isCollapse ? "inline" : "hidden"
@@ -258,10 +257,41 @@ const ResponsiveSidebar = () => {
                 <div
                   className={`${
                     isCollapse ? "hidden" : "inline"
-                  } absolute top-0 right-[-76px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                  } absolute top-0 right-[-135px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
                 >
                   <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
-                    Goals
+                    Manage Users
+                  </p>
+                </div>
+              </li>
+              {/* payment history */}
+              <li
+                className={`${
+                  isCollapse ? "justify-between" : "justify-center"
+                } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
+              >
+                <Link
+                  to="/dashboard/paymentHistory"
+                  className="flex items-center gap-[8px]"
+                >
+                  <RiSecurePaymentLine className="text-[1.3rem] text-gray-500" />
+                  <p
+                    className={`${
+                      isCollapse ? "inline" : "hidden"
+                    } text-[1rem] font-[400] text-gray-500`}
+                  >
+                    Payment History
+                  </p>
+                </Link>
+
+                {/* tooltip */}
+                <div
+                  className={`${
+                    isCollapse ? "hidden" : "inline"
+                  } absolute top-0 right-[-145px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                >
+                  <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
+                    Payment History
                   </p>
                 </div>
               </li>
@@ -559,42 +589,44 @@ const ResponsiveSidebar = () => {
       </div>
 
       {/* setting section  ============================================== */}
-      <div
-        className={`${
-          isCollapse ? "px-[20px]" : "px-[10px]"
-        } mt-6 border-t border-gray-200  transition-all duration-300 ease-in-out`}
-      >
-        <div className="mt-3 flex flex-col gap-[5px]">
-          {/* Notification */}
-          <div
-            className={`${
-              isCollapse ? "justify-between" : "justify-center"
-            } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
-          >
-            <div className="flex items-center gap-[8px]">
-              <IoNotificationsOutline className="text-[1.3rem] text-gray-500" />
-              <p
-                className={`${
-                  isCollapse ? "inline" : "hidden"
-                } text-[1rem] font-[400] text-gray-500`}
-              >
-                Notification
-              </p>
-            </div>
-
-            {/* tooltip */}
+      {!isAdmin && !isTourGuide && (
+        <div
+          className={`${
+            isCollapse ? "px-[20px]" : "px-[10px]"
+          } mt-6 border-t border-gray-200  transition-all duration-300 ease-in-out`}
+        >
+          <div className="mt-3 flex flex-col gap-[5px]">
+            {/* Notification */}
             <div
               className={`${
-                isCollapse ? "hidden" : "inline"
-              } absolute top-0 right-[-98px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                isCollapse ? "justify-between" : "justify-center"
+              } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
             >
-              <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
-                Activity
-              </p>
+              <div className="flex items-center gap-[8px]">
+                <IoNotificationsOutline className="text-[1.3rem] text-gray-500" />
+                <p
+                  className={`${
+                    isCollapse ? "inline" : "hidden"
+                  } text-[1rem] font-[400] text-gray-500`}
+                >
+                  Notification
+                </p>
+              </div>
+
+              {/* tooltip */}
+              <div
+                className={`${
+                  isCollapse ? "hidden" : "inline"
+                } absolute top-0 right-[-98px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+              >
+                <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
+                  Activity
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </aside>
   );
 };

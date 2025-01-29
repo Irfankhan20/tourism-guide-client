@@ -82,7 +82,7 @@ const ManageUsers = () => {
           ></SectionTitleForMain>
         </div>
 
-        <div className="mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="mb-4 flex flex-col animate__animated animate__bounceInRight sm:flex-row sm:items-center justify-between gap-4">
           {/* Search Input */}
           <input
             placeholder="Search by name or email..."
@@ -118,22 +118,22 @@ const ManageUsers = () => {
         </div>
 
         <div
-          className="overflow-x-auto bg-white rounded-md border border-gray-200"
+          className="overflow-x-auto animate__animated animate__bounceInRight bg-white rounded-md border border-gray-200"
           ref={tableRef}
         >
           <table className="w-full text-sm">
-            <thead className="bg-gray-100">
+            <thead className="bg-[#07332F] ">
               <tr>
-                <th className="p-3 text-left font-medium text-gray-700">
+                <th className="p-3 text-left font-semibold text-[17px] text-[#F5A481]">
                   Users Photo
                 </th>
-                <th className="p-3 text-left font-medium text-gray-700">
+                <th className="p-3 text-left font-semibold text-[17px] text-[#F5A481]">
                   Users Name
                 </th>
-                <th className="p-3 text-left font-medium text-gray-700">
+                <th className="p-3 text-left font-semibold text-[17px] text-[#F5A481]">
                   Users Email
                 </th>
-                <th className="p-3 text-left font-medium text-gray-700">
+                <th className="p-3 text-left font-semibold text-[17px] text-[#F5A481]">
                   Users Role
                 </th>
               </tr>

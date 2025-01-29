@@ -25,7 +25,7 @@ const Trips = () => {
   return (
     <div className="w-10/12 mx-auto mt-28 md:mt-32 md:mb-24 mb-20">
       {/* Title and Subtitle */}
-      <div>
+      <div className="animate__animated animate__bounceInDown">
         <SectionTitleForMain
           heading={"Explore Our Tour Packages"}
           subHeading={
@@ -35,7 +35,7 @@ const Trips = () => {
       </div>
 
       {/* Packages Grid */}
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-3 gap-8 animate__animated animate__bounceInRight">
         {currentData.map((tour) => (
           <Package key={tour._id} tour={tour} />
         ))}

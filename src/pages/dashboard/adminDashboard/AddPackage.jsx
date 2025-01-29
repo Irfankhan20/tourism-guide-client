@@ -101,12 +101,14 @@ const AddPackage = () => {
       }}
       className="lg:pb-20 lg:pt-10"
     >
-      <div className="">
-        <SectionTitleForMain
-          heading={"Add A New Package"}
-          subHeading={"New Surpise for all users"}
-        ></SectionTitleForMain>
-        <div className="max-w-2xl bg-white mx-auto lg:px-7 lg:py-8 border rounded-xl shadow-sm">
+      <div>
+        <div className="animate__animated animate__bounceInDown">
+          <SectionTitleForMain
+            heading={"Add A New Package"}
+            subHeading={"New Surpise for all users"}
+          ></SectionTitleForMain>
+        </div>
+        <div className="max-w-2xl bg-white mx-auto lg:px-7 lg:py-8 border rounded-xl shadow-sm animate__animated animate__bounceInRight">
           <form onSubmit={handleSubmit}>
             {/* Grid Layout */}
             <div className="grid grid-cols-1 gap-2 md:grid-cols-2">

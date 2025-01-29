@@ -12,6 +12,7 @@ const Payment = () => {
   const { id } = useParams();
 
   const [bookingData, setbookingData] = useState({});
+  console.log(bookingData);
   useEffect(() => {
     axiosSecure.get(`/booking/${id}`).then((res) => {
       setbookingData(res.data);
@@ -89,12 +90,14 @@ const Payment = () => {
     const name = bookingData?.user?.name;
     const packageName = bookingData?.packageName;
     const bookId = bookingData?._id;
+    const tourDate = bookingData?.tourDate;
 
     const totalAmount = parseInt(totalCost);
     const payAmount = parseInt(amountToPay);
 
     const paymentInfo = {
       bookId,
+      tourDate,
       email,
       name,
       phone,

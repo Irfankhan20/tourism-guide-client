@@ -15,7 +15,7 @@ const AllTourGuides = () => {
   return (
     <div className="w-10/12 mx-auto md:mt-32 mt-28 md:mb-24 mb-20">
       {/* Title and Subtitle */}
-      <div className="">
+      <div className="animate__animated animate__bounceInDown">
         <SectionTitleForMain
           heading={"Explore All Tour Guides"}
           subHeading={
@@ -23,7 +23,7 @@ const AllTourGuides = () => {
           }
         ></SectionTitleForMain>
       </div>
-      <div className="grid md:grid-cols-4 gap-7 md:gap-16">
+      <div className="grid md:grid-cols-4 gap-7 md:gap-16 animate__animated animate__bounceInRight">
         {guides.map((guide) => (
           <div
             key={guide._id}

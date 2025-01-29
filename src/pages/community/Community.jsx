@@ -41,7 +41,7 @@ const Community = () => {
   return (
     <div className="w-10/12 mx-auto mt-28 md:mt-32 md:mb-24 mb-20">
       {/* Title and Subtitle */}
-      <div>
+      <div className="animate__animated animate__bounceInDown">
         <SectionTitleForMain
           heading={"Explore Tourist Stories"}
           subHeading={
@@ -49,7 +49,7 @@ const Community = () => {
           }
         ></SectionTitleForMain>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid animate__animated animate__bounceInRight grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {currentData.map((story) => {
           const images = story.photo || [];
 
