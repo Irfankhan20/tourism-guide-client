@@ -1,16 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import profileBg from "../../assets/profileBg.jpg";
+import profileBg from "../../assets/profileBackImg.png";
 import useUserByEmail from "../../hooks/useUserByEmail";
 import { imageUpload } from "../../imageUpload/imageUpload";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { toast } from "react-toastify";
-import Button from "../../sharedComponents/button/Button";
-import SectionTitleForMain from "../../sharedComponents/sectionTitleForMain/SectionTitleForMain";
+import { Camera } from "lucide-react";
 
 const Profile = () => {
   const [aUser, , refetch] = useUserByEmail();
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editableName, setEditableName] = useState("");
   const [photo, setPhoto] = useState(null);
@@ -25,7 +23,6 @@ const Profile = () => {
       name: editableName,
       photoURL: uploadedPhotoUrl,
     };
-    console.log(updateInfo);
 
     const { data } = await axiosPublic.patch(
       `/update-profile/${aUser._id}`,
@@ -39,67 +36,66 @@ const Profile = () => {
   };
 
   return (
-    <div
-      style={{
-        backgroundImage: `url(${profileBg})`,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-      className="lg:pb-20 lg:pt-10 "
-    >
-      <div className="text-center animate__animated animate__bounceInDown">
-        <SectionTitleForMain
-          heading={`Welcome, ${aUser?.name}!`}
-          subHeading={
-            "Below, you can view and update your profile information."
-          }
-        ></SectionTitleForMain>
+    <div className="lg:my-10 lg:py-12 bg-gray-100 flex flex-col items-center p-6">
+      {/* Profile Cover */}
+      <div
+        className="w-full max-w-4xl h-60 bg-cover bg-center rounded-lg shadow-lg relative"
+        style={{ backgroundImage: `url(${profileBg})` }}
+      >
+        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-gray-900/70 to-transparent"></div>
       </div>
 
-      <div className="flex flex-col-reverse md:flex-row justify-center items-center gap-8 p-16 bg-primaryBg">
-        <div className="flex flex-col justify-center">
-          <p className="text-gray-600 text-lg animate__animated animate__fadeInLeftBig">
-            Email: {aUser?.email}
-          </p>
-          <p className="text-gray-600 text-lg py-2 animate__animated animate__fadeInLeftBig">
-            Name: {aUser?.name || "tourist"}
-          </p>
-          <p className="text-gray-600 text-lg  animate__animated animate__fadeInLeftBig">
-            Role: {aUser?.userType || "tourist"}
-          </p>
-
-          <Link
-            className="animate__animated animate__fadeInUpBig"
+      {/* Profile Card */}
+      <div className="w-full max-w-4xl bg-white shadow-lg rounded-lg md:-mt-1 -mt-20 p-6 flex flex-col md:flex-row items-center text-center md:text-left">
+        {/* Profile Image */}
+        <div className="relative w-32 h-32 md:w-40 md:h-40 border-4 border-[#07332F] rounded-full overflow-hidden shadow-md">
+          <img
+            className="w-full h-full object-cover"
+            src={aUser?.photoURL || "https://via.placeholder.com/150"}
+            alt="Profile"
+          />
+          <button
+            className="absolute bottom-2 right-2 bg-gray-800 text-white p-2 rounded-full shadow-md hover:bg-gray-700 transition"
             onClick={() => setIsModalOpen(true)}
           >
-            <Button btnText={"Edit Profile"}></Button>
-          </Link>
-
-          {aUser?.userType === "tourist" && (
-            <Link
-              className="animate__animated animate__fadeInUpBig"
-              to="/dashboard/joinAsTourGuide"
-            >
-              <Button btnText={"Apply For Tour Guide"}></Button>
-            </Link>
-          )}
+            <Camera className="w-5 h-5" />
+          </button>
         </div>
-        <div className="md:w-1/2  animate__animated animate__bounceInRight flex justify-end">
-          <figure className="border p-4 rounded-xl">
-            <img
-              className="w-56 h-56 object-cover rounded-xl"
-              src={aUser?.photoURL}
-              alt="Profile"
-            />
-          </figure>
+
+        {/* User Info */}
+        <div className="mt-4 md:mt-0 md:ml-6 flex-1">
+          <h2 className="text-2xl font-semibold text-gray-800">
+            {aUser?.name || "Tourist"}
+          </h2>
+          <p className="text-gray-500">{aUser?.email}</p>
+          <p className="text-gray-700 font-semibold mt-1">
+            Role: {aUser?.userType || "Tourist"}
+          </p>
+
+          {/* Action Buttons */}
+          <div className="mt-4 flex flex-col md:flex-row gap-3">
+            <button
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg shadow-sm"
+              onClick={() => setIsModalOpen(true)}
+            >
+              Edit Profile
+            </button>
+
+            {aUser?.userType === "tourist" && (
+              <Link to="/dashboard/joinAsTourGuide">
+                <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg shadow-sm">
+                  Apply For Tour Guide
+                </button>
+              </Link>
+            )}
+          </div>
         </div>
       </div>
 
       {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white rounded-lg p-6 w-[90%] md:w-[30%]">
+          <div className="bg-white rounded-lg p-6 w-[90%] md:w-[30%] shadow-lg">
             <h3 className="text-lg font-semibold mb-4">Edit Profile</h3>
             <label className="block mb-2 text-gray-700">Name</label>
             <input
