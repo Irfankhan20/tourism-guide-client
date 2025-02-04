@@ -62,8 +62,11 @@ const Profile = () => {
           <p className="text-gray-600 text-lg animate__animated animate__fadeInLeftBig">
             Email: {aUser?.email}
           </p>
-          <p className="text-gray-600 text-lg mb-4 animate__animated animate__fadeInLeftBig">
-            Role: {aUser?.userType || "User"}
+          <p className="text-gray-600 text-lg py-2 animate__animated animate__fadeInLeftBig">
+            Name: {aUser?.name || "tourist"}
+          </p>
+          <p className="text-gray-600 text-lg  animate__animated animate__fadeInLeftBig">
+            Role: {aUser?.userType || "tourist"}
           </p>
 
           <Link
