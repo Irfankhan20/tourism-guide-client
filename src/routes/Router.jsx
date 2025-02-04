@@ -36,6 +36,7 @@ import Profile from "../pages/dashboard/Profile";
 import Redirect from "../pages/dashboard/Redirect";
 import AdminStatess from "../pages/dashboard/adminDashboard/AdminStatess";
 import ForgotPassword from "../pages/login/ForgotPassword";
+import AllCupons from "../pages/dashboard/touristDashboard/AllCupons";
 
 const router = createBrowserRouter([
   {
@@ -179,6 +180,10 @@ const router = createBrowserRouter([
           {
             path: "/dashboard/myBookings",
             element: <MyBookings></MyBookings>,
+          },
+          {
+            path: "/dashboard/allcupons",
+            element: <AllCupons></AllCupons>,
           },
           {
             path: "/dashboard/touristAddStories",
