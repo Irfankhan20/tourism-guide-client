@@ -275,11 +275,10 @@ const Navbar = () => {
           className="absolute right-[110px] rounded-lg border top-[55px] flex items-center justify-center bg-black bg-opacity-50"
         >
           <div className="bg-white flex flex-col gap-3 p-6 rounded-lg shadow-lg max-w-xs w-full">
-            <Link to="/profile">
-              <button className="btn w-32">Profile</button>
-            </Link>
             <Link to="/dashboard">
-              <button className="btn w-32">Dashboard</button>
+              <button className="btn w-32 border border-[#07332F] ">
+                Dashboard
+              </button>
             </Link>
           </div>
         </div>

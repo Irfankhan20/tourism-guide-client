@@ -6,6 +6,7 @@ import {
   MdOutlineAddCard,
   MdOutlineManageAccounts,
   MdOutlineTour,
+  MdQueryStats,
 } from "react-icons/md";
 import { RiSecurePaymentLine } from "react-icons/ri";
 import { VscGitStashApply } from "react-icons/vsc";
@@ -139,6 +140,37 @@ const ResponsiveSidebar = () => {
         <div className="mt-3 flex flex-col gap-[5px]">
           {isAdmin && (
             <>
+              {/* admin stats */}
+              <li
+                className={`${
+                  isCollapse ? "justify-between" : "justify-center"
+                } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
+              >
+                <Link
+                  to="/dashboard/admin"
+                  className="flex items-center gap-[8px]"
+                >
+                  <MdQueryStats className="text-[1.3rem] text-gray-500" />
+                  <p
+                    className={`${
+                      isCollapse ? "inline" : "hidden"
+                    } text-[1rem] font-[400] text-gray-500`}
+                  >
+                    Admin Stats
+                  </p>
+                </Link>
+
+                {/* tooltip */}
+                <div
+                  className={`${
+                    isCollapse ? "hidden" : "inline"
+                  } absolute top-0 right-[-136px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                >
+                  <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
+                    Manage Profile
+                  </p>
+                </div>
+              </li>
               {/* add packages */}
               <li
                 className={`${
@@ -170,7 +202,6 @@ const ResponsiveSidebar = () => {
                   </p>
                 </div>
               </li>
-
               {/* manage profile */}
               <li
                 className={`${
@@ -178,7 +209,7 @@ const ResponsiveSidebar = () => {
                 } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
               >
                 <Link
-                  to="/dashboard/adminManageProfile"
+                  to="/dashboard/profile"
                   className="flex items-center gap-[8px]"
                 >
                   <CgProfile className="text-[1.3rem] text-gray-500" />
@@ -337,7 +368,7 @@ const ResponsiveSidebar = () => {
                 } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
               >
                 <Link
-                  to="/dashboard/guideManageProfile"
+                  to="/dashboard/profile"
                   className="flex items-center gap-[8px]"
                 >
                   <CgProfile className="text-[1.3rem] text-gray-500" />
@@ -559,7 +590,7 @@ const ResponsiveSidebar = () => {
                 } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
               >
                 <Link
-                  to="/dashboard/touristManageProfile"
+                  to="/dashboard/profile"
                   className="flex items-center gap-[8px]"
                 >
                   <MdOutlineManageAccounts className="text-[1.3rem] text-gray-500" />

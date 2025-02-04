@@ -1,7 +1,7 @@
 import loginBg from "../../assets/login.jpg";
 import animationData from "../../assets/login.json";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import Lottie from "lottie-react";
 import SocialLogin from "./SocialLogin";
 import { useContext, useState } from "react";
@@ -9,10 +9,15 @@ import { AuthContext } from "../../provider/AuthProvider";
 import { toast } from "react-toastify";
 
 const Login = () => {
-  const { signInUser } = useContext(AuthContext);
+  const { signInUser, setEmailForForgot } = useContext(AuthContext);
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -60,6 +65,7 @@ const Login = () => {
             </label>
             <input
               type="email"
+              onChange={(e) => setEmailForForgot(e.target.value)}
               id="email"
               name="email"
               placeholder="Enter your email"
@@ -74,13 +80,26 @@ const Login = () => {
               Password
             </label>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               id="password"
               name="password"
               placeholder="Enter your password"
               className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F5A481]"
               required
             />
+            <span className="relative w-[30px] text-xl flex justify-end -top-8 left-[90%] ">
+              {showPassword ? (
+                <FaEye
+                  className="hover:cursor-pointer"
+                  onClick={handleShowPassword}
+                ></FaEye>
+              ) : (
+                <FaEyeSlash
+                  className="hover:cursor-pointer"
+                  onClick={handleShowPassword}
+                ></FaEyeSlash>
+              )}
+            </span>
           </div>
 
           {/* Remember Me */}
@@ -89,9 +108,12 @@ const Login = () => {
               <input type="checkbox" className="form-checkbox h-4 w-4" />
               <span className="ml-2">Remember Me</span>
             </label>
-            <a href="#" className="hover:underline text-[#F5A481]">
+            <Link
+              to="/forgotPassword"
+              className="hover:underline text-[#F5A481]"
+            >
               Forgot Password?
-            </a>
+            </Link>
           </div>
 
           {/* Submit Button */}

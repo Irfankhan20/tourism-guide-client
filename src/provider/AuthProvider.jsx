@@ -3,6 +3,7 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -18,6 +19,7 @@ const AuthProvider = ({ children }) => {
   const axiosPublic = useAxiosPublic();
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [emailForForgot, setEmailForForgot] = useState("");
 
   //google signIn
   const provider = new GoogleAuthProvider();
@@ -74,6 +76,12 @@ const AuthProvider = ({ children }) => {
     });
   };
 
+  // reset password
+  const resetPassword = (email) => {
+    setLoading(true);
+    return sendPasswordResetEmail(auth, email);
+  };
+
   const authInfo = {
     user,
     loading,
@@ -82,6 +90,9 @@ const AuthProvider = ({ children }) => {
     signInUser,
     logOut,
     updateUserProfile,
+    resetPassword,
+    setEmailForForgot,
+    emailForForgot,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

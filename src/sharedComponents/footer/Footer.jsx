@@ -1,8 +1,10 @@
+import ScrollToTop from "react-scroll-to-top";
 import logo from "../../assets/nav-logo.png";
 
 const Footer = () => {
   return (
     <footer className="bg-[#102d5c] text-white pt-16">
+      <ScrollToTop smooth width="41px" height="22px" top="250" color="green" />
       <div className=" mx-auto px-6 pb-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Logo and Description */}

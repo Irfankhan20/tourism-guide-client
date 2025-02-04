@@ -9,6 +9,7 @@ import { FiUpload } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
 import { imageUpload } from "../../imageUpload/imageUpload";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
 
 const SignUp = () => {
   const axiosPublic = useAxiosPublic();
@@ -16,12 +17,15 @@ const SignUp = () => {
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
   const { createUser, updateUserProfile } = useContext(AuthContext);
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-
   const [password, setPassword] = useState("");
   const [photo, setPhoto] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   const [passwordError, setPasswordError] = useState("");
   const validatePassword = (password) => {
@@ -163,6 +167,7 @@ const SignUp = () => {
               {step === 1 && (
                 <>
                   <div className="flex flex-col gap-[25px] w-full">
+                    {/* name  */}
                     <div className="w-full">
                       <label className="text-[1rem] text-gray-600">Name</label>{" "}
                       <br />
@@ -175,6 +180,7 @@ const SignUp = () => {
                       />
                     </div>
 
+                    {/* photo  */}
                     <input
                       type="file"
                       name="image"
@@ -215,6 +221,7 @@ const SignUp = () => {
               {step === 2 && (
                 <>
                   <div className="flex flex-col gap-[25px] w-full">
+                    {/* email  */}
                     <div className="w-full">
                       <label className="text-[1rem] text-gray-600">Email</label>{" "}
                       <br />
@@ -226,18 +233,32 @@ const SignUp = () => {
                         className="w-full bg-transparent px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:border-secondary"
                       />
                     </div>
+                    {/* password  */}
                     <div className="w-full">
                       <label className="text-[1rem] text-gray-600">
                         Password
                       </label>
                       <br />
                       <input
-                        type="password"
+                        type={showPassword ? "text" : "password"}
                         onChange={(e) => setPassword(e.target.value)}
-                        placeholder="*"
+                        placeholder="Your password"
                         required
                         className="w-full bg-transparent px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:border-secondary"
                       />
+                      <span className="relative w-[30px] text-xl flex justify-end -top-8 left-[90%] ">
+                        {showPassword ? (
+                          <FaEye
+                            className="hover:cursor-pointer"
+                            onClick={handleShowPassword}
+                          ></FaEye>
+                        ) : (
+                          <FaEyeSlash
+                            className="hover:cursor-pointer"
+                            onClick={handleShowPassword}
+                          ></FaEyeSlash>
+                        )}
+                      </span>
                     </div>
                     {passwordError && (
                       <p className="text-red-500 text-sm mt-2">

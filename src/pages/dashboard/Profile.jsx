@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import profileBg from "../../assets/profileBg.jpg";
 import useUserByEmail from "../../hooks/useUserByEmail";
 import { imageUpload } from "../../imageUpload/imageUpload";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
@@ -10,7 +10,7 @@ import SectionTitleForMain from "../../sharedComponents/sectionTitleForMain/Sect
 
 const Profile = () => {
   const [aUser, , refetch] = useUserByEmail();
-  // console.log(aUser);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editableName, setEditableName] = useState("");
   const [photo, setPhoto] = useState(null);
@@ -40,7 +40,15 @@ const Profile = () => {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        backgroundImage: `url(${profileBg})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+      className="lg:pb-20 lg:pt-10 "
+    >
       <div className="text-center animate__animated animate__bounceInDown">
         <SectionTitleForMain
           heading={`Welcome, ${aUser?.name}!`}

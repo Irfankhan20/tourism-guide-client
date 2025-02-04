@@ -183,24 +183,24 @@ const MyBookings = () => {
           ref={tableRef}
         >
           <table className="w-full text-sm ">
-            <thead className="bg-gray-100">
+            <thead className="bg-[#07332F] ">
               <tr>
-                <th className="p-3 text-left font-medium text-gray-700">
+                <th className="font-semibold text-[17px] p-3 text-left text-[#F5A481]">
                   Package Name
                 </th>
-                <th className="p-3 text-left font-medium text-gray-700">
+                <th className="font-semibold text-[17px] p-3 text-left text-[#F5A481]">
                   Tour Guide
                 </th>
-                <th className="p-3 text-left font-medium text-gray-700">
+                <th className="font-semibold text-[17px] p-3 text-left text-[#F5A481]">
                   Tour Date
                 </th>
-                <th className="p-3 text-left font-medium text-gray-700">
+                <th className="font-semibold text-[17px] p-3 text-left text-[#F5A481]">
                   Price
                 </th>
-                <th className="p-3 text-left font-medium text-gray-700">
+                <th className="font-semibold text-[17px] p-3 text-left text-[#F5A481]">
                   Status
                 </th>
-                <th className="p-3 text-left font-medium text-gray-700">
+                <th className="font-semibold text-[17px] p-3 text-left text-[#F5A481]">
                   Actions
                 </th>
               </tr>
@@ -243,20 +243,23 @@ const MyBookings = () => {
           </table>
 
           {!paginatedBookings?.length && (
-            <div className="min-h-screen flex flex-col justify-center items-center">
-              <div className="text-center">
-                <p className="text-primary text-4xl font-bold mb-4">
-                  No Bookings Found
-                </p>
-                <p className="text-gray-600 text-lg">
-                  You haven&apos;t made any room bookings yet. Explore our
-                  available rooms and make your first booking today!
-                </p>
-                <div className="mt-6 w-1/3 mx-auto">
-                  <Link to="/trips">
-                    <button className="btn btn-primary">Explore Tours</button>
-                  </Link>
-                </div>
+            <div className="boxShadow p-6 sm:px-20 sm:py-14 flex items-center justify-center flex-col gap-[4px] rounded-xl">
+              <img
+                src="https://i.ibb.co/cgfgxGH/Illustrations.png"
+                alt="empty/image"
+                className="w-full sm:w-[200px]"
+              />
+              <h1 className="text-[1.4rem] mt-6 font-[500] text-black">
+                No Bookings Found
+              </h1>
+              <p className="text-[0.9rem] text-gray-500">
+                You haven&apos;t made any room bookings yet. Explore our
+                available rooms and make your first booking today!
+              </p>
+              <div className="mt-6 w-1/3 mx-auto">
+                <Link to="/trips">
+                  <button className="btn btn-primary">Explore Tours</button>
+                </Link>
               </div>
             </div>
           )}

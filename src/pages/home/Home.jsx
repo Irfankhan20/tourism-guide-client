@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import Accordion from "../../components/accordion/Accordion";
 import Banner from "../../components/homeComponents/banner/Banner";
 import Overview from "../../components/homeComponents/overview/Overview";
@@ -7,6 +8,9 @@ import TurismAndTravelGuide from "../../components/homeComponents/turismAndTrave
 const Home = () => {
   return (
     <div>
+      <Helmet>
+        <title>Unique Travel - Home</title>
+      </Helmet>
       <Banner></Banner>
       <Overview></Overview>
       <TurismAndTravelGuide></TurismAndTravelGuide>

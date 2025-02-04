@@ -8,6 +8,7 @@ import useAllStories from "../../hooks/useAllStories";
 import { AuthContext } from "../../provider/AuthProvider";
 import StorySlider from "../../components/homeComponents/touristStory/StorySlider";
 import SectionTitleForMain from "../../sharedComponents/sectionTitleForMain/SectionTitleForMain";
+import { Helmet } from "react-helmet";
 
 const Community = () => {
   const { user } = useContext(AuthContext);
@@ -40,6 +41,9 @@ const Community = () => {
   };
   return (
     <div className="w-10/12 mx-auto mt-28 md:mt-32 md:mb-24 mb-20">
+      <Helmet>
+        <title>Unique Travel | Community</title>
+      </Helmet>
       {/* Title and Subtitle */}
       <div className="animate__animated animate__bounceInDown">
         <SectionTitleForMain

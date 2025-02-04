@@ -36,7 +36,7 @@ const MailBox = () => {
         className="shadow-2xl p-10 border-2 rounded-2xl border-[#F5A481] relative py-12 mx-auto container"
       >
         <div className="grid md:grid-cols-12 items-center ">
-          <div className="md:col-span-6">
+          <div className="md:col-span-6 flex justify-center">
             <img
               className="w-3/4"
               src="https://i.ibb.co/McqLNL3/gif.gif"

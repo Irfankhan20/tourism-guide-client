@@ -11,17 +11,17 @@ import Trips from "../pages/trips/Trips";
 import Dashboard from "../pages/dashboard/Dashboard";
 import AddPackage from "../pages/dashboard/adminDashboard/AddPackage";
 import ManageCandidates from "../pages/dashboard/adminDashboard/ManageCandidates";
-import ManageProfile from "../pages/dashboard/adminDashboard/ManageProfile";
+// import ManageProfile from "../pages/dashboard/adminDashboard/ManageProfile";
 import ManageUsers from "../pages/dashboard/adminDashboard/ManageUsers";
 import AddStories from "../pages/dashboard/tourGuideDashboard/AddStories";
-import GuideManageProfile from "../pages/dashboard/tourGuideDashboard/GuideManageProfile";
+// import GuideManageProfile from "../pages/dashboard/tourGuideDashboard/GuideManageProfile";
 import ManageStories from "../pages/dashboard/tourGuideDashboard/ManageStories";
 import MyAssignedTours from "../pages/dashboard/tourGuideDashboard/MyAssignedTours";
 import JoinAsTourGuide from "../pages/dashboard/touristDashboard/JoinAsTourGuide";
 import MyBookings from "../pages/dashboard/touristDashboard/MyBookings";
 import TouristAddStories from "../pages/dashboard/touristDashboard/TouristAddStories";
 import TouristManageStories from "../pages/dashboard/touristDashboard/TouristManageStories";
-import TouristManageProfile from "../pages/dashboard/touristDashboard/TouristManageProfile";
+// import TouristManageProfile from "../pages/dashboard/touristDashboard/TouristManageProfile";
 
 import Page404 from "../pages/errorPage/Page404";
 import UpdateStory from "../pages/dashboard/tourGuideDashboard/UpdateStory";
@@ -32,6 +32,10 @@ import AdminRoute from "./AdminRoute";
 import PaymentSuccess from "../pages/dashboard/PaymentSuccess";
 import PaymentFailed from "../pages/dashboard/PaymentFailed";
 import PaymentHistory from "../pages/dashboard/adminDashboard/PaymentHistory";
+import Profile from "../pages/dashboard/Profile";
+import Redirect from "../pages/dashboard/Redirect";
+import AdminStatess from "../pages/dashboard/adminDashboard/AdminStatess";
+import ForgotPassword from "../pages/login/ForgotPassword";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +47,7 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
       },
+      { path: "/forgotPassword", element: <ForgotPassword></ForgotPassword> },
       {
         path: "/allGuides",
         element: <AllTourGuides></AllTourGuides>,
@@ -71,9 +76,13 @@ const router = createBrowserRouter([
       },
       {
         path: "/packageDetails/:id",
-        element: <PackageDetails></PackageDetails>,
+        element: (
+          <PrivateRoute>
+            <PackageDetails></PackageDetails>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/package/${params.id}`),
+          fetch(`https://unique-travel-server.vercel.app/package/${params.id}`),
       },
       {
         path: "/dashboard",
@@ -83,6 +92,10 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         children: [
+          {
+            path: "/dashboard",
+            element: <Redirect />,
+          },
           {
             path: "/dashboard/payment/:id",
             element: <Payment></Payment>,
@@ -114,18 +127,18 @@ const router = createBrowserRouter([
             ),
           },
           {
-            path: "/dashboard/manageCandidates",
+            path: "/dashboard/admin",
             element: (
               <AdminRoute>
-                <ManageCandidates></ManageCandidates>
+                <AdminStatess></AdminStatess>
               </AdminRoute>
             ),
           },
           {
-            path: "/dashboard/adminManageProfile",
+            path: "/dashboard/manageCandidates",
             element: (
               <AdminRoute>
-                <ManageProfile></ManageProfile>
+                <ManageCandidates></ManageCandidates>
               </AdminRoute>
             ),
           },
@@ -143,10 +156,6 @@ const router = createBrowserRouter([
           {
             path: "/dashboard/addStories",
             element: <AddStories></AddStories>,
-          },
-          {
-            path: "/dashboard/guideManageProfile",
-            element: <GuideManageProfile></GuideManageProfile>,
           },
           {
             path: "/dashboard/manageStories",
@@ -180,8 +189,8 @@ const router = createBrowserRouter([
             element: <TouristManageStories></TouristManageStories>,
           },
           {
-            path: "/dashboard/touristManageProfile",
-            element: <TouristManageProfile></TouristManageProfile>,
+            path: "/dashboard/profile",
+            element: <Profile></Profile>,
           },
         ],
       },
