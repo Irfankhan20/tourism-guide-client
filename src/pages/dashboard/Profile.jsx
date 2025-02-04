@@ -20,22 +20,21 @@ const Profile = () => {
     let uploadedPhotoUrl = aUser?.photoURL;
     if (photo) {
       uploadedPhotoUrl = await imageUpload(photo);
+    }
+    const updateInfo = {
+      name: editableName,
+      photoURL: uploadedPhotoUrl,
+    };
+    console.log(updateInfo);
 
-      const updateInfo = {
-        name: editableName,
-        photoURL: uploadedPhotoUrl,
-      };
-      console.log(updateInfo);
-
-      const { data } = await axiosPublic.patch(
-        `/update-profile/${aUser._id}`,
-        updateInfo
-      );
-      if (data.modifiedCount > 0) {
-        refetch();
-        setIsModalOpen(false);
-        toast.success("Profile updated successfully");
-      }
+    const { data } = await axiosPublic.patch(
+      `/update-profile/${aUser._id}`,
+      updateInfo
+    );
+    if (data.modifiedCount > 0) {
+      refetch();
+      setIsModalOpen(false);
+      toast.success("Profile updated successfully");
     }
   };
 
